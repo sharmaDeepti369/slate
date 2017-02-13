@@ -45,7 +45,7 @@ We have language bindings in Ruby.
 }
 
 ```
-> Sample response when the user register second time and email is verified :
+> Sample response when the user register using another role and email is verified :
 
 ```json
 {
@@ -55,6 +55,17 @@ We have language bindings in Ruby.
 }
 
 ```
+
+> Sample response when register with another role using different password :
+
+```json
+{
+  "status": false,
+  "message": "Please use same password as for your buyer/seller account"
+}
+
+```
+
 > Sample response when the user already registerd with both buyer/seller or with the existing role :
 
 ```json
