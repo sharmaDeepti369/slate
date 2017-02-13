@@ -21,7 +21,7 @@ We have language bindings in Ruby.
 
 ## Sign Up
 
-> Smaple Request:
+> Sample Request:
 
 ```json
 {
@@ -35,7 +35,7 @@ We have language bindings in Ruby.
 
 ```
 
-> Smaple response when the user register first time and email is not verified :
+> Sample response when the user register first time and email is not verified :
 
 ```json
 {
@@ -45,7 +45,7 @@ We have language bindings in Ruby.
 }
 
 ```
-> Smaple response when the user register second time and email is verified :
+> Sample response when the user register second time and email is verified :
 
 ```json
 {
@@ -55,7 +55,7 @@ We have language bindings in Ruby.
 }
 
 ```
-> Smaple response when the user already registerd with both buyer/seller or with the existing role :
+> Sample response when the user already registerd with both buyer/seller or with the existing role :
 
 ```json
 {
@@ -87,7 +87,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 ## Add Role
 
-> Smaple Request:
+> Sample Request:
 
 ```json
 {
@@ -98,7 +98,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 ```
 
-> Smaple reponse when user successfully registed with new role:
+> Sample reponse when user successfully registed with new role:
 
 ```json
 
@@ -132,7 +132,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 ## Login
 
-> Smaple Request:
+> Sample Request:
 
 ```json
 {
@@ -145,7 +145,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 ```
 
-> Smaple reponse when user email is not verified yet:
+> Sample reponse when user email is not verified yet:
 
 ```json
 
@@ -157,7 +157,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 ```
 
 
-> Smaple reponse when user login successfully:
+> Sample reponse when user login successfully:
 
 ```json
 
@@ -170,7 +170,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 ```
 
-> Smaple reponse when invalid email or password:
+> Sample reponse when invalid email or password:
 
 ```json
 
@@ -202,7 +202,7 @@ Remember — Set "Auth-Token" and "email" as header after user login successfull
 
 ## Logout
 
-> Smaple Request:
+> Sample Request:
 
 ```json
 {
@@ -211,7 +211,7 @@ Remember — Set "Auth-Token" and "email" as header after user login successfull
 
 ```
 
-> Smaple reponse when user logout successfully:
+> Sample reponse when user logout successfully:
 
 ```json
 {
@@ -244,7 +244,7 @@ No parameters required for this api. Only use auth_token in header
 
 ## Forgot Password
 
-> Smaple Request:
+> Sample Request:
 
 ```json
 {
@@ -257,7 +257,7 @@ No parameters required for this api. Only use auth_token in header
 
 ```
 
-> Smaple reponse when reset password email sent:
+> Sample reponse when reset password email sent:
 
 ```json
 {
@@ -267,7 +267,7 @@ No parameters required for this api. Only use auth_token in header
 
 ```
 
-> Smaple reponse when user does not exists:
+> Sample reponse when user does not exists:
 
 ```json
 {
@@ -295,7 +295,7 @@ email | yes | email of the user
 
 ## Reset Password
 
-> Smaple Request:
+> Sample Request:
 
 ```json
 
@@ -308,7 +308,7 @@ email | yes | email of the user
 
 ```
 
-> Smaple reponse when password update successfully:
+> Sample reponse when password update successfully:
 
 ```json
   {
@@ -318,7 +318,7 @@ email | yes | email of the user
 
 ```
 
-> Smaple reponse when invalid token (otp):
+> Sample reponse when invalid token (otp):
 
 ```json
   {
@@ -347,3 +347,55 @@ token | yes | otp/token sent in email for reset password instructions
 <aside class="success">
 Remember — Once password updates successfully using otp, that otp expires.
 </aside>
+
+
+## Resend confirmation instructions
+
+> Sample Request:
+
+```json
+
+{
+  "users": {
+    "email": "someoneanonymousiam@gmail.com"
+  }
+}
+
+```
+
+> Sample reponse when email sucessfully sent:
+
+```json
+  {
+    "status": true,
+    "message": "confirmation instructions email sent"
+  }
+
+```
+
+> Sample reponse when invalid email:
+
+```json
+  {
+    "status": false,
+    "message": "user doe not exists"
+  }
+
+```
+
+
+
+This end point sends the email to user with email confirmations instructions.
+
+
+### HTTP Request
+
+`POST /users/confirmation`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+email | yes | user's email
+
+
