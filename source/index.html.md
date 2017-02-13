@@ -206,12 +206,8 @@ Remember — Set "Auth-Token" and "email" as header after user login successfull
 
 ```json
 {
-    "users": {
-        "user_id": 21
-    }
+  
 }
-
-
 
 ```
 
