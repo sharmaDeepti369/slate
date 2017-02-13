@@ -111,7 +111,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 ```
 
 
-This endpoint add role for user when user signup with other role.
+This end point add role for user when user is login and signup with other role.
 
 
 ### HTTP Request
