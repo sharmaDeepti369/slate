@@ -1,15 +1,6 @@
 ---
 title: API Reference
 
-language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -19,171 +10,338 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Floupr API! You can use our API to access Floupr API endpoints, which can get information on various entities in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Ruby. 
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+The every API for this project have to be prefixed with "https://radiant-island-87705.herokuapp.com" and have to include "Auth-Token" and "Email" as headres once the user is login.
+
 
 # Authentication
 
-> To authorize, use this code:
+## Sign Up
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Smaple Request:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "users": {
+    "email": "someoneanonymousiam@gmail.com",
+    "password": "1234567890",
+    "role": "buyer",
+    "device_id": "12566525"
+  }
 }
+
 ```
 
-This endpoint retrieves a specific kitten.
+> Smaple response when the user register first time and email is not verified :
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+```json
+{
+  "status": true,
+  "message": "Signed up successfully",
+  "confirmed": false
+}
+
+```
+> Smaple response when the user register second time and email is verified :
+
+```json
+{
+  "status": true,
+  "message": "Signed up successfully",
+  "confirmed": true
+}
+
+```
+> Smaple response when the user already registerd with both buyer/seller or with the existing role :
+
+```json
+{
+  "status": false,
+  "message": "User already exists",
+  "confirmed": true
+}
+
+```
+
+This endpoint register the user using email and password.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST /users`
+
+### Query Parameters
+
+Parameter | Mandatory | Description
+--------- | ------- | -----------
+email | yes | user email
+password | yes | User password (min length 8)
+role | yes | role as user wants to regiter with
+device_id| yes| device id of the user's device 
+
+<aside class="success">
+Remember — Role of user can be "buyer" / "supplier" / "both"
+</aside>
+
+## Add Role
+
+> Smaple Request:
+
+```json
+{
+    "users": {
+        "user_id": 21,
+        "role": "seller"
+    }
+}
+
+```
+
+> Smaple reponse when user successfully registed with new role:
+
+```json
+
+{
+  "status": true,
+  "message": "User already exists",
+  "confirmed": true
+}
+
+```
+
+
+This endpoint add role for user when user signup with other role.
+
+
+### HTTP Request
+
+`POST /users/add_role`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+user_id | yes | the id of user current login
+role | yes | role as user wants to regiter with
+
+<aside class="success">
+Remember — Role of user can be "buyer" / "supplier" / "both"
+</aside>
+
+
+## Login
+
+> Smaple Request:
+
+```json
+{
+    "users": {
+        "email": "someoneanonymousiam@gmail.com",
+        "password": "1234567890"
+    }
+}
+
+
+```
+
+> Smaple reponse when user email is not verified yet:
+
+```json
+
+{
+  "status": false,
+  "message": "Please confirm the email to login"
+}
+
+```
+
+
+> Smaple reponse when user login successfully:
+
+```json
+
+{
+  "user_id": 21,
+  "auth_token": "IoKnPvIPlnVuX1_hVK6Rcg==",
+  "status": true,
+  "message": "signed up successfully"
+}
+
+```
+
+> Smaple reponse when invalid email or password:
+
+```json
+
+{
+  "status": false,
+  "message": "invalid email or password"
+}
+
+```
+
+
+This end point login the user.
+
+
+### HTTP Request
+
+`POST /users/sign_in`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+email | yes | email of the user to login
+password | yes | password of thr user to login
+
+<aside class="success">
+Remember — Set "Auth-Token" and "email" as header after user login successfully
+</aside>
+
+## Logout
+
+> Smaple Request:
+
+```json
+{
+    "users": {
+        "user_id": 21
+    }
+}
+
+
+
+```
+
+> Smaple reponse when user logout successfully:
+
+```json
+{
+  "status": true,
+  "message": "sign out succesfully"
+}
+```
+
+
+
+This end point logout the user.
+
+
+### HTTP Request
+
+`DELETE /users/sign_out`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+user_id | yes | id of user currently login
+
+
+## Forgot Password
+
+> Smaple Request:
+
+```json
+{
+    "users": {
+        "email": "someoneanonymousiam@gmail.com"
+    }
+}
+
+
+
+```
+
+> Smaple reponse when reset password email sent:
+
+```json
+{
+  "status": true,
+  "message": "reset password email sent"
+}
+
+```
+
+> Smaple reponse when user does not exists:
+
+```json
+{
+  "status": false,
+  "message": "user does not exists"
+}
+
+```
+
+
+
+This end point send email to user with reset password instructions.
+
+
+### HTTP Request
+
+`POST /users/password`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+email | yes | email of the user 
+
+
+## Reset Password
+
+> Smaple Request:
+
+```json
+
+  {
+      "users": {
+          "password": "newPass",
+          "token": "8968"
+      }
+  }
+
+```
+
+> Smaple reponse when password update successfully:
+
+```json
+  {
+    "status": true,
+    "message": "password updated successfully"
+  }
+
+```
+
+> Smaple reponse when invalid token (otp):
+
+```json
+  {
+    "status": false,
+    "message": "invalid token"
+  }
+
+```
+
+
+
+This end point reset the new password for the user.
+
+
+### HTTP Request
+
+`PUT /users/password`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+password | yes | new password for the user
+token | yes | otp/token sent in email for reset password instructions
+
+
 
