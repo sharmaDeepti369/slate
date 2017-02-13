@@ -14,7 +14,7 @@ Welcome to the Floupr API! You can use our API to access Floupr API endpoints, w
 
 We have language bindings in Ruby. 
 
-The every API for this project have to be prefixed with "https://radiant-island-87705.herokuapp.com" and have to include "Auth-Token" and "Email" as headres once the user is login.
+<strong>Every API for this project have to be prefixed with "https://radiant-island-87705.herokuapp.com" and have to include "Auth-Token" and "Email" as headres once the user is login.</strong>
 
 
 # Authentication
@@ -92,7 +92,6 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 ```json
 {
     "users": {
-        "user_id": 21,
         "role": "seller"
     }
 }
@@ -241,6 +240,12 @@ Parameter| Mandatory | Description
 user_id | yes | id of user currently login
 
 
+<aside class="notice">
+No parameters required for this api. Only use auth_token in header
+</aside>
+
+
+
 ## Forgot Password
 
 > Smaple Request:
@@ -343,5 +348,6 @@ Parameter| Mandatory | Description
 password | yes | new password for the user
 token | yes | otp/token sent in email for reset password instructions
 
-
-
+<aside class="success">
+Remember — Once password updates successfully using otp, that otp expires.
+</aside>
