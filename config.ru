@@ -1,7 +1,7 @@
 use Rack::Static,
     :urls => ['/docs'],
     :root => 'docs',
-    :index => 'index.html'
+    :index => 'index.html.md'
 
 run lambda { |env|
   [
