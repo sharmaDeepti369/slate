@@ -410,3 +410,53 @@ Parameter| Mandatory | Description
 email | yes | user's email
 
 
+
+## facebook signup/sign in
+
+> Sample Request:
+
+```json
+
+{
+ "users" : {
+    "name": "deepti sharma",
+    "provider": "facebook",
+    "uid": "7868374658734",
+    "email": "sharma.deepti369@gmail.com",
+    "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater"
+ }
+}
+
+```
+
+> Sample reponse when email sucessfully sent:
+
+```json
+ {
+  "user_id": 19,
+  "auth_token": "uciTFI-1KWsUzFs97Oj_vQ==",
+  "status": true,
+  "message": "signed up successfully"
+}
+
+```
+
+
+This end point login or register user via facebook.
+
+
+### HTTP Request
+
+`POST /users/social_login`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+email | yes | user's email from facebook
+name | yes | user's name
+uid | yes | user's uid from facebook
+provider| yes |facebook
+profile_pic | no |facebook profile pic url of user 
+
+
