@@ -460,3 +460,146 @@ provider| yes |facebook
 profile_pic | no |facebook profile pic url of user 
 
 
+# Profile
+
+## Update profile
+
+> Sample Request with fb profile_pic url:
+
+```json
+{
+ "users" : {
+    "name": "deepti sharma",
+    "phone_number": "12353737978",
+    "address": "sector 61, noida",
+    "about": "test desc",
+    "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater",
+    "social_accounts": {
+      "twitter": false,
+      "facebook":false,
+      "instagram":false
+    }
+  }
+ }
+
+
+```
+
+
+> Sample Request with image base64 encoding:
+
+```json
+{
+ "users" : {
+    "name": "deepti sharma",
+    "phone_number": "12353737978",
+    "address": "sector 61, noida",
+    "about": "test desc",
+    "profile_pic": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAFgABkoYABwAAAOA............................",
+    "social_accounts": {
+      "twitter": false,
+      "facebook":false,
+      "instagram":false
+    }
+  }
+ }
+
+
+```
+
+> Sample reponse:
+
+```json
+{
+  "profile_data": {
+    "name": "deepti sharma",
+    "email": "someoneanonymousiam@gmail.com",
+    "phone_number": "12353737978",
+    "address": "sector 61, noida",
+    "about": "test desc",
+    "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
+    "social_account": {
+      "id": 1,
+      "twitter": false,
+      "facebook": false,
+      "instagram": false
+    }
+  },
+  "status": true,
+  "message": "profile saved successfully"
+}
+
+```
+
+
+This end point updates the profile of user.
+
+
+### HTTP Request
+
+`PUT /users/profile`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+name | yes | user's name
+profile_pic | no |facebook profile pic url of user or base64
+phone_number | no | phone number of uer
+address | no | users's address
+about | no | user's description
+social_accounts| yes | user's social accounts
+address | no |user,s address
+
+
+## Update password
+
+> Sample Request:
+
+```json
+{
+ "users" : {
+  "old_password": "1234567890",
+  "new_password": "0987654321"
+  }
+ }
+
+
+```
+
+
+> Sample Response if password update successfully:
+
+```json
+{
+  "status": false,
+  "message": "Password updated successfully"
+}
+
+```
+
+> Sample Response if old password does not match:
+
+```json
+{
+  "status": false,
+  "message": "Old password does not match"
+}
+
+```
+
+
+
+This end point updates password of user from profile.
+
+
+### HTTP Request
+
+`PUT /profile/update_password`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+old_password | yes | user's current password
+new_password | yes | user's new password
