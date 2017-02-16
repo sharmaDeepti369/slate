@@ -572,7 +572,7 @@ address | no |user,s address
 
 ```json
 {
-  "status": false,
+  "status": true,
   "message": "Password updated successfully"
 }
 
