@@ -603,3 +603,256 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 old_password | yes | user's current password
 new_password | yes | user's new password
+
+# Credit Cards
+
+
+## Add card
+
+> Sample Request:
+
+```json
+
+  {
+    "card": {
+      "holder_name": "me",
+      "card_number": "24228333126876",
+      "expiry_date":"09/21",
+      "cvv": 754,
+      "card_type": "visaa",
+      "shipping_address": {
+        "city": "mumbai",
+        "address": "sector 60",
+        "state": "U.P.",
+        "country": "india",
+        "zipcode": "12345"
+      },
+      "billing_address": {
+        "city": "mumbai",
+        "address": "sector 60",
+        "state": "U.P.",
+        "country": "india",
+        "zipcode": "12345"
+      }
+    }
+  }
+
+
+```
+
+
+> Sample Response if card added successfully:
+
+```json
+  {
+    "status": true,
+    "message": "Card added successfully",
+    "card": {
+      "id": 4,
+      "holder_name": "me",
+      "card_number": "24228333126876",
+      "expiry_date": "09/21",
+      "cvv": 754,
+      "card_type": "visaa",
+      "shipping_address": {
+        "id": 2,
+        "address": "sector 60",
+        "city": "mumbai",
+        "state": "U.P.",
+        "zipcode": "12345",
+        "country": "india"
+      },
+      "billing_address": {
+        "id": 2,
+        "address": "sector 60",
+        "city": "mumbai",
+        "state": "U.P.",
+        "zipcode": "12345",
+        "country": "india"
+      }
+    }
+  }
+
+```
+
+> Sample Response if already card with same number exists:
+
+```json
+{
+  "status": false,
+  "message": "Card with this number already exists"
+}
+
+```
+
+
+
+This end point add a credit card for user.
+
+
+### HTTP Request
+
+`POST /cards`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+holder_name | yes | credit card holder name
+card_number | yes | credit card number
+expiry_date | yes | credit card expiry date
+cvv | yes | credit card cvv number
+card_type | yes | credit card type
+shipping_address | yes | card's shipping address
+billing_address | yes | card's billing address
+
+## Update card
+
+> Sample Request:
+
+```json
+
+  {
+    "card": {
+      "id": 4,
+      "holder_name": "me",
+      "card_number": "24228333126876",
+      "expiry_date":"09/21",
+      "cvv": 754,
+      "card_type": "visaa",
+      "shipping_address": {
+        "city": "mumbai",
+        "address": "sector 60",
+        "state": "U.P.",
+        "country": "india",
+        "zipcode": "12345"
+      },
+      "billing_address": {
+        "city": "mumbai",
+        "address": "sector 60",
+        "state": "U.P.",
+        "country": "india",
+        "zipcode": "12345"
+      }
+    }
+  }
+
+
+```
+
+
+> Sample Response if card added successfully:
+
+```json
+  {
+    "status": true,
+    "message": "Card added successfully",
+    "card": {
+      "id": 4,
+      "holder_name": "me",
+      "card_number": "24228333126876",
+      "expiry_date": "09/21",
+      "cvv": 754,
+      "card_type": "visaa",
+      "shipping_address": {
+        "id": 2,
+        "address": "sector 60",
+        "city": "mumbai",
+        "state": "U.P.",
+        "zipcode": "12345",
+        "country": "india"
+      },
+      "billing_address": {
+        "id": 2,
+        "address": "sector 60",
+        "city": "mumbai",
+        "state": "U.P.",
+        "zipcode": "12345",
+        "country": "india"
+      }
+    }
+  }
+
+```
+
+> Sample Response if already card with id does not exists:
+
+```json
+{
+  "status": false,
+  "message": "Card with this number does not exists"
+}
+
+```
+
+
+
+This end point update a credit card for user.
+
+
+### HTTP Request
+
+`PUT /cards`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | credit card id
+holder_name | yes | credit card holder name
+card_number | yes | credit card number
+expiry_date | yes | credit card expiry date
+cvv | yes | credit card cvv number
+card_type | yes | credit card type
+shipping_address | yes | card's shipping address
+billing_address | yes | card's billing address
+
+
+## Delete card
+
+> Sample Request:
+
+```json
+
+  {
+    "card_id": 3
+  }
+
+
+```
+
+
+> Sample Response if card deleted successfully:
+
+```json
+ {
+  "status": true,
+  "message": "Card deleted successfully"
+}
+
+```
+
+> Sample Response if already card with id does not exists:
+
+```json
+{
+  "status": false,
+  "message": "Card with id number does not exists"
+}
+
+```
+
+
+
+This end point delete a credit card for user.
+
+
+### HTTP Request
+
+`DELETE /card`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+card_id | yes | credit card id
