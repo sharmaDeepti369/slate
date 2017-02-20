@@ -856,3 +856,678 @@ This end point delete a credit card for user.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 card_id | yes | credit card id
+
+
+
+# Products
+
+
+## Create product
+
+> Sample Request:
+
+```json
+
+  {
+   "product" : {
+      "name": "jacket-leather",
+      "color": "green",
+      "size": "s",
+      "description": "test description",
+      "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
+      "category_id": 1,
+      "sub_category_id":1,
+      "brand_id":1
+      "auction_day": "25-10-17"
+    }
+   }
+
+
+
+```
+
+
+> Sample Response if card deleted successfully:
+
+```json
+  {
+    "status": true,
+    "message": "Product added successfully",
+    "product": {
+      "id": 7,
+      "name": "jacket-leather",
+      "color": "green",
+      "size": "s",
+      "description": "test description",
+      "auction_day": "25-10-17",
+      "category": {
+        "id": 1,
+        "name": "category 1"
+      },
+      "sub_category": {
+        "id": 1,
+        "name": "category 1-1"
+      },
+      "brand": {
+        "id": 1,
+        "name": "brand 1"
+      },
+      "product_images": [
+        {
+          "id": 1,
+          "url": "/uploads/product_image/image/19/file.jpeg"
+        }
+      ]
+    }
+  }
+
+```
+
+
+This end point creates a product for user.
+
+
+### HTTP Request
+
+`POST /product`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+name | yes | name / title of product
+color | yes | color of product
+size | yes |size of product
+description | yes | description of product
+images | yes | images of product
+category_id | yes | id of product's category
+sub_category_id | yes | id of product's sub category
+brand_id | yes | id of product's brand
+auction_day| auction day for product
+
+
+## Update product
+
+> Sample Request:
+
+```json
+
+  {
+   "product" : {
+      "id": 1
+      "name": "jacket-leather",
+      "color": "green",
+      "size": "s",
+      "description": "test description",
+      "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
+      "category_id": 1,
+      "sub_category_id":1,
+      "brand_id":1
+      "auction_day": "25-10-17",
+      "max_price": 20.00
+    }
+   }
+
+
+
+```
+
+
+> Sample Response if card deleted successfully:
+
+```json
+  {
+    "status": true,
+    "message": "Product added successfully",
+    "product": {
+      "id": 1,
+      "name": "jacket-leather",
+      "color": "green",
+      "size": "s",
+      "description": "test description",
+      "auction_day": "25-10-17",
+      "max_price": 20.00,
+      "category": {
+        "id": 1,
+        "name": "category 1"
+      },
+      "sub_category": {
+        "id": 1,
+        "name": "category 1-1"
+      },
+      "brand": {
+        "id": 1,
+        "name": "brand 1"
+      },
+      "product_images": [
+        {
+          "id": 1,
+          "url": "/uploads/product_image/image/19/file.jpeg"
+        }
+      ]
+    }
+  }
+
+```
+
+
+This end point update a product for user.
+
+
+### HTTP Request
+
+`PUT /product`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | id of product
+name | yes | name / title of product
+color | yes | color of product
+size | yes |size of product
+description | yes | description of product
+images | yes | images of product
+category_id | yes | id of product's category
+sub_category_id | yes | id of product's sub category
+brand_id | yes | id of product's brand
+auction_day| auction day for product
+
+
+## Delete product
+
+> Sample Request:
+
+```json
+
+  {
+    "product_id" : 5588
+  }
+
+```
+
+
+> Sample Response if product not found:
+
+```json
+  
+  {
+    "status": false,
+    "message": "Product not found"
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+  
+  {
+    "status": true,
+    "meaasge": "Product deleted successfully"
+  }
+
+```
+
+This end point delete a product for user.
+
+
+### HTTP Request
+
+`DELETE /product`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product to delete
+
+
+## Delete product's image
+
+> Sample Request:
+
+```json
+  {
+   "product_id" : 2,
+   "image_id": 15
+  }
+
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+  
+  {
+    "status": true,
+    "meaasge": "Image deleted successfully"
+  }
+
+```
+
+
+> Sample Response if product not found:
+
+```json
+  
+  {
+    "status": false,
+    "message": "Product not found"
+  }
+
+```
+
+
+
+This end point delete a product for user.
+
+
+### HTTP Request
+
+`DELETE /product`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product to delete
+image_id | yes | id of image to delete
+
+
+
+# Order
+
+## Adding product to cart
+
+> Sample Request:
+
+```json
+  {
+    "order": {
+      "product_id": 3,
+      "max_price": 20.03,
+      "expires_at": "2", 
+      "quantity": 4,
+      "order_confirm": false
+    }
+  }
+
+```
+
+> Sample Response if product added to cart successfully:
+
+```json
+  {
+   "status": true,
+    "message": "Added to cart successfully"
+  }
+
+```
+
+
+This end point ass a product to cart.
+
+
+### HTTP Request
+
+`POST /order`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+max_price | yes | max price for product
+expires_at | yes | Time by which user wants to wait for product's auction (in days)
+quantity | yes | quantity of product
+order_confirm | yes | false for products to be added in cart
+
+
+## Ordering a single product
+
+> Sample Request:
+
+```json
+
+  {
+    "order": {
+      "product_id": 3,
+      "max_price": 20.03,
+      "expires_at": "2", 
+      "quantity": 4,
+      "order_confirm": true
+    }
+  }
+
+```
+
+> Sample Response if product added to cart successfully:
+
+```json
+  {
+    "status": true,
+    "message": "Product ordered successfully"
+  }
+
+```
+
+
+This end point add a product to cart.
+
+
+### HTTP Request
+
+`POST /order`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+max_price | yes | max price for product
+expires_at | yes | Time by which user wants to wait for product's auction (in days)
+quantity | yes | quantity of product
+order_confirm | yes | true 
+
+## Placing order form cart
+
+> Sample Request:
+
+```json
+
+{
+  "orders":{
+    "order1": {
+      "id": 1,
+      "product_id": 3,
+      "max_price": 20.03,
+      "expires_at": "2", 
+      "quantity": 4,
+      "order_confirm": true
+    },
+    "order2": {
+      "id": 2,
+      "product_id": 3,
+      "max_price": 20.03,
+      "expires_at": "2", 
+      "quantity": 4,
+      "order_confirm": true
+    },
+    "order3": {     
+      "id": 3,
+      "product_id": 3,
+      "max_price": 20.03,
+      "expires_at": "2", 
+      "quantity": 4,
+      "order_confirm": true
+    }
+  }
+}
+
+```
+
+> Sample Response if order placed successfully:
+
+```json
+  {
+    "status": true,
+    "message": "Order placed successfully"
+  }
+
+```
+
+
+This end point add a product to cart.
+
+
+### HTTP Request
+
+`PUT /order`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | id of order
+product_id | yes | id of product
+max_price | yes | max price for product
+expires_at | yes | Time by which user wants to wait for product's auction (in days)
+quantity | yes | quantity of product
+order_confirm | yes | true 
+
+
+## Delete product from cart
+
+> Sample Request:
+
+```json
+  {
+    "order_id": 2
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+  
+  {
+    "status": true,
+    "message": "Order deleted from cart"
+  }
+```
+
+
+> Sample Response if product not found in cart:
+
+```json
+  
+  {
+    "status": false,
+    "message": ""Order with this id not found""
+  }
+
+```
+
+
+
+This end point delete a product for user.
+
+
+### HTTP Request
+
+`DELETE /product`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+order_id | yes | id of order to delete from cart
+
+
+# Deals
+
+## Get buyer deals
+
+
+> Sample Request:
+
+```json
+  {
+    
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+  {
+  "status": true,
+  "deals": [
+    {
+      "id": 19,
+      "name": "T-shirt yellow",
+      "max_price": 20.02,
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/33/image.jpeg",
+      "orders": 3,
+      "time_left": "128:9:24",
+      "days_left": 6
+    },
+    {
+      "id": 18,
+      "name": "nike shoes",
+      "max_price": 30.02,
+      "discount_price": 24.016,
+      "image_url": "/uploads/product_image/image/32/image.jpeg",
+      "orders": 2,
+      "time_left": "80:9:24",
+      "days_left": 4
+    },
+    {
+      "id": 20,
+      "name": "jacket",
+      "max_price": 50.02,
+      "discount_price": 40.016000000000005,
+      "image_url": "/uploads/product_image/image/34/image.jpeg",
+      "orders": 0,
+      "time_left": "176:9:24",
+      "days_left": 8
+    },
+    {
+      "id": 21,
+      "name": "Shirt",
+      "max_price": 50.02,
+      "discount_price": 40.016000000000005,
+      "image_url": "/uploads/product_image/image/35/image.jpeg",
+      "orders": 0,
+      "time_left": "152:9:24",
+      "days_left": 7
+    },
+    {
+      "id": 22,
+      "name": "Jeans",
+      "max_price": 20.02,
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/36/image.jpeg",
+      "orders": 0,
+      "time_left": "56:9:24",
+      "days_left": 3
+    }
+  ]
+}
+```
+
+
+
+This end point return deals for advertisement for buyer.
+
+
+### HTTP Request
+
+`GET /buyer_deals`
+
+
+<aside class="success">
+  No parameters required for this api`
+</aside>
+
+## Get supplier deals
+
+
+> Sample Request:
+
+```json
+  {
+    
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+  {
+  "status": true,
+  "deals": [
+    {
+      "id": 19,
+      "name": "T-shirt yellow",
+      "max_price": 20.02,
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/33/image.jpeg",
+      "orders": 3,
+      "time_left": "128:7:13",
+      "days_left": 6
+    },
+    {
+      "id": 18,
+      "name": "nike shoes",
+      "max_price": 30.02,
+      "discount_price": 24.016,
+      "image_url": "/uploads/product_image/image/32/image.jpeg",
+      "orders": 2,
+      "time_left": "80:7:13",
+      "days_left": 4
+    },
+    {
+      "id": 20,
+      "name": "jacket",
+      "max_price": 50.02,
+      "discount_price": 40.016000000000005,
+      "image_url": "/uploads/product_image/image/34/image.jpeg",
+      "orders": 0,
+      "time_left": "176:7:13",
+      "days_left": 8
+    },
+    {
+      "id": 21,
+      "name": "Shirt",
+      "max_price": 50.02,
+      "discount_price": 40.016000000000005,
+      "image_url": "/uploads/product_image/image/35/image.jpeg",
+      "orders": 0,
+      "time_left": "152:7:13",
+      "days_left": 7
+    },
+    {
+      "id": 22,
+      "name": "Jeans",
+      "max_price": 20.02,
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/36/image.jpeg",
+      "orders": 0,
+      "time_left": "56:7:13",
+      "days_left": 3
+    }
+  ],
+  "current_bid": {
+    "id": 18,
+    "name": "nike shoes",
+    "max_price": 30.02,
+    "discount_price": 24.016,
+    "image_url": "/uploads/product_image/image/32/image.jpeg",
+    "orders": 2,
+    "time_left": "80:7:13",
+    "days_left": 4
+  }
+}
+```
+
+
+
+This end point return deals and current bid for advertisement for supplier.
+
+
+### HTTP Request
+
+`GET /supplier_deals`
+
+
+<aside class="success">
+  No parameters required for this api`
+</aside>
+
