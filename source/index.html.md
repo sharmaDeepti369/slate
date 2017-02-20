@@ -877,7 +877,7 @@ card_id | yes | credit card id
       "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
       "category_id": 1,
       "sub_category_id":1,
-      "brand_id":1
+      "brand_id":1,
       "auction_day": "25-10-17"
     }
    }
@@ -954,7 +954,7 @@ auction_day| auction day for product
 
   {
    "product" : {
-      "id": 1
+      "id": 1,
       "name": "jacket-leather",
       "color": "green",
       "size": "s",
@@ -962,7 +962,7 @@ auction_day| auction day for product
       "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
       "category_id": 1,
       "sub_category_id":1,
-      "brand_id":1
+      "brand_id":1,
       "auction_day": "25-10-17",
       "max_price": 20.00
     }
@@ -1326,7 +1326,7 @@ order_confirm | yes | true
   
   {
     "status": false,
-    "message": ""Order with this id not found""
+    "message": "Order with this id not found"
   }
 
 ```
