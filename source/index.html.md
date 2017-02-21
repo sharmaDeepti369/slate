@@ -1685,7 +1685,7 @@ This end point return all deals for buyer.
 
 ```json
   {
-    page: 2
+    "page": 2
   }
 
 ```
@@ -1786,7 +1786,7 @@ page | yes | page number of results (default 1)
 
 ```json
   {
-    page: 2
+    "page": 2
   }
 
 ```
@@ -1888,7 +1888,7 @@ page | yes | page number of results (default 1)
 
 ```json
   {
-    page: 2
+    "page": 2
   }
 
 ```
@@ -1989,7 +1989,7 @@ page | yes | page number of results (default 1)
 
 ```json
   {
-    page: 2
+    "page": 2
   }
 
 ```
@@ -2091,8 +2091,8 @@ page | yes | page number of results (default 1)
 
 ```json
   {
-    query: "shirt",
-    page: 3
+    "query": "shirt",
+    "page": 3
   }
 
 ```
