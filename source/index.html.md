@@ -480,6 +480,10 @@ profile_pic | no |facebook profile pic url of user
     "email": "someoneanonymousiam@gmail.com",
     "phone_number": "12353737978",
     "address": "sector 61, noida",
+    "state": "UP",
+    "city": "noida",
+    "zipcode": 201301,
+    "country": "india",
     "about": "test desc",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
     "social_account": {
@@ -516,6 +520,10 @@ No parameters required for this api.
     "name": "deepti sharma",
     "phone_number": "12353737978",
     "address": "sector 61, noida",
+    "state": "UP",
+    "city": "noida",
+    "zipcode": 201301,
+    "country": "india",
     "about": "test desc",
     "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater",
     "social_accounts": {
@@ -560,6 +568,10 @@ No parameters required for this api.
     "email": "someoneanonymousiam@gmail.com",
     "phone_number": "12353737978",
     "address": "sector 61, noida",
+    "state": "UP",
+    "city": "noida",
+    "zipcode": 201301,
+    "country": "india",
     "about": "test desc",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
     "social_account": {
