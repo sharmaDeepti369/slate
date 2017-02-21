@@ -462,6 +462,50 @@ profile_pic | no |facebook profile pic url of user
 
 # Profile
 
+## Get profile
+
+> Sample Request:
+
+```json
+  {
+  }
+```
+
+> Sample reponse:
+
+```json
+{
+  "profile_data": {
+    "name": "deepti sharma",
+    "email": "someoneanonymousiam@gmail.com",
+    "phone_number": "12353737978",
+    "address": "sector 61, noida",
+    "about": "test desc",
+    "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
+    "social_account": {
+      "id": 1,
+      "twitter": false,
+      "facebook": false,
+      "instagram": false
+    }
+  },
+  "status": true
+}
+
+```
+
+
+This end point get the profile for login user.
+
+
+### HTTP Request
+
+`GET /users/profile`
+
+<aside class="notice">
+No parameters required for this api.
+</aside>
+
 ## Update profile
 
 > Sample Request with fb profile_pic url:
@@ -1423,7 +1467,7 @@ order_id | yes | id of order to delete from cart
 
 
 
-This end point return deals for advertisement for buyer.
+This end point return deals for advertisement for buyer (top 5 deals).
 
 
 ### HTTP Request
@@ -1531,3 +1575,591 @@ This end point return deals and current bid for advertisement for supplier.
   No parameters required for this api`
 </aside>
 
+
+## Get all deals
+
+
+> Sample Request:
+
+```json
+  {
+    
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+  {
+  "status": true,
+  "deals": [
+    {
+      "id": 19,
+      "name": "T-shirt yellow",
+      "max_price": 20.02,
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/33/image.jpeg",
+      "orders": 3,
+      "time_left": "128:7:13",
+      "days_left": 6
+    },
+    {
+      "id": 18,
+      "name": "nike shoes",
+      "max_price": 30.02,
+      "discount_price": 24.016,
+      "image_url": "/uploads/product_image/image/32/image.jpeg",
+      "orders": 2,
+      "time_left": "80:7:13",
+      "days_left": 4
+    },
+    {
+      "id": 20,
+      "name": "jacket",
+      "max_price": 50.02,
+      "discount_price": 40.016000000000005,
+      "image_url": "/uploads/product_image/image/34/image.jpeg",
+      "orders": 0,
+      "time_left": "176:7:13",
+      "days_left": 8
+    },
+    {
+      "id": 21,
+      "name": "Shirt",
+      "max_price": 50.02,
+      "discount_price": 40.016000000000005,
+      "image_url": "/uploads/product_image/image/35/image.jpeg",
+      "orders": 0,
+      "time_left": "152:7:13",
+      "days_left": 7
+    },
+    {
+      "id": 22,
+      "name": "Jeans",
+      "max_price": 20.02,
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/36/image.jpeg",
+      "orders": 0,
+      "time_left": "56:7:13",
+      "days_left": 3
+    }
+  ]
+}
+```
+
+
+
+This end point return all deals for buyer.
+
+
+### HTTP Request
+
+`GET /deals`
+
+
+<aside class="success">
+  No parameters required for this api`
+</aside>
+
+
+# History
+
+
+## Recent
+
+
+> Sample Request:
+
+```json
+  {
+    page: 2
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+ {
+  "status": true,
+  "recent_orders": [
+    {
+      "id": 7,
+      "quantity": 4,
+      "days_left": 6,
+      "product": {
+        "id": 21,
+        "name": "Shirt",
+        "color": "white",
+        "size": "XL",
+        "description": "hello",
+        "max_price": 50.02,
+        "category": {
+          "id": 1,
+          "name": "category 1"
+        },
+        "sub_category": {
+          "id": 1,
+          "name": "category 1-1"
+        },
+        "brand": {
+          "id": 1,
+          "name": "brand 1"
+        },
+        "product_images": [
+          {
+            "id": 35,
+            "url": "/uploads/product_image/image/35/image.jpeg"
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "quantity": 4,
+      "days_left": 2,
+      "product": {
+        "id": 22,
+        "name": "Jeans",
+        "color": "ice blue",
+        "size": "30 S",
+        "description": "hello",
+        "max_price": 20.02,
+        "category": {
+          "id": 3,
+          "name": "category 3"
+        },
+        "sub_category": {
+          "id": 3,
+          "name": "category 2-1"
+        },
+        "brand": {
+          "id": 3,
+          "name": "brand 3"
+        },
+        "product_images": [
+          {
+            "id": 36,
+            "url": "/uploads/product_image/image/36/image.jpeg"
+          }
+        ]
+      }
+    }]
+  }
+```
+
+
+
+This end point return recent history for buyer.
+
+
+### HTTP Request
+
+`GET /history/recent`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+page | yes | page number of results (default 1)
+
+
+
+## Pending
+
+
+> Sample Request:
+
+```json
+  {
+    page: 2
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+ {
+  "status": true,
+  "recent_orders": [
+    {
+      "id": 7,
+      "quantity": 4,
+      "days_left": 6,
+      "product": {
+        "id": 21,
+        "name": "Shirt",
+        "color": "white",
+        "size": "XL",
+        "description": "hello",
+        "max_price": 50.02,
+        "category": {
+          "id": 1,
+          "name": "category 1"
+        },
+        "sub_category": {
+          "id": 1,
+          "name": "category 1-1"
+        },
+        "brand": {
+          "id": 1,
+          "name": "brand 1"
+        },
+        "product_images": [
+          {
+            "id": 35,
+            "url": "/uploads/product_image/image/35/image.jpeg"
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "quantity": 4,
+      "days_left": 2,
+      "product": {
+        "id": 22,
+        "name": "Jeans",
+        "color": "ice blue",
+        "size": "30 S",
+        "description": "hello",
+        "max_price": 20.02,
+        "category": {
+          "id": 3,
+          "name": "category 3"
+        },
+        "sub_category": {
+          "id": 3,
+          "name": "category 2-1"
+        },
+        "brand": {
+          "id": 3,
+          "name": "brand 3"
+        },
+        "product_images": [
+          {
+            "id": 36,
+            "url": "/uploads/product_image/image/36/image.jpeg"
+          }
+        ]
+      }
+    }]
+  }
+```
+
+
+
+This end point return pending history for buyer.
+
+
+### HTTP Request
+
+`GET /history/pending`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+page | yes | page number of results (default 1)
+
+
+
+
+## Won
+
+
+> Sample Request:
+
+```json
+  {
+    page: 2
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+ {
+  "status": true,
+  "recent_orders": [
+    {
+      "id": 7,
+      "quantity": 4,
+      "days_left": 6,
+      "product": {
+        "id": 21,
+        "name": "Shirt",
+        "color": "white",
+        "size": "XL",
+        "description": "hello",
+        "max_price": 50.02,
+        "category": {
+          "id": 1,
+          "name": "category 1"
+        },
+        "sub_category": {
+          "id": 1,
+          "name": "category 1-1"
+        },
+        "brand": {
+          "id": 1,
+          "name": "brand 1"
+        },
+        "product_images": [
+          {
+            "id": 35,
+            "url": "/uploads/product_image/image/35/image.jpeg"
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "quantity": 4,
+      "days_left": 2,
+      "product": {
+        "id": 22,
+        "name": "Jeans",
+        "color": "ice blue",
+        "size": "30 S",
+        "description": "hello",
+        "max_price": 20.02,
+        "category": {
+          "id": 3,
+          "name": "category 3"
+        },
+        "sub_category": {
+          "id": 3,
+          "name": "category 2-1"
+        },
+        "brand": {
+          "id": 3,
+          "name": "brand 3"
+        },
+        "product_images": [
+          {
+            "id": 36,
+            "url": "/uploads/product_image/image/36/image.jpeg"
+          }
+        ]
+      }
+    }]
+  }
+```
+
+
+
+This end point return won history for buyer.
+
+
+### HTTP Request
+
+`GET /history/won`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+page | yes | page number of results (default 1)
+
+
+
+## Lost
+
+
+> Sample Request:
+
+```json
+  {
+    page: 2
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+ {
+  "status": true,
+  "recent_orders": [
+    {
+      "id": 7,
+      "quantity": 4,
+      "days_left": 6,
+      "product": {
+        "id": 21,
+        "name": "Shirt",
+        "color": "white",
+        "size": "XL",
+        "description": "hello",
+        "max_price": 50.02,
+        "category": {
+          "id": 1,
+          "name": "category 1"
+        },
+        "sub_category": {
+          "id": 1,
+          "name": "category 1-1"
+        },
+        "brand": {
+          "id": 1,
+          "name": "brand 1"
+        },
+        "product_images": [
+          {
+            "id": 35,
+            "url": "/uploads/product_image/image/35/image.jpeg"
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "quantity": 4,
+      "days_left": 2,
+      "product": {
+        "id": 22,
+        "name": "Jeans",
+        "color": "ice blue",
+        "size": "30 S",
+        "description": "hello",
+        "max_price": 20.02,
+        "category": {
+          "id": 3,
+          "name": "category 3"
+        },
+        "sub_category": {
+          "id": 3,
+          "name": "category 2-1"
+        },
+        "brand": {
+          "id": 3,
+          "name": "brand 3"
+        },
+        "product_images": [
+          {
+            "id": 36,
+            "url": "/uploads/product_image/image/36/image.jpeg"
+          }
+        ]
+      }
+    }]
+  }
+```
+
+
+
+This end point return lost history for buyer.
+
+
+### HTTP Request
+
+`GET /history/lost`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+page | yes | page number of results (default 1)
+
+
+# Search
+
+## Get search results
+
+
+> Sample Request:
+
+```json
+  {
+    query: "shirt",
+    page: 3
+  }
+
+```
+
+> Sample Response if product deleted successfully:
+
+```json
+ {
+  "status": true,
+  "results": [
+    {
+      "id": 19,
+      "name": "T-shirt yellow",
+      "color": "yellow",
+      "size": "s",
+      "description": "hello",
+      "max_price": 20.02,
+      "category": {
+        "id": 2,
+        "name": "category 2"
+      },
+      "sub_category": {
+        "id": 3,
+        "name": "category 2-1"
+      },
+      "brand": {
+        "id": 3,
+        "name": "brand 3"
+      },
+      "product_images": [
+        {
+          "id": 33,
+          "url": "/uploads/product_image/image/33/image.jpeg"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Shirt",
+      "color": "white",
+      "size": "XL",
+      "description": "hello",
+      "max_price": 50.02,
+      "category": {
+        "id": 1,
+        "name": "category 1"
+      },
+      "sub_category": {
+        "id": 1,
+        "name": "category 1-1"
+      },
+      "brand": {
+        "id": 1,
+        "name": "brand 1"
+      },
+      "product_images": [
+        {
+          "id": 35,
+          "url": "/uploads/product_image/image/35/image.jpeg"
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+
+This end point returns search results corresponding to a search keyword.
+
+
+### HTTP Request
+
+`GET /search`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+query | yes | search keyword entered by user
+page | yes |page number for results (default 1)
