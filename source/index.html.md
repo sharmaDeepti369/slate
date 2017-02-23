@@ -1193,7 +1193,7 @@ image_id | yes | id of image to delete
 
 
 
-# Order
+# Placing Order
 
 ## Adding product to cart
 
@@ -1417,7 +1417,7 @@ order_id | yes | id of order to delete from cart
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if deals found successfully:
 
 ```json
   {
@@ -1503,7 +1503,7 @@ This end point return deals for advertisement for buyer (top 5 deals).
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if deals found successfully:
 
 ```json
   {
@@ -1600,7 +1600,7 @@ This end point return deals and current bid for advertisement for supplier.
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if deals found successfully:
 
 ```json
   {
@@ -1690,7 +1690,7 @@ This end point return all deals for buyer.
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if orders found successfully:
 
 ```json
  {
@@ -1791,7 +1791,7 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if orders found successfully:
 
 ```json
  {
@@ -1893,7 +1893,7 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if orders found successfully:
 
 ```json
  {
@@ -1994,7 +1994,7 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if orders found successfully:
 
 ```json
  {
@@ -2097,7 +2097,7 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if product deleted successfully:
+> Sample Response if results found successfully:
 
 ```json
  {
@@ -2175,3 +2175,175 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 query | yes | search keyword entered by user
 page | yes |page number for results (default 1)
+
+
+# Supplier
+
+## Supplier's orders
+
+> Sample Request:
+
+```json
+  {
+
+  }
+
+```
+
+> Sample Response if orders found successfully:
+
+```json
+  {
+    "status": true,
+    "orders": [
+      {
+        "id": 23,
+        "name": "Trousers",
+        "max_price": 20.02,
+        "discount_price": 16.016,
+        "image_url": "/uploads/product_image/image/37/image.jpeg",
+        "orders": null,
+        "time_left": "-34:29:15",
+        "days_left": 0,
+        "color": "black",
+        "size": "xxl"
+      }
+    ]
+  }
+```
+
+
+
+This end point returns orders of the previous auction for supplier.
+
+
+### HTTP Request
+
+`GET /orders`
+
+## Current bids
+
+> Sample Request:
+
+```json
+  {
+
+  }
+
+```
+
+> Sample Response if orders found successfully:
+
+```json
+  {
+    "status": true,
+    "orders": [
+      {
+        "id": 23,
+        "name": "Trousers",
+        "max_price": 20.02,
+        "discount_price": 16.016,
+        "image_url": "/uploads/product_image/image/37/image.jpeg",
+        "orders": null,
+        "time_left": "-34:29:15",
+        "days_left": 0,
+        "color": "black",
+        "size": "xxl"
+      }
+    ]
+  }
+```
+
+
+
+This end point returns all the current bids for supplier.
+
+
+### HTTP Request
+
+`GET /bids`
+
+## No. of orders
+
+> Sample Request:
+
+```json
+  {
+    "product_id": 22,
+    "min_price": 10.00,
+    "max_price": 20.02
+  }
+
+```
+
+> Sample Response if orders found successfully:
+
+```json
+  {
+    "status": true,
+    "orders_count": 1
+  }
+```
+
+
+
+This end point returns no of orders in a price range.
+
+
+### HTTP Request
+
+`GET /get_bids`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+min_price | yes | price range minnimum price
+max_price | yes | price range maximum price
+
+## Save orders
+
+> Sample Request:
+
+```json
+  {
+   "order" : {
+      "product_id": 22,
+      "min_price": 0,
+      "max_price": 22
+     
+    }
+  }
+
+```
+
+> Sample Response if order saved successfully:
+
+```json
+  {
+    "status": true,
+    "message": "order saved successfully"
+  }
+```
+
+
+
+This end point saves a order for supplier.
+
+
+### HTTP Request
+
+`GET /supplier_orders`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+min_price | yes | price range minnimum price
+max_price | yes | price range maximum price
