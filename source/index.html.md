@@ -40,7 +40,7 @@ We have language bindings in Ruby.
 ```json
 {
   "status": true,
-  "message": "Signed up successfully",
+  "message":  "Please check you email. A verification email has been sent.",
   "confirmed": false
 }
 
@@ -411,7 +411,7 @@ email | yes | user's email
 
 
 
-## facebook signup/sign in
+## Facebook signup/sign in
 
 > Sample Request:
 
@@ -423,7 +423,8 @@ email | yes | user's email
     "provider": "facebook",
     "uid": "7868374658734",
     "email": "sharma.deepti369@gmail.com",
-    "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater"
+    "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater",
+    "role": "buyer"
  }
 }
 
@@ -458,6 +459,7 @@ name | yes | user's name
 uid | yes | user's uid from facebook
 provider| yes |facebook
 profile_pic | no |facebook profile pic url of user 
+role | yes | role by which user want to sign in
 
 
 # Profile
@@ -661,6 +663,90 @@ old_password | yes | user's current password
 new_password | yes | user's new password
 
 # Credit Cards
+
+
+## Get cards
+
+> Sample Request:
+
+```json
+
+  {
+  }
+
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "message": "Card added successfully",
+    "card": [
+      {
+        "id": 4,
+        "holder_name": "me",
+        "card_number": "24228333126876",
+        "expiry_date": "09/21",
+        "cvv": 754,
+        "card_type": "visaa",
+        "shipping_address": {
+          "id": 2,
+          "address": "sector 60",
+          "city": "mumbai",
+          "state": "U.P.",
+          "zipcode": "12345",
+          "country": "india"
+        },
+        "billing_address": {
+          "id": 2,
+          "address": "sector 60",
+          "city": "mumbai",
+          "state": "U.P.",
+          "zipcode": "12345",
+          "country": "india"
+        }
+      },
+      {
+        "id": 4,
+        "holder_name": "me",
+        "card_number": "24228333126876",
+        "expiry_date": "09/21",
+        "cvv": 754,
+        "card_type": "visaa",
+        "shipping_address": {
+          "id": 2,
+          "address": "sector 60",
+          "city": "mumbai",
+          "state": "U.P.",
+          "zipcode": "12345",
+          "country": "india"
+        },
+        "billing_address": {
+          "id": 2,
+          "address": "sector 60",
+          "city": "mumbai",
+          "state": "U.P.",
+          "zipcode": "12345",
+          "country": "india"
+        }
+      }
+    ]
+  }
+
+```
+
+
+
+This end point get credit cards for user.
+
+
+### HTTP Request
+
+`GET /cards`
+
 
 
 ## Add card
@@ -934,7 +1020,9 @@ card_id | yes | credit card id
       "category_id": 1,
       "sub_category_id":1,
       "brand_id":1,
-      "auction_day": "25-10-17"
+      "auction_day": "25-10-2017",
+      "max_price": 10.0,
+      "min_price": 5.00
     }
    }
 
@@ -1239,6 +1327,100 @@ max_price | yes | max price for product
 expires_at | yes | Time by which user wants to wait for product's auction (in days)
 quantity | yes | quantity of product
 order_confirm | yes | false for products to be added in cart
+
+
+## Getting cart products
+
+> Sample Request:
+
+```json
+  {
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "orders": [
+      {
+        "id": 3,
+        "image": "/uploads/product_image/image/36/image.jpeg",
+        "product": {
+          "id": 22,
+          "name": "Jeans",
+          "color": "ice blue",
+          "size": "30 S",
+          "description": "hello",
+          "max_price": 20.02,
+          "min_price": null,
+          "orders": 0,
+          "category": {
+            "id": 3,
+            "name": "category 3"
+          },
+          "sub_category": {
+            "id": 3,
+            "name": "category 2-1"
+          },
+          "brand": {
+            "id": 3,
+            "name": "brand 3"
+          },
+          "product_images": [
+            {
+              "id": 36,
+              "url": "/uploads/product_image/image/36/image.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "image": "/uploads/product_image/image/36/image.jpeg",
+        "product": {
+          "id": 22,
+          "name": "Jeans",
+          "color": "ice blue",
+          "size": "30 S",
+          "description": "hello",
+          "max_price": 20.02,
+          "min_price": null,
+          "orders": 0,
+          "category": {
+            "id": 3,
+            "name": "category 3"
+          },
+          "sub_category": {
+            "id": 3,
+            "name": "category 2-1"
+          },
+          "brand": {
+            "id": 3,
+            "name": "brand 3"
+          },
+          "product_images": [
+            {
+              "id": 36,
+              "url": "/uploads/product_image/image/36/image.jpeg"
+            }
+          ]
+        }
+      }
+    ]
+  }
+
+```
+
+
+This end point ass a product to cart.
+
+
+### HTTP Request
+
+`POST /get_cart`
 
 
 ## Ordering a single product
@@ -2347,3 +2529,302 @@ Parameter| Mandatory | Description
 product_id | yes | id of product
 min_price | yes | price range minnimum price
 max_price | yes | price range maximum price
+
+## Get Saved Orders
+
+> Sample Request:
+
+```json
+  {
+  }
+
+```
+
+> Sample Response :
+
+```json
+ {
+    "status": true,
+    "orders": [
+      {
+        "id": 3,
+        "orders_count": 0,
+        "image": "/uploads/product_image/image/36/image.jpeg",
+        "product": {
+          "id": 22,
+          "name": "Jeans",
+          "color": "ice blue",
+          "size": "30 S",
+          "description": "hello",
+          "max_price": 20.02,
+          "min_price": null,
+          "orders": 0,
+          "category": {
+            "id": 3,
+            "name": "category 3"
+          },
+          "sub_category": {
+            "id": 3,
+            "name": "category 2-1"
+          },
+          "brand": {
+            "id": 3,
+            "name": "brand 3"
+          },
+          "product_images": [
+            {
+              "id": 36,
+              "url": "/uploads/product_image/image/36/image.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "orders_count": 0,
+        "image": "/uploads/product_image/image/36/image.jpeg",
+        "product": {
+          "id": 22,
+          "name": "Jeans",
+          "color": "ice blue",
+          "size": "30 S",
+          "description": "hello",
+          "max_price": 20.02,
+          "min_price": null,
+          "orders": 0,
+          "category": {
+            "id": 3,
+            "name": "category 3"
+          },
+          "sub_category": {
+            "id": 3,
+            "name": "category 2-1"
+          },
+          "brand": {
+            "id": 3,
+            "name": "brand 3"
+          },
+          "product_images": [
+            {
+              "id": 36,
+              "url": "/uploads/product_image/image/36/image.jpeg"
+            }
+          ]
+        }
+      }
+    ]
+  }
+```
+
+
+
+This end point return saved orders for supplier.
+
+
+### HTTP Request
+
+`GET /supplier_orders`
+
+
+
+
+# Categories
+
+## Get all categories
+
+> Sample Request:
+
+```json
+  {
+   
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "categories": [
+    {
+      "id": 1,
+      "name": "category 1"
+    },
+    {
+      "id": 2,
+      "name": "category 2"
+    },
+    {
+      "id": 3,
+      "name": "category 3"
+    },
+    {
+      "id": 4,
+      "name": "category 4"
+    }
+  ]
+}
+```
+
+
+
+This end point gives the list for categories.
+
+
+### HTTP Request
+
+`GET /categories`
+
+## Get all sub categories
+
+> Sample Request:
+
+```json
+  {
+   
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "categories": [
+      {
+        "id": 1,
+        "name": "category 1-1"
+      },
+      {
+        "id": 2,
+        "name": "category 1-2"
+      },
+      {
+        "id": 3,
+        "name": "category 2-1"
+      },
+      {
+        "id": 4,
+        "name": "category 2-2"
+      },
+      {
+        "id": 5,
+        "name": "category 3-1"
+      },
+      {
+        "id": 6,
+        "name": "category 3-2"
+      },
+      {
+        "id": 7,
+        "name": "category 4-1"
+      },
+      {
+        "id": 8,
+        "name": "category 4-2"
+      }
+    ]
+  }
+```
+
+
+
+This end point gives the list for sub categories.
+
+
+### HTTP Request
+
+`GET /sub_categories`
+
+
+## Get all brands
+
+> Sample Request:
+
+```json
+  {
+   
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "brands": [
+      {
+        "id": 1,
+        "name": "brand 1"
+      },
+      {
+        "id": 2,
+        "name": "brand 2"
+      },
+      {
+        "id": 3,
+        "name": "brand 3"
+      },
+      {
+        "id": 4,
+        "name": "brand 4"
+      }
+    ]
+  }
+```
+
+
+
+This end point gives the list for brands.
+
+
+### HTTP Request
+
+`GET /brands`
+
+## Get sub_category for category
+
+> Sample Request:
+
+```json
+  {
+   "category_id": 1
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "categories": [
+    {
+      "id": 1,
+      "name": "category 1-1"
+    },
+    {
+      "id": 2,
+      "name": "category 1-2"
+    }
+  ]
+}
+```
+
+
+
+This end point gives the list for sub categories belongs to a category.
+
+
+### HTTP Request
+
+`GET /get_sub_categories`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+category_id | yes | id of category
