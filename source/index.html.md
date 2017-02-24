@@ -488,6 +488,7 @@ role | yes | role by which user want to sign in
     "country": "india",
     "about": "test desc",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
+    "cards": []
     "social_account": {
       "id": 1,
       "twitter": false,
