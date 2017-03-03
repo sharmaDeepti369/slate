@@ -488,7 +488,7 @@ role | yes | role by which user want to sign in
     "country": "india",
     "about": "test desc",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
-    "cards": []
+    "cards": [],
     "social_account": {
       "id": 1,
       "twitter": false,
@@ -1045,18 +1045,8 @@ card_id | yes | credit card id
       "size": "s",
       "description": "test description",
       "auction_day": "25-10-17",
-      "category": {
-        "id": 1,
-        "name": "category 1"
-      },
-      "sub_category": {
-        "id": 1,
-        "name": "category 1-1"
-      },
-      "brand": {
-        "id": 1,
-        "name": "brand 1"
-      },
+      "max_price": 20.00,
+      "min_price": 5.00,
       "product_images": [
         {
           "id": 1,
@@ -1107,9 +1097,11 @@ auction_day| auction day for product
       "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
       "category_id": 1,
       "sub_category_id":1,
+      "child_category_id":1,
       "brand_id":1,
       "auction_day": "25-10-17",
-      "max_price": 20.00
+      "max_price": 20.00,
+      "min_price": 5.00
     }
    }
 
@@ -1132,18 +1124,7 @@ auction_day| auction day for product
       "description": "test description",
       "auction_day": "25-10-17",
       "max_price": 20.00,
-      "category": {
-        "id": 1,
-        "name": "category 1"
-      },
-      "sub_category": {
-        "id": 1,
-        "name": "category 1-1"
-      },
-      "brand": {
-        "id": 1,
-        "name": "brand 1"
-      },
+      "min_price": 5.00,
       "product_images": [
         {
           "id": 1,
@@ -1358,18 +1339,6 @@ order_confirm | yes | false for products to be added in cart
           "max_price": 20.02,
           "min_price": null,
           "orders": 0,
-          "category": {
-            "id": 3,
-            "name": "category 3"
-          },
-          "sub_category": {
-            "id": 3,
-            "name": "category 2-1"
-          },
-          "brand": {
-            "id": 3,
-            "name": "brand 3"
-          },
           "product_images": [
             {
               "id": 36,
@@ -1390,18 +1359,6 @@ order_confirm | yes | false for products to be added in cart
           "max_price": 20.02,
           "min_price": null,
           "orders": 0,
-          "category": {
-            "id": 3,
-            "name": "category 3"
-          },
-          "sub_category": {
-            "id": 3,
-            "name": "category 2-1"
-          },
-          "brand": {
-            "id": 3,
-            "name": "brand 3"
-          },
           "product_images": [
             {
               "id": 36,
@@ -1890,18 +1847,6 @@ This end point return all deals for buyer.
         "size": "XL",
         "description": "hello",
         "max_price": 50.02,
-        "category": {
-          "id": 1,
-          "name": "category 1"
-        },
-        "sub_category": {
-          "id": 1,
-          "name": "category 1-1"
-        },
-        "brand": {
-          "id": 1,
-          "name": "brand 1"
-        },
         "product_images": [
           {
             "id": 35,
@@ -1921,18 +1866,6 @@ This end point return all deals for buyer.
         "size": "30 S",
         "description": "hello",
         "max_price": 20.02,
-        "category": {
-          "id": 3,
-          "name": "category 3"
-        },
-        "sub_category": {
-          "id": 3,
-          "name": "category 2-1"
-        },
-        "brand": {
-          "id": 3,
-          "name": "brand 3"
-        },
         "product_images": [
           {
             "id": 36,
@@ -1991,18 +1924,6 @@ page | yes | page number of results (default 1)
         "size": "XL",
         "description": "hello",
         "max_price": 50.02,
-        "category": {
-          "id": 1,
-          "name": "category 1"
-        },
-        "sub_category": {
-          "id": 1,
-          "name": "category 1-1"
-        },
-        "brand": {
-          "id": 1,
-          "name": "brand 1"
-        },
         "product_images": [
           {
             "id": 35,
@@ -2022,18 +1943,6 @@ page | yes | page number of results (default 1)
         "size": "30 S",
         "description": "hello",
         "max_price": 20.02,
-        "category": {
-          "id": 3,
-          "name": "category 3"
-        },
-        "sub_category": {
-          "id": 3,
-          "name": "category 2-1"
-        },
-        "brand": {
-          "id": 3,
-          "name": "brand 3"
-        },
         "product_images": [
           {
             "id": 36,
@@ -2093,18 +2002,6 @@ page | yes | page number of results (default 1)
         "size": "XL",
         "description": "hello",
         "max_price": 50.02,
-        "category": {
-          "id": 1,
-          "name": "category 1"
-        },
-        "sub_category": {
-          "id": 1,
-          "name": "category 1-1"
-        },
-        "brand": {
-          "id": 1,
-          "name": "brand 1"
-        },
         "product_images": [
           {
             "id": 35,
@@ -2124,18 +2021,6 @@ page | yes | page number of results (default 1)
         "size": "30 S",
         "description": "hello",
         "max_price": 20.02,
-        "category": {
-          "id": 3,
-          "name": "category 3"
-        },
-        "sub_category": {
-          "id": 3,
-          "name": "category 2-1"
-        },
-        "brand": {
-          "id": 3,
-          "name": "brand 3"
-        },
         "product_images": [
           {
             "id": 36,
@@ -2194,18 +2079,6 @@ page | yes | page number of results (default 1)
         "size": "XL",
         "description": "hello",
         "max_price": 50.02,
-        "category": {
-          "id": 1,
-          "name": "category 1"
-        },
-        "sub_category": {
-          "id": 1,
-          "name": "category 1-1"
-        },
-        "brand": {
-          "id": 1,
-          "name": "brand 1"
-        },
         "product_images": [
           {
             "id": 35,
@@ -2225,18 +2098,6 @@ page | yes | page number of results (default 1)
         "size": "30 S",
         "description": "hello",
         "max_price": 20.02,
-        "category": {
-          "id": 3,
-          "name": "category 3"
-        },
-        "sub_category": {
-          "id": 3,
-          "name": "category 2-1"
-        },
-        "brand": {
-          "id": 3,
-          "name": "brand 3"
-        },
         "product_images": [
           {
             "id": 36,
@@ -2293,18 +2154,6 @@ page | yes | page number of results (default 1)
       "size": "s",
       "description": "hello",
       "max_price": 20.02,
-      "category": {
-        "id": 2,
-        "name": "category 2"
-      },
-      "sub_category": {
-        "id": 3,
-        "name": "category 2-1"
-      },
-      "brand": {
-        "id": 3,
-        "name": "brand 3"
-      },
       "product_images": [
         {
           "id": 33,
@@ -2319,18 +2168,6 @@ page | yes | page number of results (default 1)
       "size": "XL",
       "description": "hello",
       "max_price": 50.02,
-      "category": {
-        "id": 1,
-        "name": "category 1"
-      },
-      "sub_category": {
-        "id": 1,
-        "name": "category 1-1"
-      },
-      "brand": {
-        "id": 1,
-        "name": "brand 1"
-      },
       "product_images": [
         {
           "id": 35,
@@ -2560,18 +2397,6 @@ max_price | yes | price range maximum price
           "max_price": 20.02,
           "min_price": null,
           "orders": 0,
-          "category": {
-            "id": 3,
-            "name": "category 3"
-          },
-          "sub_category": {
-            "id": 3,
-            "name": "category 2-1"
-          },
-          "brand": {
-            "id": 3,
-            "name": "brand 3"
-          },
           "product_images": [
             {
               "id": 36,
@@ -2593,18 +2418,6 @@ max_price | yes | price range maximum price
           "max_price": 20.02,
           "min_price": null,
           "orders": 0,
-          "category": {
-            "id": 3,
-            "name": "category 3"
-          },
-          "sub_category": {
-            "id": 3,
-            "name": "category 2-1"
-          },
-          "brand": {
-            "id": 3,
-            "name": "brand 3"
-          },
           "product_images": [
             {
               "id": 36,
@@ -2739,6 +2552,52 @@ This end point gives the list for sub categories.
 
 `GET /sub_categories`
 
+## Get all child categories
+
+> Sample Request:
+
+```json
+  {
+   
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "categories": [
+    {
+      "id": 1,
+      "name": "category 1"
+    },
+    {
+      "id": 2,
+      "name": "category 2"
+    },
+    {
+      "id": 3,
+      "name": "category 3"
+    },
+    {
+      "id": 4,
+      "name": "category 4"
+    }
+  ]
+}
+```
+
+
+
+This end point gives the list for child categories.
+
+
+### HTTP Request
+
+`GET /child_categories`
+
 
 ## Get all brands
 
@@ -2829,3 +2688,47 @@ This end point gives the list for sub categories belongs to a category.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 category_id | yes | id of category
+
+## Get child category for sub category
+
+> Sample Request:
+
+```json
+  {
+   "sub_category_id": 1
+  }
+
+```
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "categories": [
+    {
+      "id": 1,
+      "name": "category 1-1"
+    },
+    {
+      "id": 2,
+      "name": "category 1-2"
+    }
+  ]
+}
+```
+
+
+
+This end point gives the list for child categories belongs to a sub category.
+
+
+### HTTP Request
+
+`GET /get_child_categories`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+sub_category_id | yes | id of sub_category
