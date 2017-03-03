@@ -1293,7 +1293,7 @@ image_id | yes | id of image to delete
 ```
 
 
-This end point ass a product to cart.
+This end point adds a product to cart.
 
 
 ### HTTP Request
@@ -1373,7 +1373,7 @@ order_confirm | yes | false for products to be added in cart
 ```
 
 
-This end point ass a product to cart.
+This end point get products for cart.
 
 
 ### HTTP Request
