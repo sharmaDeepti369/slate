@@ -682,60 +682,26 @@ new_password | yes | user's new password
 > Sample Response:
 
 ```json
-  {
-    "status": true,
-    "message": "Card added successfully",
-    "card": [
-      {
-        "id": 4,
-        "holder_name": "me",
-        "card_number": "24228333126876",
-        "expiry_date": "09/21",
-        "cvv": 754,
-        "card_type": "visaa",
-        "shipping_address": {
-          "id": 2,
-          "address": "sector 60",
-          "city": "mumbai",
-          "state": "U.P.",
-          "zipcode": "12345",
-          "country": "india"
-        },
-        "billing_address": {
-          "id": 2,
-          "address": "sector 60",
-          "city": "mumbai",
-          "state": "U.P.",
-          "zipcode": "12345",
-          "country": "india"
-        }
-      },
-      {
-        "id": 4,
-        "holder_name": "me",
-        "card_number": "24228333126876",
-        "expiry_date": "09/21",
-        "cvv": 754,
-        "card_type": "visaa",
-        "shipping_address": {
-          "id": 2,
-          "address": "sector 60",
-          "city": "mumbai",
-          "state": "U.P.",
-          "zipcode": "12345",
-          "country": "india"
-        },
-        "billing_address": {
-          "id": 2,
-          "address": "sector 60",
-          "city": "mumbai",
-          "state": "U.P.",
-          "zipcode": "12345",
-          "country": "india"
-        }
-      }
-    ]
-  }
+ {
+  "status": true,
+  "cards": [
+    {
+      "id": 1,
+      "card_number": "6876",
+      "card_type": "visaa"
+    },
+    {
+      "id": 2,
+      "card_number": "6876",
+      "card_type": "visa"
+    },
+    {
+      "id": 3,
+      "card_number": "2876",
+      "card_type": "visaa"
+    }
+  ]
+}
 
 ```
 
@@ -762,21 +728,7 @@ This end point get credit cards for user.
       "card_number": "24228333126876",
       "expiry_date":"09/21",
       "cvv": 754,
-      "card_type": "visaa",
-      "shipping_address": {
-        "city": "mumbai",
-        "address": "sector 60",
-        "state": "U.P.",
-        "country": "india",
-        "zipcode": "12345"
-      },
-      "billing_address": {
-        "city": "mumbai",
-        "address": "sector 60",
-        "state": "U.P.",
-        "country": "india",
-        "zipcode": "12345"
-      }
+      "card_type": "visaa"
     }
   }
 
@@ -788,33 +740,14 @@ This end point get credit cards for user.
 
 ```json
   {
-    "status": true,
-    "message": "Card added successfully",
-    "card": {
-      "id": 4,
-      "holder_name": "me",
-      "card_number": "24228333126876",
-      "expiry_date": "09/21",
-      "cvv": 754,
-      "card_type": "visaa",
-      "shipping_address": {
-        "id": 2,
-        "address": "sector 60",
-        "city": "mumbai",
-        "state": "U.P.",
-        "zipcode": "12345",
-        "country": "india"
-      },
-      "billing_address": {
-        "id": 2,
-        "address": "sector 60",
-        "city": "mumbai",
-        "state": "U.P.",
-        "zipcode": "12345",
-        "country": "india"
-      }
-    }
+  "status": true,
+  "message": "Card added successfully",
+  "card": {
+    "id": 3,
+    "card_number": "2876",
+    "card_type": "visaa"
   }
+}
 
 ```
 
@@ -862,21 +795,7 @@ billing_address | yes | card's billing address
       "card_number": "24228333126876",
       "expiry_date":"09/21",
       "cvv": 754,
-      "card_type": "visaa",
-      "shipping_address": {
-        "city": "mumbai",
-        "address": "sector 60",
-        "state": "U.P.",
-        "country": "india",
-        "zipcode": "12345"
-      },
-      "billing_address": {
-        "city": "mumbai",
-        "address": "sector 60",
-        "state": "U.P.",
-        "country": "india",
-        "zipcode": "12345"
-      }
+      "card_type": "visaa"
     }
   }
 
@@ -887,34 +806,15 @@ billing_address | yes | card's billing address
 > Sample Response if card added successfully:
 
 ```json
-  {
-    "status": true,
-    "message": "Card added successfully",
-    "card": {
-      "id": 4,
-      "holder_name": "me",
-      "card_number": "24228333126876",
-      "expiry_date": "09/21",
-      "cvv": 754,
-      "card_type": "visaa",
-      "shipping_address": {
-        "id": 2,
-        "address": "sector 60",
-        "city": "mumbai",
-        "state": "U.P.",
-        "zipcode": "12345",
-        "country": "india"
-      },
-      "billing_address": {
-        "id": 2,
-        "address": "sector 60",
-        "city": "mumbai",
-        "state": "U.P.",
-        "zipcode": "12345",
-        "country": "india"
-      }
-    }
+{
+  "status": true,
+  "message": "Card updated successfully",
+  "card": {
+    "id": 2,
+    "card_number": "6876",
+    "card_type": "visa"
   }
+}
 
 ```
 
