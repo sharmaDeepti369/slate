@@ -993,7 +993,7 @@ This end point returns all cards with all address.
 ```json
   {
   "status": true,
-  "addresses": [
+  "shipping_addresses": [
     {
       "id": 1,
       "address": "sector 60",
@@ -1041,7 +1041,7 @@ This end point returns all shipping addresses for user.
 ```json
  {
   "status": true,
-  "addresses": [
+  "billing_addresses": [
     {
       "id": 1,
       "address": "sector 63",
@@ -1079,7 +1079,7 @@ This end point returns all billing addresses for user.
 ```json
 
   {
-    address_id: 1
+    "address_id": 1
   }
 
 ```
@@ -1090,7 +1090,7 @@ This end point returns all billing addresses for user.
 ```json
  {
   "status": true,
-  "address": {
+  "shipping_address": {
     "id": 1,
     "address": "sector 60",
     "city": "mumbai",
@@ -1118,7 +1118,7 @@ This end point returns a shipping address for user.
 ```json
 
   {
-    address_id: 1
+    "address_id": 1
   }
 
 ```
@@ -1129,7 +1129,7 @@ This end point returns a shipping address for user.
 ```json
  {
   "status": true,
-  "address": {
+  "billing_address": {
     "id": 1,
     "address": "sector 60",
     "city": "mumbai",
@@ -1186,7 +1186,7 @@ This end point adds a shipping address for user.
 
 ### HTTP Request
 
-`GET /add_shipping_address`
+`POST /add_shipping_address`
 
 
 ### URL Parameters
@@ -1235,7 +1235,7 @@ This end point adds a billing address for user.
 
 ### HTTP Request
 
-`GET /add_billing_address`
+`POST /add_billing_address`
 
 
 ### URL Parameters
@@ -1256,7 +1256,7 @@ zipcode | yes | zipcode of the user
    
   {
     "address": {
-      "id": 2
+      "id": 2,
       "city": "delhi",
       "address": "sector 60",
       "state": "U.P.",
@@ -1284,7 +1284,7 @@ This end point updates a shipping address for user.
 
 ### HTTP Request
 
-`GET /update_shipping_address`
+`PUT /update_shipping_address`
 
 
 ### URL Parameters
@@ -1306,7 +1306,7 @@ zipcode | no | zipcode of the user
    
   {
     "address": {
-      "id": 2
+      "id": 2,
       "city": "delhi",
       "address": "sector 60",
       "state": "U.P.",
@@ -1334,7 +1334,7 @@ This end point updates a billing address for user.
 
 ### HTTP Request
 
-`GET /update_billing_address`
+`PUT /update_billing_address`
 
 
 ### URL Parameters
