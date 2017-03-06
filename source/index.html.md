@@ -779,8 +779,6 @@ card_number | yes | credit card number
 expiry_date | yes | credit card expiry date
 cvv | yes | credit card cvv number
 card_type | yes | credit card type
-shipping_address | yes | card's shipping address
-billing_address | yes | card's billing address
 
 ## Update card
 
@@ -842,13 +840,11 @@ This end point update a credit card for user.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 id | yes | credit card id
-holder_name | yes | credit card holder name
-card_number | yes | credit card number
-expiry_date | yes | credit card expiry date
-cvv | yes | credit card cvv number
-card_type | yes | credit card type
-shipping_address | yes | card's shipping address
-billing_address | yes | card's billing address
+holder_name | no | credit card holder name
+card_number | no | credit card number
+expiry_date | no | credit card expiry date
+cvv | no | credit card cvv number
+card_type | no | credit card type
 
 
 ## Delete card
@@ -900,6 +896,523 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 card_id | yes | credit card id
 
+## Get card with addresses
+
+> Sample Request:
+
+```json
+
+  {
+    
+  }
+
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "shipping_addresses": [
+    {
+      "id": 1,
+      "address": "sector 60",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    },
+    {
+      "id": 2,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    }
+  ],
+  "billing_addresses": [
+    {
+      "id": 1,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "card_number": "6876",
+      "card_type": "visaa"
+    },
+    {
+      "id": 2,
+      "card_number": "6876",
+      "card_type": "visa"
+    },
+    {
+      "id": 3,
+      "card_number": "2876",
+      "card_type": "visaa"
+    }
+  ]
+}
+
+```
+
+
+This end point returns all cards with all address.
+
+
+### HTTP Request
+
+`GET /get_card_address`
+
+
+# Addresses
+
+
+## Get all shipping addresses
+
+> Sample Request:
+
+```json
+
+  {
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "addresses": [
+    {
+      "id": 1,
+      "address": "sector 60",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    },
+    {
+      "id": 2,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    }
+  ]
+}
+
+```
+
+
+This end point returns all shipping addresses for user.
+
+
+### HTTP Request
+
+`GET /get_shipping_addresses`
+
+
+## Get all billing addresses
+
+> Sample Request:
+
+```json
+
+  {
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+ {
+  "status": true,
+  "addresses": [
+    {
+      "id": 1,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    },
+    {
+      "id": 2,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    }
+  ]
+}
+
+```
+
+
+This end point returns all billing addresses for user.
+
+
+### HTTP Request
+
+`GET /get_billing_addresses`
+
+
+## Get single shipping address
+
+> Sample Request:
+
+```json
+
+  {
+    address_id: 1
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+ {
+  "status": true,
+  "address": {
+    "id": 1,
+    "address": "sector 60",
+    "city": "mumbai",
+    "state": "U.P.",
+    "zipcode": "12345",
+    "country": "india"
+  }
+}
+
+```
+
+
+This end point returns a shipping address for user.
+
+
+### HTTP Request
+
+`GET /get_shipping_address`
+
+
+## Get single billing address
+
+> Sample Request:
+
+```json
+
+  {
+    address_id: 1
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+ {
+  "status": true,
+  "address": {
+    "id": 1,
+    "address": "sector 60",
+    "city": "mumbai",
+    "state": "U.P.",
+    "zipcode": "12345",
+    "country": "india"
+  }
+}
+
+```
+
+
+This end point returns a billing address for user.
+
+
+### HTTP Request
+
+`GET /get_billing_address`
+
+
+
+## add shipping address
+
+> Sample Request:
+
+```json
+   
+  {
+    "address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country": "india",
+      "zipcode": "12345"
+    }
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "message": "address addedd successfully"
+  }
+
+```
+
+
+This end point adds a shipping address for user.
+
+
+### HTTP Request
+
+`GET /add_shipping_address`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+city | yes | city of the user
+address | yes | address of the user
+state | yes | state of the user
+country | yes | country of the user
+zipcode | yes | zipcode of the user
+
+
+## add billing address
+
+> Sample Request:
+
+```json
+   
+  {
+    "address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country": "india",
+      "zipcode": "12345"
+    }
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "message": "address addedd successfully"
+  }
+
+```
+
+
+This end point adds a billing address for user.
+
+
+### HTTP Request
+
+`GET /add_billing_address`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+city | yes | city of the user
+address | yes | address of the user
+state | yes | state of the user
+country | yes | country of the user
+zipcode | yes | zipcode of the user
+
+## update shipping address
+
+> Sample Request:
+
+```json
+   
+  {
+    "address": {
+      "id": 2
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country": "india",
+      "zipcode": "12345"
+    }
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "message": "address updated successfully"
+  }
+
+```
+
+
+This end point updates a shipping address for user.
+
+
+### HTTP Request
+
+`GET /update_shipping_address`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | id of address
+city | no | city of the user
+address | no | address of the user
+state | no | state of the user
+country | no | country of the user
+zipcode | no | zipcode of the user
+
+## update billing address
+
+> Sample Request:
+
+```json
+   
+  {
+    "address": {
+      "id": 2
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country": "india",
+      "zipcode": "12345"
+    }
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+    "status": true,
+    "message": "address updated successfully"
+  }
+
+```
+
+
+This end point updates a billing address for user.
+
+
+### HTTP Request
+
+`GET /update_billing_address`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | id of address
+city | no | city of the user
+address | no | address of the user
+state | no | state of the user
+country | no | country of the user
+zipcode | no | zipcode of the user
+
+## get all addresses
+
+> Sample Request:
+
+```json
+   
+  {
+  }
+
+```
+
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "shipping_addresses": [
+    {
+      "id": 1,
+      "address": "sector 60",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    },
+    {
+      "id": 2,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    },
+    {
+      "id": 3,
+      "address": "sector 60",
+      "city": "delhi",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    }
+  ],
+  "billing_addresses": [
+    {
+      "id": 1,
+      "address": "sector 63",
+      "city": "mumbai",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "india"
+    }
+  ]
+}
+
+```
+
+
+This end point return all addresses for user.
+
+
+### HTTP Request
+
+`GET /get_all_addresses`
+
 
 
 # Products
@@ -933,7 +1446,7 @@ card_id | yes | credit card id
 ```
 
 
-> Sample Response if card deleted successfully:
+> Sample Response:
 
 ```json
   {
@@ -1011,7 +1524,7 @@ auction_day| auction day for product
 ```
 
 
-> Sample Response if card deleted successfully:
+> Sample Response:
 
 ```json
   {
