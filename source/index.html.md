@@ -1020,6 +1020,7 @@ card_id | yes | credit card id
       "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
       "category_id": 1,
       "sub_category_id":1,
+      "child_category_id":1,
       "brand_id":1,
       "auction_day": "25-10-2017",
       "max_price": 10.0,
@@ -2196,6 +2197,82 @@ Parameter| Mandatory | Description
 query | yes | search keyword entered by user
 page | yes |page number for results (default 1)
 
+
+## Get search on category/brand basis
+
+
+> Sample Request:
+
+```json
+  {
+    "category_id": 3,
+    "sub_category_id": 3,
+    "child_category_id": 1,
+    "brand_id": 3
+  }
+
+```
+
+> Sample Response if results found successfully:
+
+```json
+{
+  "status": true,
+  "results": [
+    {
+      "id": 7,
+      "name": "Trousers",
+      "color": "black",
+      "size": "xxl",
+      "description": "test description",
+      "max_price": 20.02,
+      "min_price": null,
+      "orders": 0,
+      "product_images": [
+        {
+          "id": 7,
+          "url": "/uploads/product_image/image/7/image.jpeg"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Trousers",
+      "color": "black",
+      "size": "xxl",
+      "description": "test description",
+      "max_price": 20.02,
+      "min_price": null,
+      "orders": 0,
+      "product_images": [
+        {
+          "id": 9,
+          "url": "/uploads/product_image/image/9/image.jpeg"
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+
+This end point returns search results corresponding to brand and category selected.
+
+
+### HTTP Request
+
+`GET /search_by_category`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+category_id | no | category selected by user
+sub_category_id | no | sub category selected by user
+child_category_id | no | child category selected by user
+brand_id | no |brand selected by user
 
 # Supplier
 
