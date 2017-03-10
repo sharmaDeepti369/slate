@@ -3227,3 +3227,45 @@ This end point gives the list for child categories belongs to a sub category.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 sub_category_id | yes | id of sub_category
+
+## Get brands for categories
+
+> Sample Request:
+
+```json
+  {
+   "key": "categories",
+   "category_id": 9
+  }
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "brands": [
+    {
+      "id": 3,
+      "name": "brand 3"
+    }
+  ]
+}
+```
+
+
+
+This end point gives the list for brands based on categories/sub_categories/child_categories
+
+
+### HTTP Request
+
+`GET /get_brands`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+key | yes | can be "category"/"sub_categories"/"child_categories" based on requirement
+category_id | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
