@@ -489,6 +489,7 @@ role | yes | role by which user want to sign in
     "about": "test desc",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
     "cards": [],
+    "vat": "5627865482",
     "social_accounts": {
       "id": 1,
       "twitter": false,
@@ -529,6 +530,7 @@ No parameters required for this api.
     "country": "india",
     "about": "test desc",
     "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater",
+    "vat": "6876876",
     "social_accounts": {
       "twitter": false,
       "facebook":false,
@@ -550,6 +552,7 @@ No parameters required for this api.
     "phone_number": "12353737978",
     "address": "sector 61, noida",
     "about": "test desc",
+     "vat": "6876876",
     "profile_pic": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAFgABkoYABwAAAOA............................",
     "social_accounts": {
       "twitter": false,
@@ -576,6 +579,7 @@ No parameters required for this api.
     "zipcode": 201301,
     "country": "india",
     "about": "test desc",
+     "vat": "6876876",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
     "social_accounts": {
       "id": 1,
@@ -609,6 +613,7 @@ address | no | users's address
 about | no | user's description
 social_accounts| yes | user's social accounts
 address | no |user,s address
+vat | no | vat number for supplier profile
 
 
 ## Update password
