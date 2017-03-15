@@ -1440,8 +1440,6 @@ This end point return all addresses for user.
       "sub_category_id":1,
       "child_category_id":1,
       "brand_id":1,
-      "auction_day": "25-10-2017",
-      "max_price": 10.0,
       "min_price": 5.00
     }
    }
@@ -1463,8 +1461,6 @@ This end point return all addresses for user.
       "color": "green",
       "size": "s",
       "description": "test description",
-      "auction_day": "25-10-17",
-      "max_price": 20.00,
       "min_price": 5.00,
       "product_images": [
         {
@@ -1497,7 +1493,7 @@ images | yes | images of product
 category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
 brand_id | yes | id of product's brand
-auction_day| auction day for product
+min_price| minimum price of product
 
 
 ## Update product
@@ -1518,8 +1514,6 @@ auction_day| auction day for product
       "sub_category_id":1,
       "child_category_id":1,
       "brand_id":1,
-      "auction_day": "25-10-17",
-      "max_price": 20.00,
       "min_price": 5.00
     }
    }
@@ -1541,8 +1535,6 @@ auction_day| auction day for product
       "color": "green",
       "size": "s",
       "description": "test description",
-      "auction_day": "25-10-17",
-      "max_price": 20.00,
       "min_price": 5.00,
       "product_images": [
         {
@@ -1576,7 +1568,7 @@ images | yes | images of product
 category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
 brand_id | yes | id of product's brand
-auction_day| auction day for product
+min_price|  minimum price of product
 
 
 ## Delete product
