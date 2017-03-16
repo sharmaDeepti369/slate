@@ -1669,12 +1669,240 @@ This end point delete a product for user.
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-product_id | yes | id of product to delete
+product_id | yes | id of product 
 image_id | yes | id of image to delete
 
 
+# Deals
 
-# Placing Order
+## Get deals
+
+
+> Sample Request:
+
+```json
+  {
+    "show_popular": true,
+    "page": 2
+  }
+
+```
+
+> Sample Response if deals found successfully:
+
+```json
+ {
+  "status": true,
+  "deals": [
+    {
+      "id": 1,
+      "name": "Trousers",
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "orders": 6,
+      "color": "black",
+      "size": "xxl",
+      "min_price": 20.02
+    },
+    {
+      "id": 1,
+      "name": "Trousers",
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "orders": 6,
+      "color": "black",
+      "size": "xxl",
+      "min_price": 20.02
+    }
+  ]
+}
+```
+
+
+
+This end point return deals for advertisement.
+
+
+### HTTP Request
+
+`GET /deals`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+show_popular | yes | if deals based on popular 
+page | yes | if deals needed more than top 5
+
+
+# Favorites
+
+## Get favorites
+
+
+> Sample Request:
+
+```json
+  {
+    "page": 2
+  }
+
+```
+
+> Sample Response :
+
+```json
+ {
+  "status": true,
+  "deals": [
+    {
+      "id": 3,
+      "name": "shoes",
+      "discount_price": 40,
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "orders": 3,
+      "color": "brown",
+      "size": "s",
+      "min_price": 50
+    },
+    {
+      "id": 2,
+      "name": "shirt",
+      "discount_price": 24.04,
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "orders": 1,
+      "color": "blue",
+      "size": "s",
+      "min_price": 30.05
+    },
+    {
+      "id": 5,
+      "name": "glasses",
+      "discount_price": 48,
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "orders": 1,
+      "color": "grey",
+      "size": "s",
+      "min_price": 60
+    }
+  ]
+}
+
+```
+
+
+
+This end point return favorites for user.
+
+
+### HTTP Request
+
+`GET /favorites`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+page | yes | page number for product (default 1)
+
+## Set favorites
+
+
+> Sample Request:
+
+```json
+  {
+   "product_id":5
+  }
+
+
+```
+
+> Sample Response:
+
+```json
+ {
+  "status": false,
+  "message": "Product added to favorites"
+}
+
+```
+
+
+
+This end set favorite product for user.
+
+
+### HTTP Request
+
+`POST /favorites`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product to set favorite
+
+## Remove favorites
+
+
+> Sample Request:
+
+```json
+{
+ "product_id":1
+}
+
+
+```
+
+> Sample Response if product removed from favorites:
+
+```json
+{
+  "status": true,
+  "message": "Product removed as favorites"
+}
+
+```
+
+
+> Sample Response if product not found:
+
+```json
+{
+  "status": false,
+  "message": "Product not found"
+}
+
+```
+
+
+
+This api end removes favorite product for user.
+
+
+### HTTP Request
+
+`DELETE /favorites`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product to set favorite
+
+
+
+# Buyer
 
 ## Adding product to cart
 
@@ -1683,13 +1911,14 @@ image_id | yes | id of image to delete
 ```json
   {
     "order": {
-      "product_id": 3,
-      "max_price": 20.03,
-      "expires_at": "2", 
+      "product_id": 1,
       "quantity": 4,
+      "price": 20.04, 
+      "type": "name_price" ,
       "order_confirm": false
     }
   }
+
 
 ```
 
@@ -1716,8 +1945,8 @@ This end point adds a product to cart.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 product_id | yes | id of product
-max_price | yes | max price for product
-expires_at | yes | Time by which user wants to wait for product's auction (in days)
+type | yes if order type is name price | type of order
+price | yes if order type is name price | name price for product 
 quantity | yes | quantity of product
 order_confirm | yes | false for products to be added in cart
 
@@ -1728,6 +1957,7 @@ order_confirm | yes | false for products to be added in cart
 
 ```json
   {
+  "page": 2
   }
 
 ```
@@ -1739,44 +1969,22 @@ order_confirm | yes | false for products to be added in cart
     "status": true,
     "orders": [
       {
-        "id": 3,
-        "image": "/uploads/product_image/image/36/image.jpeg",
-        "product": {
-          "id": 22,
-          "name": "Jeans",
-          "color": "ice blue",
-          "size": "30 S",
-          "description": "hello",
-          "max_price": 20.02,
-          "min_price": null,
-          "orders": 0,
-          "product_images": [
-            {
-              "id": 36,
-              "url": "/uploads/product_image/image/36/image.jpeg"
-            }
-          ]
-        }
+        "id": 4,
+        "quantity": 4,
+        "price": 20.02,
+        "name": "Trousers",
+        "color": "black",
+        "size": "xxl",
+        "image_url": "/uploads/product_image/image/1/image.jpeg"
       },
       {
-        "id": 2,
-        "image": "/uploads/product_image/image/36/image.jpeg",
-        "product": {
-          "id": 22,
-          "name": "Jeans",
-          "color": "ice blue",
-          "size": "30 S",
-          "description": "hello",
-          "max_price": 20.02,
-          "min_price": null,
-          "orders": 0,
-          "product_images": [
-            {
-              "id": 36,
-              "url": "/uploads/product_image/image/36/image.jpeg"
-            }
-          ]
-        }
+        "id": 6,
+        "quantity": 4,
+        "price": 20.04,
+        "name": "Trousers",
+        "color": "black",
+        "size": "xxl",
+        "image_url": "/uploads/product_image/image/1/image.jpeg"
       }
     ]
   }
@@ -1784,12 +1992,16 @@ order_confirm | yes | false for products to be added in cart
 ```
 
 
-This end point get products for cart.
+This end point get orders for cart.
 
 
 ### HTTP Request
 
-`POST /get_cart`
+`GET /get_cart`
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+page | yes | page number for orders
 
 
 ## Ordering a single product
@@ -1800,17 +2012,17 @@ This end point get products for cart.
 
   {
     "order": {
-      "product_id": 3,
-      "max_price": 20.03,
-      "expires_at": "2", 
+      "product_id": 1,
       "quantity": 4,
+      "price": 20.04, 
+      "type": "name_price" ,
       "order_confirm": true
     }
   }
 
 ```
 
-> Sample Response if product added to cart successfully:
+> Sample Response :
 
 ```json
   {
@@ -1833,8 +2045,8 @@ This end point add a product to cart.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 product_id | yes | id of product
-max_price | yes | max price for product
-expires_at | yes | Time by which user wants to wait for product's auction (in days)
+type | yes if order type is name price | type of order
+price | yes if order type is name price | name price for product 
 quantity | yes | quantity of product
 order_confirm | yes | true 
 
@@ -1844,34 +2056,22 @@ order_confirm | yes | true
 
 ```json
 
+
 {
-  "orders":{
-    "order1": {
-      "id": 1,
-      "product_id": 3,
-      "max_price": 20.03,
-      "expires_at": "2", 
-      "quantity": 4,
-      "order_confirm": true
+  "orders":[ 
+    {
+        "id": 3,
+        "quantity": 5,
+        "order_confirm": true
     },
-    "order2": {
+    {
       "id": 2,
-      "product_id": 3,
-      "max_price": 20.03,
-      "expires_at": "2", 
-      "quantity": 4,
-      "order_confirm": true
-    },
-    "order3": {     
-      "id": 3,
-      "product_id": 3,
-      "max_price": 20.03,
-      "expires_at": "2", 
-      "quantity": 4,
+      "quantity": 5,
       "order_confirm": true
     }
-  }
+  ]
 }
+
 
 ```
 
@@ -1898,9 +2098,6 @@ This end point add a product to cart.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 id | yes | id of order
-product_id | yes | id of product
-max_price | yes | max price for product
-expires_at | yes | Time by which user wants to wait for product's auction (in days)
 quantity | yes | quantity of product
 order_confirm | yes | true 
 
@@ -1938,9 +2135,7 @@ order_confirm | yes | true
 
 ```
 
-
-
-This end point delete a product for user.
+This end point delete a order for user.
 
 
 ### HTTP Request
@@ -1954,282 +2149,8 @@ Parameter| Mandatory | Description
 order_id | yes | id of order to delete from cart
 
 
-# Deals
 
-## Get buyer deals
-
-
-> Sample Request:
-
-```json
-  {
-    
-  }
-
-```
-
-> Sample Response if deals found successfully:
-
-```json
-  {
-  "status": true,
-  "deals": [
-    {
-      "id": 19,
-      "name": "T-shirt yellow",
-      "max_price": 20.02,
-      "discount_price": 16.016,
-      "image_url": "/uploads/product_image/image/33/image.jpeg",
-      "orders": 3,
-      "time_left": "128:9:24",
-      "days_left": 6
-    },
-    {
-      "id": 18,
-      "name": "nike shoes",
-      "max_price": 30.02,
-      "discount_price": 24.016,
-      "image_url": "/uploads/product_image/image/32/image.jpeg",
-      "orders": 2,
-      "time_left": "80:9:24",
-      "days_left": 4
-    },
-    {
-      "id": 20,
-      "name": "jacket",
-      "max_price": 50.02,
-      "discount_price": 40.016000000000005,
-      "image_url": "/uploads/product_image/image/34/image.jpeg",
-      "orders": 0,
-      "time_left": "176:9:24",
-      "days_left": 8
-    },
-    {
-      "id": 21,
-      "name": "Shirt",
-      "max_price": 50.02,
-      "discount_price": 40.016000000000005,
-      "image_url": "/uploads/product_image/image/35/image.jpeg",
-      "orders": 0,
-      "time_left": "152:9:24",
-      "days_left": 7
-    },
-    {
-      "id": 22,
-      "name": "Jeans",
-      "max_price": 20.02,
-      "discount_price": 16.016,
-      "image_url": "/uploads/product_image/image/36/image.jpeg",
-      "orders": 0,
-      "time_left": "56:9:24",
-      "days_left": 3
-    }
-  ]
-}
-```
-
-
-
-This end point return deals for advertisement for buyer (top 5 deals).
-
-
-### HTTP Request
-
-`GET /buyer_deals`
-
-
-<aside class="success">
-  No parameters required for this api`
-</aside>
-
-## Get supplier deals
-
-
-> Sample Request:
-
-```json
-  {
-    
-  }
-
-```
-
-> Sample Response if deals found successfully:
-
-```json
-  {
-  "status": true,
-  "deals": [
-    {
-      "id": 19,
-      "name": "T-shirt yellow",
-      "max_price": 20.02,
-      "discount_price": 16.016,
-      "image_url": "/uploads/product_image/image/33/image.jpeg",
-      "orders": 3,
-      "time_left": "128:7:13",
-      "days_left": 6
-    },
-    {
-      "id": 18,
-      "name": "nike shoes",
-      "max_price": 30.02,
-      "discount_price": 24.016,
-      "image_url": "/uploads/product_image/image/32/image.jpeg",
-      "orders": 2,
-      "time_left": "80:7:13",
-      "days_left": 4
-    },
-    {
-      "id": 20,
-      "name": "jacket",
-      "max_price": 50.02,
-      "discount_price": 40.016000000000005,
-      "image_url": "/uploads/product_image/image/34/image.jpeg",
-      "orders": 0,
-      "time_left": "176:7:13",
-      "days_left": 8
-    },
-    {
-      "id": 21,
-      "name": "Shirt",
-      "max_price": 50.02,
-      "discount_price": 40.016000000000005,
-      "image_url": "/uploads/product_image/image/35/image.jpeg",
-      "orders": 0,
-      "time_left": "152:7:13",
-      "days_left": 7
-    },
-    {
-      "id": 22,
-      "name": "Jeans",
-      "max_price": 20.02,
-      "discount_price": 16.016,
-      "image_url": "/uploads/product_image/image/36/image.jpeg",
-      "orders": 0,
-      "time_left": "56:7:13",
-      "days_left": 3
-    }
-  ],
-  "current_bid": {
-    "id": 18,
-    "name": "nike shoes",
-    "max_price": 30.02,
-    "discount_price": 24.016,
-    "image_url": "/uploads/product_image/image/32/image.jpeg",
-    "orders": 2,
-    "time_left": "80:7:13",
-    "days_left": 4
-  }
-}
-```
-
-
-
-This end point return deals and current bid for advertisement for supplier.
-
-
-### HTTP Request
-
-`GET /supplier_deals`
-
-
-<aside class="success">
-  No parameters required for this api`
-</aside>
-
-
-## Get all deals
-
-
-> Sample Request:
-
-```json
-  {
-    
-  }
-
-```
-
-> Sample Response if deals found successfully:
-
-```json
-  {
-  "status": true,
-  "deals": [
-    {
-      "id": 19,
-      "name": "T-shirt yellow",
-      "max_price": 20.02,
-      "discount_price": 16.016,
-      "image_url": "/uploads/product_image/image/33/image.jpeg",
-      "orders": 3,
-      "time_left": "128:7:13",
-      "days_left": 6
-    },
-    {
-      "id": 18,
-      "name": "nike shoes",
-      "max_price": 30.02,
-      "discount_price": 24.016,
-      "image_url": "/uploads/product_image/image/32/image.jpeg",
-      "orders": 2,
-      "time_left": "80:7:13",
-      "days_left": 4
-    },
-    {
-      "id": 20,
-      "name": "jacket",
-      "max_price": 50.02,
-      "discount_price": 40.016000000000005,
-      "image_url": "/uploads/product_image/image/34/image.jpeg",
-      "orders": 0,
-      "time_left": "176:7:13",
-      "days_left": 8
-    },
-    {
-      "id": 21,
-      "name": "Shirt",
-      "max_price": 50.02,
-      "discount_price": 40.016000000000005,
-      "image_url": "/uploads/product_image/image/35/image.jpeg",
-      "orders": 0,
-      "time_left": "152:7:13",
-      "days_left": 7
-    },
-    {
-      "id": 22,
-      "name": "Jeans",
-      "max_price": 20.02,
-      "discount_price": 16.016,
-      "image_url": "/uploads/product_image/image/36/image.jpeg",
-      "orders": 0,
-      "time_left": "56:7:13",
-      "days_left": 3
-    }
-  ]
-}
-```
-
-
-
-This end point return all deals for buyer.
-
-
-### HTTP Request
-
-`GET /deals`
-
-
-<aside class="success">
-  No parameters required for this api`
-</aside>
-
-
-# History
-
-
-## Recent
+## Recent histoy
 
 
 > Sample Request:
@@ -2241,51 +2162,44 @@ This end point return all deals for buyer.
 
 ```
 
-> Sample Response if orders found successfully:
+> Sample Response :
 
 ```json
  {
   "status": true,
-  "recent_orders": [
+  "orders": [
     {
-      "id": 7,
+      "id": 1,
       "quantity": 4,
-      "days_left": 6,
-      "product": {
-        "id": 21,
-        "name": "Shirt",
-        "color": "white",
-        "size": "XL",
-        "description": "hello",
-        "max_price": 50.02,
-        "product_images": [
-          {
-            "id": 35,
-            "url": "/uploads/product_image/image/35/image.jpeg"
-          }
-        ]
-      }
+      "price": 10.04,
+      "name": "jacket",
+      "color": "black",
+      "size": "xxl",
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "order_date": "2017-03-16"
     },
     {
-      "id": 9,
-      "quantity": 4,
-      "days_left": 2,
-      "product": {
-        "id": 22,
-        "name": "Jeans",
-        "color": "ice blue",
-        "size": "30 S",
-        "description": "hello",
-        "max_price": 20.02,
-        "product_images": [
-          {
-            "id": 36,
-            "url": "/uploads/product_image/image/36/image.jpeg"
-          }
-        ]
-      }
-    }]
-  }
+      "id": 2,
+      "quantity": 3,
+      "price": 30.05,
+      "name": "shirt",
+      "color": "blue",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "order_date": "2017-03-16"
+    },
+    {
+      "id": 3,
+      "quantity": 6,
+      "price": 28.04,
+      "name": "shoes",
+      "color": "brown",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "order_date": "2017-03-16"
+    }
+  ]
+}
 ```
 
 
@@ -2306,7 +2220,7 @@ page | yes | page number of results (default 1)
 
 
 
-## Pending
+## Pending history
 
 
 > Sample Request:
@@ -2318,51 +2232,44 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if orders found successfully:
+> Sample Response :
 
 ```json
  {
   "status": true,
-  "recent_orders": [
+  "orders": [
     {
-      "id": 7,
+      "id": 1,
       "quantity": 4,
-      "days_left": 6,
-      "product": {
-        "id": 21,
-        "name": "Shirt",
-        "color": "white",
-        "size": "XL",
-        "description": "hello",
-        "max_price": 50.02,
-        "product_images": [
-          {
-            "id": 35,
-            "url": "/uploads/product_image/image/35/image.jpeg"
-          }
-        ]
-      }
+      "price": 10.04,
+      "name": "jacket",
+      "color": "black",
+      "size": "xxl",
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "order_date": "2017-03-16"
     },
     {
-      "id": 9,
-      "quantity": 4,
-      "days_left": 2,
-      "product": {
-        "id": 22,
-        "name": "Jeans",
-        "color": "ice blue",
-        "size": "30 S",
-        "description": "hello",
-        "max_price": 20.02,
-        "product_images": [
-          {
-            "id": 36,
-            "url": "/uploads/product_image/image/36/image.jpeg"
-          }
-        ]
-      }
-    }]
-  }
+      "id": 2,
+      "quantity": 3,
+      "price": 30.05,
+      "name": "shirt",
+      "color": "blue",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "order_date": "2017-03-16"
+    },
+    {
+      "id": 3,
+      "quantity": 6,
+      "price": 28.04,
+      "name": "shoes",
+      "color": "brown",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "order_date": "2017-03-16"
+    }
+  ]
+}
 ```
 
 
@@ -2384,7 +2291,7 @@ page | yes | page number of results (default 1)
 
 
 
-## Won
+## Won hitory
 
 
 > Sample Request:
@@ -2396,51 +2303,44 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if orders found successfully:
+> Sample Response :
 
 ```json
- {
+{
   "status": true,
-  "recent_orders": [
+  "orders": [
     {
-      "id": 7,
+      "id": 1,
       "quantity": 4,
-      "days_left": 6,
-      "product": {
-        "id": 21,
-        "name": "Shirt",
-        "color": "white",
-        "size": "XL",
-        "description": "hello",
-        "max_price": 50.02,
-        "product_images": [
-          {
-            "id": 35,
-            "url": "/uploads/product_image/image/35/image.jpeg"
-          }
-        ]
-      }
+      "price": 10.04,
+      "name": "jacket",
+      "color": "black",
+      "size": "xxl",
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "order_date": "2017-03-16"
     },
     {
-      "id": 9,
-      "quantity": 4,
-      "days_left": 2,
-      "product": {
-        "id": 22,
-        "name": "Jeans",
-        "color": "ice blue",
-        "size": "30 S",
-        "description": "hello",
-        "max_price": 20.02,
-        "product_images": [
-          {
-            "id": 36,
-            "url": "/uploads/product_image/image/36/image.jpeg"
-          }
-        ]
-      }
-    }]
-  }
+      "id": 2,
+      "quantity": 3,
+      "price": 30.05,
+      "name": "shirt",
+      "color": "blue",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "order_date": "2017-03-16"
+    },
+    {
+      "id": 3,
+      "quantity": 6,
+      "price": 28.04,
+      "name": "shoes",
+      "color": "brown",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "order_date": "2017-03-16"
+    }
+  ]
+}
 ```
 
 
@@ -2461,7 +2361,7 @@ page | yes | page number of results (default 1)
 
 
 
-## Lost
+## Lost history
 
 
 > Sample Request:
@@ -2473,51 +2373,44 @@ page | yes | page number of results (default 1)
 
 ```
 
-> Sample Response if orders found successfully:
+> Sample Response :
 
 ```json
  {
   "status": true,
-  "recent_orders": [
+  "orders": [
     {
-      "id": 7,
+      "id": 1,
       "quantity": 4,
-      "days_left": 6,
-      "product": {
-        "id": 21,
-        "name": "Shirt",
-        "color": "white",
-        "size": "XL",
-        "description": "hello",
-        "max_price": 50.02,
-        "product_images": [
-          {
-            "id": 35,
-            "url": "/uploads/product_image/image/35/image.jpeg"
-          }
-        ]
-      }
+      "price": 10.04,
+      "name": "jacket",
+      "color": "black",
+      "size": "xxl",
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "order_date": "2017-03-16"
     },
     {
-      "id": 9,
-      "quantity": 4,
-      "days_left": 2,
-      "product": {
-        "id": 22,
-        "name": "Jeans",
-        "color": "ice blue",
-        "size": "30 S",
-        "description": "hello",
-        "max_price": 20.02,
-        "product_images": [
-          {
-            "id": 36,
-            "url": "/uploads/product_image/image/36/image.jpeg"
-          }
-        ]
-      }
-    }]
-  }
+      "id": 2,
+      "quantity": 3,
+      "price": 30.05,
+      "name": "shirt",
+      "color": "blue",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "order_date": "2017-03-16"
+    },
+    {
+      "id": 3,
+      "quantity": 6,
+      "price": 28.04,
+      "name": "shoes",
+      "color": "brown",
+      "size": "s",
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "order_date": "2017-03-16"
+    }
+  ]
+}
 ```
 
 
@@ -2537,8 +2430,6 @@ Parameter| Mandatory | Description
 page | yes | page number of results (default 1)
 
 
-# Search
-
 ## Get search results
 
 
@@ -2546,45 +2437,37 @@ page | yes | page number of results (default 1)
 
 ```json
   {
-    "query": "shirt",
+    "query": "black",
     "page": 3
   }
 
 ```
 
-> Sample Response if results found successfully:
+> Sample Response :
 
 ```json
  {
   "status": true,
   "results": [
     {
-      "id": 19,
-      "name": "T-shirt yellow",
-      "color": "yellow",
-      "size": "s",
-      "description": "hello",
-      "max_price": 20.02,
-      "product_images": [
-        {
-          "id": 33,
-          "url": "/uploads/product_image/image/33/image.jpeg"
-        }
-      ]
+      "id": 1,
+      "name": "jacket",
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "orders": 1,
+      "color": "black",
+      "size": "xxl",
+      "min_price": 20.02
     },
     {
-      "id": 21,
-      "name": "Shirt",
-      "color": "white",
-      "size": "XL",
-      "description": "hello",
-      "max_price": 50.02,
-      "product_images": [
-        {
-          "id": 35,
-          "url": "/uploads/product_image/image/35/image.jpeg"
-        }
-      ]
+      "id": 2,
+      "name": "shirt",
+      "discount_price": 24.04,
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "orders": 1,
+      "color": "blue",
+      "size": "s",
+      "min_price": 30.05
     }
   ]
 }
@@ -2623,43 +2506,31 @@ page | yes |page number for results (default 1)
 
 ```
 
-> Sample Response if results found successfully:
+> Sample Response:
 
 ```json
 {
   "status": true,
   "results": [
     {
-      "id": 7,
-      "name": "Trousers",
-      "color": "black",
-      "size": "xxl",
-      "description": "test description",
-      "max_price": 20.02,
-      "min_price": null,
-      "orders": 0,
-      "product_images": [
-        {
-          "id": 7,
-          "url": "/uploads/product_image/image/7/image.jpeg"
-        }
-      ]
+      "id": 2,
+      "name": "shirt",
+      "discount_price": 24.04,
+      "image_url": "/uploads/product_image/image/3/image.jpeg",
+      "orders": 1,
+      "color": "blue",
+      "size": "s",
+      "min_price": 30.05
     },
     {
-      "id": 9,
-      "name": "Trousers",
-      "color": "black",
-      "size": "xxl",
-      "description": "test description",
-      "max_price": 20.02,
-      "min_price": null,
-      "orders": 0,
-      "product_images": [
-        {
-          "id": 9,
-          "url": "/uploads/product_image/image/9/image.jpeg"
-        }
-      ]
+      "id": 3,
+      "name": "shoes",
+      "discount_price": 40,
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "orders": 3,
+      "color": "brown",
+      "size": "s",
+      "min_price": 50
     }
   ]
 }
@@ -2683,6 +2554,10 @@ category_id | no | category selected by user
 sub_category_id | no | sub category selected by user
 child_category_id | no | child category selected by user
 brand_id | no |brand selected by user
+
+
+
+
 
 # Supplier
 
