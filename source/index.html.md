@@ -147,11 +147,15 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 ```json
 {
-    "users": {
-        "email": "someoneanonymousiam@gmail.com",
-        "password": "1234567890"
-    }
+  "users": {
+    "email": "someoneanonymousiam@gmail.com",
+    "password": "1234567890",
+    "role": "buyer",
+    "device_id": "453243523423",
+    "device_type": "android"
+  }
 }
+
 
 
 ```
@@ -176,7 +180,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
   "user_id": 21,
   "auth_token": "IoKnPvIPlnVuX1_hVK6Rcg==",
   "status": true,
-  "message": "signed up successfully"
+  "message": "Sign in successfully"
 }
 
 ```
@@ -187,7 +191,7 @@ Remember — Role of user can be "buyer" / "supplier" / "both"
 
 {
   "status": false,
-  "message": "invalid email or password"
+  "message": "Invalid email or password"
 }
 
 ```
@@ -206,6 +210,9 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 email | yes | email of the user to login
 password | yes | password of thr user to login
+role | yes | role of user (buyer/ seller)
+device_id | yes | device_id of user
+device_type | yes | device type by which user login
 
 <aside class="success">
 Remember — Set "Auth-Token" and "email" as header after user login successfully
