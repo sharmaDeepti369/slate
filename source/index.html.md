@@ -2496,6 +2496,7 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number of results (default 1)
 
+# Search
 
 ## Get search results
 
