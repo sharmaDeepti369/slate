@@ -2874,42 +2874,25 @@ This end point gives the list for categories.
 
 ```json
   {
-    "status": true,
-    "categories": [
-      {
-        "id": 1,
-        "name": "category 1-1"
-      },
-      {
-        "id": 2,
-        "name": "category 1-2"
-      },
-      {
-        "id": 3,
-        "name": "category 2-1"
-      },
-      {
-        "id": 4,
-        "name": "category 2-2"
-      },
-      {
-        "id": 5,
-        "name": "category 3-1"
-      },
-      {
-        "id": 6,
-        "name": "category 3-2"
-      },
-      {
-        "id": 7,
-        "name": "category 4-1"
-      },
-      {
-        "id": 8,
-        "name": "category 4-2"
-      }
-    ]
-  }
+  "status": true,
+  "categories": [
+    {
+      "id": 1,
+      "name": "Appliances",
+      "child_exists": true
+    },
+    {
+      "id": 6,
+      "name": "Audio",
+      "child_exists": true
+    },
+    {
+      "id": 4,
+      "name": "Cameras & camcorders",
+      "child_exists": true
+    }
+  ]
+}
 ```
 
 
@@ -2939,20 +2922,19 @@ This end point gives the list for sub categories.
   "status": true,
   "categories": [
     {
-      "id": 1,
-      "name": "category 1"
+      "id": 7,
+      "name": "Accessories",
+      "child_exists": true
     },
     {
-      "id": 2,
-      "name": "category 2"
+      "id": 14,
+      "name": "Accessories",
+      "child_exists": true
     },
     {
-      "id": 3,
-      "name": "category 3"
-    },
-    {
-      "id": 4,
-      "name": "category 4"
+      "id": 23,
+      "name": "Accessories",
+      "child_exists": true
     }
   ]
 }
@@ -3020,7 +3002,7 @@ This end point gives the list for brands.
 
 ```json
   {
-   "category_id": 1
+   "category_ids": [1, 2, 3]
   }
 
 ```
@@ -3033,11 +3015,13 @@ This end point gives the list for brands.
   "categories": [
     {
       "id": 1,
-      "name": "category 1-1"
+      "name": "category 1-1",
+      "child_exists": true
     },
     {
       "id": 2,
-      "name": "category 1-2"
+      "name": "category 1-2",
+      "child_exists": false
     }
   ]
 }
@@ -3050,13 +3034,13 @@ This end point gives the list for sub categories belongs to a category.
 
 ### HTTP Request
 
-`GET /get_sub_categories`
+`POST /get_sub_categories`
 
 ### URL Parameters
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-category_id | yes | id of category
+category_ids | yes | id of category
 
 ## Get child category for sub category
 
@@ -3064,7 +3048,7 @@ category_id | yes | id of category
 
 ```json
   {
-   "sub_category_id": 1
+   "sub_category_ids": [1,2]
   }
 
 ```
