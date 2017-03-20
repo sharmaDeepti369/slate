@@ -2832,19 +2832,23 @@ This end point return saved orders for supplier.
   "categories": [
     {
       "id": 1,
-      "name": "category 1"
+      "name": "category 1",
+      "child_exists": true
     },
     {
       "id": 2,
-      "name": "category 2"
+      "name": "category 2",
+      "child_exists": true
     },
     {
       "id": 3,
-      "name": "category 3"
+      "name": "category 3",
+      "child_exists": true
     },
     {
       "id": 4,
-      "name": "category 4"
+      "name": "category 4",
+      "child_exists": false
     }
   ]
 }
@@ -2923,18 +2927,15 @@ This end point gives the list for sub categories.
   "categories": [
     {
       "id": 7,
-      "name": "Accessories",
-      "child_exists": true
+      "name": "Accessories"
     },
     {
       "id": 14,
-      "name": "Accessories",
-      "child_exists": true
+      "name": "Accessories"
     },
     {
       "id": 23,
-      "name": "Accessories",
-      "child_exists": true
+      "name": "Accessories"
     }
   ]
 }
@@ -3084,17 +3085,18 @@ This end point gives the list for child categories belongs to a sub category.
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-sub_category_id | yes | id of sub_category
+sub_category_ids | yes | id of sub_category
 
 ## Get brands for categories
 
 > Sample Request:
 
 ```json
-  {
-   "key": "categories",
-   "category_id": 9
+ {
+  "key": "child_category",
+ "category_ids": [1,2,3, 4]
   }
+
 
 ```
 
@@ -3119,11 +3121,11 @@ This end point gives the list for brands based on categories/sub_categories/chil
 
 ### HTTP Request
 
-`GET /get_brands`
+`POST /get_brands`
 
 ### URL Parameters
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 key | yes | can be "category"/"sub_categories"/"child_categories" based on requirement
-category_id | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
+category_ids | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
