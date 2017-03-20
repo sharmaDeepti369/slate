@@ -1743,6 +1743,66 @@ Parameter| Mandatory | Description
 show_popular | yes | if deals based on popular 
 page | yes | if deals needed more than top 5
 
+## Get supplier deals
+
+
+> Sample Request:
+
+```json
+  {
+    "show_popular": true,
+    "page": 2
+  }
+
+```
+
+> Sample Response if deals found successfully:
+
+```json
+ {
+  "status": true,
+  "deals": [
+    {
+      "id": 1,
+      "name": "Trousers",
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "orders": 6,
+      "color": "black",
+      "size": "xxl",
+      "min_price": 20.02
+    },
+    {
+      "id": 1,
+      "name": "Trousers",
+      "discount_price": 16.016,
+      "image_url": "/uploads/product_image/image/1/image.jpeg",
+      "orders": 6,
+      "color": "black",
+      "size": "xxl",
+      "min_price": 20.02
+    }
+  ]
+}
+```
+
+
+
+This end point return deals for advertisement.
+
+
+### HTTP Request
+
+`GET /deals`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+show_popular | yes | if deals based on popular 
+page | yes | if deals needed more than top 5
 
 # Favorites
 
@@ -2505,11 +2565,13 @@ page | yes |page number for results (default 1)
 
 ```json
   {
-    "category_id": 3,
-    "sub_category_id": 3,
-    "child_category_id": 1,
-    "brand_id": 3
+    "category_ids": [3,1, 2],
+    "sub_category_ids": [3,4],
+    "child_category_ids": [1,5,6],
+    "brand_ids": [3,2],
+    "scope": "seller"
   }
+
 
 ```
 
@@ -2522,22 +2584,10 @@ page | yes |page number for results (default 1)
     {
       "id": 2,
       "name": "shirt",
-      "discount_price": 24.04,
       "image_url": "/uploads/product_image/image/3/image.jpeg",
-      "orders": 1,
       "color": "blue",
       "size": "s",
-      "min_price": 30.05
-    },
-    {
-      "id": 3,
-      "name": "shoes",
-      "discount_price": 40,
-      "image_url": "/uploads/product_image/image/5/image.jpeg",
-      "orders": 3,
-      "color": "brown",
-      "size": "s",
-      "min_price": 50
+      "orders": 1
     }
   ]
 }
@@ -2550,17 +2600,18 @@ This end point returns search results corresponding to brand and category select
 
 ### HTTP Request
 
-`GET /search_by_category`
+`POST /search_by_category`
 
 
 ### URL Parameters
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-category_id | no | category selected by user
-sub_category_id | no | sub category selected by user
-child_category_id | no | child category selected by user
-brand_id | no |brand selected by user
+category_ids | no | category selected by user
+sub_category_ids | no | sub category selected by user
+child_category_ids | no | child category selected by user
+brand_ids | no |brand selected by user
+scope | yes |"buyer" if user is buyer/ "seller" if user is seller
 
 
 
