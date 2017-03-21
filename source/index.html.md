@@ -1429,6 +1429,70 @@ This end point return all addresses for user.
 
 # Products
 
+## Get product
+
+> Sample Request:
+
+```json
+
+  {
+   "product_id" : 1,
+   "scope": "buyer/seller"
+   }
+
+
+
+```
+
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "product": {
+    "id": 1,
+    "name": "jacket",
+    "color": "black",
+    "size": "xxl",
+    "description": "black color jacket",
+    "discount_price": 16.016,
+    "min_price": 20.02,
+    "product_images": [
+      {
+        "id": 1,
+        "url": "/uploads/product_image/image/1/image.jpeg"
+      },
+      {
+        "id": 2,
+        "url": "/uploads/product_image/image/2/image.jpeg"
+      }
+    ]
+  }
+}
+
+```
+
+
+This end point creates a product for user.
+
+
+### HTTP Request
+
+`GET /product`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+scope | yes | current user's role
+
+<aside class="notice">
+In case of buyer min_price & discount_price will be in response
+And in case of supplier orders will be in response
+</aside>
+
 
 ## Create product
 
@@ -1447,7 +1511,8 @@ This end point return all addresses for user.
       "sub_category_id":1,
       "child_category_id":1,
       "brand_id":1,
-      "min_price": 5.00
+      "min_price": 5.00,
+      "scope": "buyer/seller"
     }
    }
 
@@ -1501,6 +1566,13 @@ category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
 brand_id | yes | id of product's brand
 min_price| minimum price of product
+scope | yes | current user's role
+
+<aside class="notice">
+In case of buyer min_price & discount_price will be in response
+And in case of supplier orders will be in response
+</aside>
+
 
 
 ## Update product
@@ -1521,7 +1593,8 @@ min_price| minimum price of product
       "sub_category_id":1,
       "child_category_id":1,
       "brand_id":1,
-      "min_price": 5.00
+      "min_price": 5.00,
+      "scope": "buyer/seller"
     }
    }
 
@@ -1576,6 +1649,12 @@ category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
 brand_id | yes | id of product's brand
 min_price|  minimum price of product
+scope | yes | current user's role
+
+<aside class="notice">
+In case of buyer min_price & discount_price will be in response
+And in case of supplier orders will be in response
+</aside>
 
 
 ## Delete product
@@ -1706,7 +1785,6 @@ image_id | yes | id of image to delete
       "name": "Trousers",
       "discount_price": 16.016,
       "image_url": "/uploads/product_image/image/1/image.jpeg",
-      "orders": 6,
       "color": "black",
       "size": "xxl",
       "min_price": 20.02
@@ -1716,18 +1794,18 @@ image_id | yes | id of image to delete
       "name": "Trousers",
       "discount_price": 16.016,
       "image_url": "/uploads/product_image/image/1/image.jpeg",
-      "orders": 6,
       "color": "black",
       "size": "xxl",
       "min_price": 20.02
     }
-  ]
+  ],
+  "total_pages": 2
 }
 ```
 
 
 
-This end point return deals for advertisement.
+This end point return deals for buyer.
 
 
 ### HTTP Request
@@ -1765,22 +1843,18 @@ page | yes | if deals needed more than top 5
     {
       "id": 1,
       "name": "Trousers",
-      "discount_price": 16.016,
       "image_url": "/uploads/product_image/image/1/image.jpeg",
       "orders": 6,
       "color": "black",
-      "size": "xxl",
-      "min_price": 20.02
+      "size": "xxl"
     },
     {
       "id": 1,
       "name": "Trousers",
-      "discount_price": 16.016,
       "image_url": "/uploads/product_image/image/1/image.jpeg",
       "orders": 6,
       "color": "black",
-      "size": "xxl",
-      "min_price": 20.02
+      "size": "xxl"
     }
   ]
 }
@@ -1793,7 +1867,7 @@ This end point return deals for advertisement.
 
 ### HTTP Request
 
-`GET /deals`
+`GET /supplier_deals`
 
 
 
@@ -1804,6 +1878,7 @@ Parameter| Mandatory | Description
 show_popular | yes | if deals based on popular 
 page | yes | if deals needed more than top 5
 
+
 # Favorites
 
 ## Get favorites
@@ -1813,7 +1888,8 @@ page | yes | if deals needed more than top 5
 
 ```json
   {
-    "page": 2
+    "page": 2,
+    "scope": "buyer/seller"
   }
 
 ```
@@ -1827,34 +1903,21 @@ page | yes | if deals needed more than top 5
     {
       "id": 3,
       "name": "shoes",
-      "discount_price": 40,
       "image_url": "/uploads/product_image/image/5/image.jpeg",
-      "orders": 3,
       "color": "brown",
       "size": "s",
-      "min_price": 50
+      "orders": 3
     },
     {
       "id": 2,
       "name": "shirt",
-      "discount_price": 24.04,
       "image_url": "/uploads/product_image/image/3/image.jpeg",
-      "orders": 1,
       "color": "blue",
       "size": "s",
-      "min_price": 30.05
-    },
-    {
-      "id": 5,
-      "name": "glasses",
-      "discount_price": 48,
-      "image_url": "/uploads/product_image/image/9/image.jpeg",
-      "orders": 1,
-      "color": "grey",
-      "size": "s",
-      "min_price": 60
+      "orders": 1
     }
-  ]
+  ],
+  "total_pages": 1
 }
 
 ```
@@ -1875,6 +1938,12 @@ This end point return favorites for user.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for product (default 1)
+scope | yes | current user's role
+
+<aside class="notice">
+In case of buyer min_price & discount_price will be in response
+And in case of supplier orders will be in response
+</aside>
 
 ## Set favorites
 
@@ -2053,7 +2122,8 @@ order_confirm | yes | false for products to be added in cart
         "size": "xxl",
         "image_url": "/uploads/product_image/image/1/image.jpeg"
       }
-    ]
+    ],
+  "total_pages": 2
   }
 
 ```
@@ -2265,7 +2335,8 @@ order_id | yes | id of order to delete from cart
       "image_url": "/uploads/product_image/image/5/image.jpeg",
       "order_date": "2017-03-16"
     }
-  ]
+  ],
+  "total_pages": 2
 }
 ```
 
@@ -2335,7 +2406,8 @@ page | yes | page number of results (default 1)
       "image_url": "/uploads/product_image/image/5/image.jpeg",
       "order_date": "2017-03-16"
     }
-  ]
+  ],
+  "total_pages": 2
 }
 ```
 
@@ -2406,7 +2478,8 @@ page | yes | page number of results (default 1)
       "image_url": "/uploads/product_image/image/5/image.jpeg",
       "order_date": "2017-03-16"
     }
-  ]
+  ],
+  "total_pages": 2
 }
 ```
 
@@ -2476,7 +2549,8 @@ page | yes | page number of results (default 1)
       "image_url": "/uploads/product_image/image/5/image.jpeg",
       "order_date": "2017-03-16"
     }
-  ]
+  ],
+  "total_pages": 2
 }
 ```
 
@@ -2538,7 +2612,8 @@ page | yes | page number of results (default 1)
       "size": "s",
       "min_price": 30.05
     }
-  ]
+  ],
+  "total_pages": 2
 }
 ```
 
@@ -2598,7 +2673,8 @@ And in case of supplier min_price & discount_price will not be in response
       "size": "s",
       "orders": 1
     }
-  ]
+  ],
+  "total_pages": 1
 }
 ```
 
@@ -2919,7 +2995,8 @@ This end point return saved orders for supplier.
       "child_exists": true,
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
@@ -2982,7 +3059,8 @@ In case of buyer selected and child_exists will not be in response
       "child_exists": true,
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
@@ -3041,7 +3119,8 @@ In case of buyer selected and child_exists will not be in response
       "name": "Activity trackers & pedometers",
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
@@ -3105,7 +3184,8 @@ In case of buyer selected  will not be in response
       "name": "brand 4",
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
@@ -3169,7 +3249,8 @@ In case of buyer selected  will not be in response
       "child_exists": true,
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
@@ -3225,7 +3306,8 @@ In case of buyer selected  and child_exists will not be in response
       "name": "Dishwashers",
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
@@ -3277,7 +3359,8 @@ In case of buyer selected  will not be in response
       "name": "brand 3",
       "selected": false
     }
-  ]
+  ],
+  "total_pages": 4
 }
 ```
 
