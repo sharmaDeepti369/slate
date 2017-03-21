@@ -2871,7 +2871,8 @@ This end point return saved orders for supplier.
 
 ```json
   {
-   
+   "scope": "seller/buyer",
+   "page": 2
   }
 
 ```
@@ -2883,24 +2884,28 @@ This end point return saved orders for supplier.
   "status": true,
   "categories": [
     {
-      "id": 1,
-      "name": "category 1",
-      "child_exists": true
+      "id": 14,
+      "name": "Toys, games & drones",
+      "child_exists": false,
+      "selected": false
     },
     {
       "id": 2,
-      "name": "category 2",
-      "child_exists": true
+      "name": "Tv & home theater",
+      "child_exists": true,
+      "selected": true
     },
     {
-      "id": 3,
-      "name": "category 3",
-      "child_exists": true
+      "id": 7,
+      "name": "Video games",
+      "child_exists": true,
+      "selected": false
     },
     {
-      "id": 4,
-      "name": "category 4",
-      "child_exists": false
+      "id": 13,
+      "name": "Wearable technology",
+      "child_exists": true,
+      "selected": false
     }
   ]
 }
@@ -2915,13 +2920,28 @@ This end point gives the list for categories.
 
 `GET /categories`
 
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected and child_exists will not be in response
+</aside>
+
+
 ## Get all sub categories
 
 > Sample Request:
 
 ```json
   {
-   
+   "scope": "seller/buyer",
+   "page": 2
   }
 
 ```
@@ -2929,23 +2949,26 @@ This end point gives the list for categories.
 > Sample Response:
 
 ```json
-  {
+ {
   "status": true,
   "categories": [
     {
-      "id": 1,
-      "name": "Appliances",
-      "child_exists": true
-    },
-    {
       "id": 6,
-      "name": "Audio",
-      "child_exists": true
+      "name": "Audio & video components",
+      "child_exists": true,
+      "selected": false
     },
     {
-      "id": 4,
-      "name": "Cameras & camcorders",
-      "child_exists": true
+      "id": 13,
+      "name": "Camcorderscamcorders",
+      "child_exists": true,
+      "selected": false
+    },
+    {
+      "id": 12,
+      "name": "Cameras & lenses",
+      "child_exists": true,
+      "selected": false
     }
   ]
 }
@@ -2960,13 +2983,27 @@ This end point gives the list for sub categories.
 
 `GET /sub_categories`
 
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected and child_exists will not be in response
+</aside>
+
+
 ## Get all child categories
 
 > Sample Request:
 
 ```json
   {
-   
+   "scope": "seller/buyer",
+   "page": 2
   }
 
 ```
@@ -2974,20 +3011,23 @@ This end point gives the list for sub categories.
 > Sample Response:
 
 ```json
-  {
+ {
   "status": true,
   "categories": [
     {
-      "id": 7,
-      "name": "Accessories"
+      "id": 64,
+      "name": "Action camcorders",
+      "selected": false
     },
     {
-      "id": 14,
-      "name": "Accessories"
+      "id": 145,
+      "name": "Action camcorders",
+      "selected": false
     },
     {
-      "id": 23,
-      "name": "Accessories"
+      "id": 146,
+      "name": "Activity trackers & pedometers",
+      "selected": false
     }
   ]
 }
@@ -3003,13 +3043,26 @@ This end point gives the list for child categories.
 `GET /child_categories`
 
 
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected  will not be in response
+</aside>
+
+
 ## Get all brands
 
 > Sample Request:
 
 ```json
   {
-   
+   "scope": "seller/buyer",
+   "page": 1
   }
 
 ```
@@ -3018,26 +3071,30 @@ This end point gives the list for child categories.
 
 ```json
   {
-    "status": true,
-    "brands": [
-      {
-        "id": 1,
-        "name": "brand 1"
-      },
-      {
-        "id": 2,
-        "name": "brand 2"
-      },
-      {
-        "id": 3,
-        "name": "brand 3"
-      },
-      {
-        "id": 4,
-        "name": "brand 4"
-      }
-    ]
-  }
+  "status": true,
+  "brands": [
+    {
+      "id": 1,
+      "name": "brand 1",
+      "selected": true
+    },
+    {
+      "id": 2,
+      "name": "brand 2",
+      "selected": false
+    },
+    {
+      "id": 3,
+      "name": "brand 3",
+      "selected": false
+    },
+    {
+      "id": 4,
+      "name": "brand 4",
+      "selected": false
+    }
+  ]
+}
 ```
 
 
@@ -3049,12 +3106,28 @@ This end point gives the list for brands.
 
 `GET /brands`
 
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected  will not be in response
+</aside>
+
+
 ## Get sub_category for category
 
 > Sample Request:
 
 ```json
   {
+    "scope": "buyer/seller",
+    "page": 2,
    "category_ids": [1, 2, 3]
   }
 
@@ -3063,18 +3136,26 @@ This end point gives the list for brands.
 > Sample Response:
 
 ```json
-  {
+{
   "status": true,
   "categories": [
     {
-      "id": 1,
-      "name": "category 1-1",
-      "child_exists": true
+      "id": 7,
+      "name": "Accessories",
+      "child_exists": true,
+      "selected": false
     },
     {
-      "id": 2,
-      "name": "category 1-2",
-      "child_exists": false
+      "id": 6,
+      "name": "Audio & video components",
+      "child_exists": true,
+      "selected": false
+    },
+    {
+      "id": 10,
+      "name": "Computer accessories",
+      "child_exists": true,
+      "selected": false
     }
   ]
 }
@@ -3094,31 +3175,43 @@ This end point gives the list for sub categories belongs to a category.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 category_ids | yes | id of category
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected  and child_exists will not be in response
+</aside>
+
 
 ## Get child category for sub category
 
 > Sample Request:
 
 ```json
-  {
-   "sub_category_ids": [1,2]
+ {
+    "scope": "seller",
+    "page": 1,
+   "sub_category_ids": [1,2,3]
   }
+
 
 ```
 
 > Sample Response:
 
 ```json
-  {
+{
   "status": true,
   "categories": [
     {
-      "id": 1,
-      "name": "category 1-1"
+      "id": 15,
+      "name": "Appliance parts & accessories",
+      "selected": false
     },
     {
-      "id": 2,
-      "name": "category 1-2"
+      "id": 3,
+      "name": "Dishwashers",
+      "selected": false
     }
   ]
 }
@@ -3138,16 +3231,25 @@ This end point gives the list for child categories belongs to a sub category.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 sub_category_ids | yes | id of sub_category
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected  will not be in response
+</aside>
+
 
 ## Get brands for categories
 
 > Sample Request:
 
 ```json
- {
+{
+  "scope": "seller",
+  "page": 1,
   "key": "child_category",
- "category_ids": [1,2,3, 4]
-  }
+ "category_ids": [1,2,3]
+}
 
 
 ```
@@ -3160,7 +3262,8 @@ sub_category_ids | yes | id of sub_category
   "brands": [
     {
       "id": 3,
-      "name": "brand 3"
+      "name": "brand 3",
+      "selected": false
     }
   ]
 }
@@ -3181,3 +3284,9 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 key | yes | can be "category"/"sub_categories"/"child_categories" based on requirement
 category_ids | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
+scope | yes | buyer/ seller current user role
+page | yes | page number for response
+
+<aside class="notice">
+In case of buyer selected  will not be in response
+</aside>
