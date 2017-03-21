@@ -3224,7 +3224,7 @@ This end point gives the list for child categories belongs to a sub category.
 
 ### HTTP Request
 
-`GET /get_child_categories`
+`POST /get_child_categories`
 
 ### URL Parameters
 
