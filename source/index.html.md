@@ -2625,7 +2625,7 @@ page | yes | page number for response
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
-And in case of supplier orders will not be in response
+And in case of supplier orders will be in response
 </aside>
 
 
