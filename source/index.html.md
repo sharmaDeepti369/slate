@@ -1828,8 +1828,7 @@ page | yes | if deals needed more than top 5
 
 ```json
   {
-    "show_popular": true,
-    "page": 2
+    "show_popular": true
   }
 
 ```
@@ -1862,7 +1861,7 @@ page | yes | if deals needed more than top 5
 
 
 
-This end point return deals for advertisement.
+This end point return top 5 deals for advertisement.
 
 
 ### HTTP Request
@@ -3385,3 +3384,209 @@ page | yes | page number for response
 <aside class="notice">
 In case of buyer selected  will not be in response
 </aside>
+
+# Prefrences
+
+## Set categories for prefrences
+
+> Sample Request:
+
+```json
+{
+ "category_ids": [7,9]
+}
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "sub_categories": [
+    {
+      "id": 22,
+      "name": "Consoles",
+      "child_exists": true,
+      "selected": false
+    },
+    {
+      "id": 23,
+      "name": "Accessories",
+      "child_exists": true,
+      "selected": true
+    }
+  ]
+}
+```
+
+
+
+This end point set the preference categories and return top 5 sub categories.
+
+### HTTP Request
+
+`POST /preferences/categories`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+category_ids | yes | id of categories to set in preferences
+
+
+## Set sub_categories for prefrences
+
+> Sample Request:
+
+```json
+{
+ "sub_category_ids": [23,24,25,26]
+}
+
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "child_categories": [
+    {
+      "id": 119,
+      "name": "Playstation vr",
+      "selected": false
+    },
+    {
+      "id": 120,
+      "name": "Xbox one accessories",
+      "selected": true
+    },
+    {
+      "id": 121,
+      "name": "Playstation 4 accessories",
+      "selected": true
+    }
+  ]
+}
+```
+
+
+
+This end point set the preference sub_categories and return top 5 child categories.
+
+### HTTP Request
+
+`POST /preferences/sub_categories`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+sub_category_ids | yes | id of sub-categories to set in preferences
+
+
+## Set child_categories for prefrences
+
+> Sample Request:
+
+```json
+{
+ "child_category_ids": [123,122,121,120]
+}
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "brands": [
+    {
+      "id": 2,
+      "name": "brand 2",
+      "selected": true
+    },
+    {
+      "id": 1,
+      "name": "brand 1",
+      "selected": true
+    },
+    {
+      "id": 3,
+      "name": "brand 3",
+      "selected": true
+    }
+  ]
+}
+```
+
+
+
+This end point set the preference child_categories and return top 5 brands.
+
+### HTTP Request
+
+`POST /preferences/child_categories`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+child_category_ids | yes | id of child-categories to set in preferences
+
+
+## Set brands for prefrences
+
+> Sample Request:
+
+```json
+{
+ "brand_ids": [1,2,3]
+}
+
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "deals": [
+    {
+      "id": 8,
+      "name": "glasses",
+      "image_url": "/uploads/product_image/image/15/image.jpeg",
+      "color": "grey",
+      "size": "s",
+      "orders": 0
+    },
+    {
+      "id": 9,
+      "name": "glasses",
+      "image_url": "/uploads/product_image/image/17/image.jpeg",
+      "color": "grey",
+      "size": "s",
+      "orders": 0
+    }
+  ]
+}
+```
+
+
+
+This end point set the preference brands and return top 5 products based on preferences.
+
+### HTTP Request
+
+`POST /preferences/brands`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+brand_ids | yes | id of brands to set in preferences
+
