@@ -2506,7 +2506,8 @@ page | yes | page number of results (default 1)
 ```json
   {
     "query": "black",
-    "page": 3
+    "page": 3,
+    "scope": "buyer/seller"
   }
 
 ```
@@ -2557,6 +2558,12 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 query | yes | search keyword entered by user
 page | yes |page number for results (default 1)
+scope | yes | role of current user
+
+<aside class="notice">
+In case of buyer orders will not be in response
+And in case of supplier min_price & discount_price will not be in response
+</aside>
 
 
 ## Get search on category/brand basis
@@ -2570,7 +2577,8 @@ page | yes |page number for results (default 1)
     "sub_category_ids": [3,4],
     "child_category_ids": [1,5,6],
     "brand_ids": [3,2],
-    "scope": "seller"
+    "scope": "seller",
+    "page": 3
   }
 
 
@@ -2613,8 +2621,12 @@ sub_category_ids | no | sub category selected by user
 child_category_ids | no | child category selected by user
 brand_ids | no |brand selected by user
 scope | yes |"buyer" if user is buyer/ "seller" if user is seller
+page | yes | page number for response
 
-
+<aside class="notice">
+In case of buyer min_price & discount_price will be in response
+And in case of supplier orders will not be in response
+</aside>
 
 
 
