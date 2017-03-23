@@ -1429,6 +1429,61 @@ This end point return all addresses for user.
 
 # Products
 
+## Get all products
+
+> Sample Request:
+
+```json
+  "page": 3
+
+```
+
+
+> Sample Response:
+
+{
+  "status": true,
+  "products": [
+    {
+      "id": 2,
+      "name": "shirt",
+      "image_url": "/uploads/product_image/image/4/image.jpeg",
+      "color": "blue",
+      "size": "s",
+      "orders": 1
+    },
+    {
+      "id": 3,
+      "name": "shoes",
+      "image_url": "/uploads/product_image/image/6/image.jpeg",
+      "color": "brown",
+      "size": "s",
+      "orders": 5
+    },
+    {
+      "id": 4,
+      "name": "watch",
+      "image_url": "/uploads/product_image/image/8/image.jpeg",
+      "color": "silver",
+      "size": "s",
+      "orders": 1
+    }
+  ],
+  "total_pages": 3
+}
+
+```
+
+
+This end point return all products sort on name.
+
+
+### HTTP Request
+
+`GET /all_product`
+
+
+
 ## Get product
 
 > Sample Request:
@@ -1436,8 +1491,7 @@ This end point return all addresses for user.
 ```json
 
   {
-   "product_id" : 1,
-   "scope": "buyer/seller"
+   "product_id" : 1
    }
 
 
@@ -1511,8 +1565,7 @@ And in case of supplier orders will be in response
       "sub_category_id":1,
       "child_category_id":1,
       "brand_id":1,
-      "min_price": 5.00,
-      "scope": "buyer/seller"
+      "min_price": 5.00
     }
    }
 
@@ -1593,8 +1646,7 @@ And in case of supplier orders will be in response
       "sub_category_id":1,
       "child_category_id":1,
       "brand_id":1,
-      "min_price": 5.00,
-      "scope": "buyer/seller"
+      "min_price": 5.00
     }
    }
 
@@ -1887,8 +1939,7 @@ page | yes | if deals needed more than top 5
 
 ```json
   {
-    "page": 2,
-    "scope": "buyer/seller"
+    "page": 2
   }
 
 ```
@@ -2579,8 +2630,7 @@ page | yes | page number of results (default 1)
 ```json
   {
     "query": "black",
-    "page": 3,
-    "scope": "buyer/seller"
+    "page": 3
   }
 
 ```
@@ -2650,8 +2700,7 @@ And in case of supplier min_price & discount_price will not be in response
     "category_ids": [3,1, 2],
     "sub_category_ids": [3,4],
     "child_category_ids": [1,5,6],
-    "brand_ids": [3,2],
-    "scope": "seller",
+    "brand_ids": [3,2]
     "page": 3
   }
 
@@ -2958,7 +3007,6 @@ This end point return saved orders for supplier.
 
 ```json
   {
-   "scope": "seller/buyer",
    "page": 2
   }
 
@@ -3028,7 +3076,6 @@ In case of buyer selected and child_exists will not be in response
 
 ```json
   {
-   "scope": "seller/buyer",
    "page": 2
   }
 
@@ -3091,7 +3138,6 @@ In case of buyer selected and child_exists will not be in response
 
 ```json
   {
-   "scope": "seller/buyer",
    "page": 2
   }
 
@@ -3151,7 +3197,6 @@ In case of buyer selected  will not be in response
 
 ```json
   {
-   "scope": "seller/buyer",
    "page": 1
   }
 
@@ -3217,7 +3262,6 @@ In case of buyer selected  will not be in response
 
 ```json
   {
-    "scope": "buyer/seller",
     "page": 2,
    "category_ids": [1, 2, 3]
   }
@@ -3281,7 +3325,6 @@ In case of buyer selected  and child_exists will not be in response
 
 ```json
  {
-    "scope": "seller",
     "page": 1,
    "sub_category_ids": [1,2,3]
   }
@@ -3338,7 +3381,6 @@ In case of buyer selected  will not be in response
 
 ```json
 {
-  "scope": "seller",
   "page": 1,
   "key": "child_category",
  "category_ids": [1,2,3]
