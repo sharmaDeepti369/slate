@@ -1434,7 +1434,9 @@ This end point return all addresses for user.
 > Sample Request:
 
 ```json
+{
   "page": 3
+}
 
 ```
 
