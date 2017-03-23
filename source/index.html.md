@@ -1441,6 +1441,7 @@ This end point return all addresses for user.
 
 > Sample Response:
 
+```
 {
   "status": true,
   "products": [
