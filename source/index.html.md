@@ -1820,7 +1820,6 @@ image_id | yes | id of image to delete
 
 ```json
   {
-    "show_popular": true,
     "page": 2
   }
 
@@ -1831,7 +1830,7 @@ image_id | yes | id of image to delete
 ```json
  {
   "status": true,
-  "deals": [
+  "products": [
     {
       "id": 1,
       "name": "Trousers",
@@ -1890,7 +1889,7 @@ page | yes | if deals needed more than top 5
 ```json
  {
   "status": true,
-  "deals": [
+  "products": [
     {
       "id": 1,
       "name": "Trousers",
