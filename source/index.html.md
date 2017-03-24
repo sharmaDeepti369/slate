@@ -14,7 +14,7 @@ Welcome to the Floupr API! You can use our API to access Floupr API endpoints, w
 
 We have language bindings in Ruby. 
 
-<strong>Every API for this project have to be prefixed with "https://radiant-island-87705.herokuapp.com" and have to include "Auth-Token" and "Email" as headres once the user is login.</strong>
+<strong>Every API for this project have to be prefixed with "http://gharwale.com" and have to include "Auth-Token" and "Scope" (user;s role) as headres once the user is login.</strong>
 
 
 # Authentication
@@ -1483,7 +1483,7 @@ This end point return all products sort on name.
 
 ### HTTP Request
 
-`GET /all_product`
+`GET /all_products`
 
 
 
@@ -1543,7 +1543,6 @@ This end point creates a product for user.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 product_id | yes | id of product
-scope | yes | current user's role
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
@@ -1622,7 +1621,6 @@ category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
 brand_id | yes | id of product's brand
 min_price| minimum price of product
-scope | yes | current user's role
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
@@ -1704,7 +1702,6 @@ category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
 brand_id | yes | id of product's brand
 min_price|  minimum price of product
-scope | yes | current user's role
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
@@ -1991,7 +1988,6 @@ This end point return favorites for user.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for product (default 1)
-scope | yes | current user's role
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
@@ -2643,7 +2639,7 @@ page | yes | page number of results (default 1)
 ```json
  {
   "status": true,
-  "results": [
+  "products": [
     {
       "id": 1,
       "name": "jacket",
@@ -2685,7 +2681,6 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 query | yes | search keyword entered by user
 page | yes |page number for results (default 1)
-scope | yes | role of current user
 
 <aside class="notice">
 In case of buyer orders will not be in response
@@ -2715,7 +2710,7 @@ And in case of supplier min_price & discount_price will not be in response
 ```json
 {
   "status": true,
-  "results": [
+  "products": [
     {
       "id": 2,
       "name": "shirt",
@@ -2747,7 +2742,6 @@ category_ids | no | category selected by user
 sub_category_ids | no | sub category selected by user
 child_category_ids | no | child category selected by user
 brand_ids | no |brand selected by user
-scope | yes |"buyer" if user is buyer/ "seller" if user is seller
 page | yes | page number for response
 
 <aside class="notice">
@@ -3065,7 +3059,6 @@ This end point gives the list for categories.
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
@@ -3127,7 +3120,6 @@ This end point gives the list for sub categories.
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
@@ -3186,7 +3178,6 @@ This end point gives the list for child categories.
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
@@ -3251,7 +3242,6 @@ This end point gives the list for brands.
 
 Parameter| Mandatory | Description
 --------- |--------- |-----------
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
@@ -3314,7 +3304,6 @@ This end point gives the list for sub categories belongs to a category.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 category_ids | yes | id of category
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
@@ -3370,7 +3359,6 @@ This end point gives the list for child categories belongs to a sub category.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 sub_category_ids | yes | id of sub_category
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
@@ -3423,7 +3411,6 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 key | yes | can be "category"/"sub_categories"/"child_categories" based on requirement
 category_ids | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
-scope | yes | buyer/ seller current user role
 page | yes | page number for response
 
 <aside class="notice">
