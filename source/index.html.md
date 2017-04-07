@@ -1562,7 +1562,7 @@ And in case of supplier orders will be in response
       "color": "green",
       "size": "s",
       "description": "test description",
-      "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
+      "product_images_attributes": [{"image": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQAAAQABAA...}, {"image": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQAAAQABAA...}],
       "category_id": 1,
       "sub_category_id":1,
       "child_category_id":1,
@@ -1642,7 +1642,7 @@ And in case of supplier orders will be in response
       "color": "green",
       "size": "s",
       "description": "test description",
-      "images": ["data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg...","data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZg..."],
+      "product_images_attributes": [{"image": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQAAAQABAA...}, {"image": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQAAAQABAA...}],
       "category_id": 1,
       "sub_category_id":1,
       "child_category_id":1,
@@ -2682,8 +2682,7 @@ query | yes | search keyword entered by user
 page | yes |page number for results (default 1)
 
 <aside class="notice">
-In case of buyer orders will not be in response
-And in case of supplier min_price & discount_price will not be in response
+In case of supplier min_price & discount_price will not be in response
 </aside>
 
 
@@ -2744,8 +2743,7 @@ brand_ids | no |brand selected by user
 page | yes | page number for response
 
 <aside class="notice">
-In case of buyer min_price & discount_price will be in response
-And in case of supplier orders will be in response
+In case of supplier min_price & discount_price will not be in response
 </aside>
 
 
@@ -3059,9 +3057,10 @@ This end point gives the list for categories.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
-In case of buyer selected and child_exists will not be in response
+In case of buyer selected will not be in response
 </aside>
 
 
@@ -3120,9 +3119,10 @@ This end point gives the list for sub categories.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
-In case of buyer selected and child_exists will not be in response
+In case of buyer selected will not be in response
 </aside>
 
 
@@ -3178,6 +3178,7 @@ This end point gives the list for child categories.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
 In case of buyer selected  will not be in response
@@ -3242,6 +3243,7 @@ This end point gives the list for brands.
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
 In case of buyer selected  will not be in response
@@ -3304,9 +3306,10 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 category_ids | yes | id of category
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
-In case of buyer selected  and child_exists will not be in response
+In case of buyer selected will not be in response
 </aside>
 
 
@@ -3359,6 +3362,7 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 sub_category_ids | yes | id of sub_category
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
 In case of buyer selected  will not be in response
@@ -3411,6 +3415,7 @@ Parameter| Mandatory | Description
 key | yes | can be "category"/"sub_categories"/"child_categories" based on requirement
 category_ids | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
 page | yes | page number for response
+paginate | no | flase if no pagination required
 
 <aside class="notice">
 In case of buyer selected  will not be in response
