@@ -1566,8 +1566,10 @@ And in case of supplier orders will be in response
       "category_id": 1,
       "sub_category_id":1,
       "child_category_id":1,
-      "brand_id":1,
-      "min_price": 5.00
+      "brand": {"id": 4, name": "allingz"},
+      "min_price": 5.00,
+      "link": "http://www.amazon.in/Gordania-Bomber-Zipper-Design-Jacket/dp/B01KKM6R54/ref=sr_1_2?s=apparel&ie=UTF8&qid=1491555351&sr=1-2&nodeID=6648217031&psd=1&keywords=lather+jacket",
+      "weight": 5.9
     }
    }
 
@@ -1619,8 +1621,9 @@ description | yes | description of product
 images | yes | images of product
 category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
-brand_id | yes | id of product's brand
 min_price| minimum price of product
+brand[id] | yes if user select the brands from dropdown| id of product's brand
+brand[name] | yes | name of product's brand
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
@@ -1646,8 +1649,11 @@ And in case of supplier orders will be in response
       "category_id": 1,
       "sub_category_id":1,
       "child_category_id":1,
-      "brand_id":1,
-      "min_price": 5.00
+      "brand": {name": "allingz"},
+      "min_price": 5.00,
+      "link": "http://www.amazon.in/Gordania-Bomber-Zipper-Design-Jacket/dp/B01KKM6R54/ref=sr_1_2?s=apparel&ie=UTF8&qid=1491555351&sr=1-2&nodeID=6648217031&psd=1&keywords=lather+jacket",
+      "weight": 5.9
+      
     }
    }
 
@@ -1700,8 +1706,9 @@ description | yes | description of product
 images | yes | images of product
 category_id | yes | id of product's category
 sub_category_id | yes | id of product's sub category
-brand_id | yes | id of product's brand
 min_price|  minimum price of product
+brand[id] | yes if user select the brands from dropdown| id of product's brand
+brand[name] | yes | name of product's brand
 
 <aside class="notice">
 In case of buyer min_price & discount_price will be in response
@@ -1810,6 +1817,48 @@ Parameter| Mandatory | Description
 product_id | yes | id of product 
 image_id | yes | id of image to delete
 
+
+# Low Price Link
+
+## create link
+
+
+> Sample Request:
+
+```json
+ {
+ "product_id": "1",
+ "link": "https://arcane-eyrie-77831.herokuapp.com/#get-brands-for-categories"
+}
+
+```
+
+> Sample Response if deals found successfully:
+
+```json
+ {
+  "status": true,
+  "message": "Link saved successfuly"
+  } 
+```
+
+
+
+This end saves a low price link for a product.
+
+
+### HTTP Request
+
+`POST /links`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+link | yes | link given by user for low price
 
 # Deals
 
@@ -3191,7 +3240,8 @@ In case of buyer selected  will not be in response
 
 ```json
   {
-   "page": 1
+   "page": 1,
+   "sort_by": "name/popular"
   }
 
 ```
@@ -3244,6 +3294,7 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for response
 paginate | no | flase if no pagination required
+sort_by | yes | sort by nae or popular brands
 
 <aside class="notice">
 In case of buyer selected  will not be in response
@@ -3377,7 +3428,8 @@ In case of buyer selected  will not be in response
 {
   "page": 1,
   "key": "child_category",
- "category_ids": [1,2,3]
+  "category_ids": [1,2,3],
+  "sort_by": "name/popular"
 }
 
 
@@ -3416,6 +3468,7 @@ key | yes | can be "category"/"sub_categories"/"child_categories" based on requi
 category_ids | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
 page | yes | page number for response
 paginate | no | flase if no pagination required
+sort_by | yes | sort by nae or popular brands
 
 <aside class="notice">
 In case of buyer selected  will not be in response
