@@ -3257,7 +3257,7 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number for response
 paginate | no | flase if no pagination required
-sort_by | yes | sort by nae or popular brands
+sort_by | yes | sort by name or popular brands
 
 <aside class="notice">
 In case of buyer selected  will not be in response
@@ -3431,7 +3431,7 @@ key | yes | can be "category"/"sub_categories"/"child_categories" based on requi
 category_ids | yes | id of "category"/"sub_categories"/"child_categories" based on requirement
 page | yes | page number for response
 paginate | no | flase if no pagination required
-sort_by | yes | sort by nae or popular brands
+sort_by | yes | sort by name or popular brands
 
 <aside class="notice">
 In case of buyer selected  will not be in response
