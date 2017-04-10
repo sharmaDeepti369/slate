@@ -1566,7 +1566,7 @@ And in case of supplier orders will be in response
       "category_id": 1,
       "sub_category_id":1,
       "child_category_id":1,
-      "brand": {"id": 4, name": "allingz"},
+      "brand": {"id": 4, "name": "allingz"},
       "min_price": 5.00,
       "link": "http://www.amazon.in/Gordania-Bomber-Zipper-Design-Jacket/dp/B01KKM6R54/ref=sr_1_2?s=apparel&ie=UTF8&qid=1491555351&sr=1-2&nodeID=6648217031&psd=1&keywords=lather+jacket",
       "weight": 5.9
@@ -1649,7 +1649,7 @@ And in case of supplier orders will be in response
       "category_id": 1,
       "sub_category_id":1,
       "child_category_id":1,
-      "brand": {name": "allingz"},
+      "brand": {"name": "allingz"},
       "min_price": 5.00,
       "link": "http://www.amazon.in/Gordania-Bomber-Zipper-Design-Jacket/dp/B01KKM6R54/ref=sr_1_2?s=apparel&ie=UTF8&qid=1491555351&sr=1-2&nodeID=6648217031&psd=1&keywords=lather+jacket",
       "weight": 5.9
