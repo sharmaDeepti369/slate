@@ -1567,6 +1567,7 @@ And in case of supplier orders will be in response
       "sub_category_id":1,
       "child_category_id":1,
       "brand": {"id": 4, "name": "allingz"},
+      "low_price_link_attributes": {"link": "https://www.google.co.in/"},
       "min_price": 5.00,
       "link": "http://www.amazon.in/Gordania-Bomber-Zipper-Design-Jacket/dp/B01KKM6R54/ref=sr_1_2?s=apparel&ie=UTF8&qid=1491555351&sr=1-2&nodeID=6648217031&psd=1&keywords=lather+jacket",
       "weight": 5.9
@@ -1817,48 +1818,6 @@ Parameter| Mandatory | Description
 product_id | yes | id of product 
 image_id | yes | id of image to delete
 
-
-# Low Price Link
-
-## create link
-
-
-> Sample Request:
-
-```json
- {
- "product_id": "1",
- "link": "https://arcane-eyrie-77831.herokuapp.com/#get-brands-for-categories"
-}
-
-```
-
-> Sample Response if deals found successfully:
-
-```json
- {
-  "status": true,
-  "message": "Link saved successfuly"
-  } 
-```
-
-
-
-This end saves a low price link for a product.
-
-
-### HTTP Request
-
-`POST /links`
-
-
-
-### URL Parameters
-
-Parameter| Mandatory | Description
---------- |--------- |-----------
-product_id | yes | id of product
-link | yes | link given by user for low price
 
 # Deals
 
@@ -2747,7 +2706,7 @@ In case of supplier min_price & discount_price will not be in response
     "category_ids": [3,1, 2],
     "sub_category_ids": [3,4],
     "child_category_ids": [1,5,6],
-    "brand_ids": [3,2]
+    "brand_ids": [3,2],
     "page": 3,
     "sort_by": "popular/name"
   }
