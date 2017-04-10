@@ -2677,7 +2677,8 @@ page | yes | page number of results (default 1)
 ```json
   {
     "query": "black",
-    "page": 3
+    "page": 3,
+    "sort_by": "popular/name"
   }
 
 ```
@@ -2729,6 +2730,7 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 query | yes | search keyword entered by user
 page | yes |page number for results (default 1)
+sort_by | yes | sort on popularity or name
 
 <aside class="notice">
 In case of supplier min_price & discount_price will not be in response
@@ -2746,7 +2748,8 @@ In case of supplier min_price & discount_price will not be in response
     "sub_category_ids": [3,4],
     "child_category_ids": [1,5,6],
     "brand_ids": [3,2]
-    "page": 3
+    "page": 3,
+    "sort_by": "popular/name"
   }
 
 
@@ -2790,6 +2793,7 @@ sub_category_ids | no | sub category selected by user
 child_category_ids | no | child category selected by user
 brand_ids | no |brand selected by user
 page | yes | page number for response
+sort_by | yes | sort on popularity or name
 
 <aside class="notice">
 In case of supplier min_price & discount_price will not be in response
