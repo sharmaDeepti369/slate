@@ -2626,6 +2626,58 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 page | yes | page number of results (default 1)
 
+
+## Get history details
+
+
+> Sample Request:
+
+```json
+  {
+    "order_id": 7
+  }
+
+```
+
+> Sample Response :
+
+```json
+{
+  "status": true,
+  "order": {
+    "id": 7,
+    "quantity": 5,
+    "price": 50,
+    "name": "shoes",
+    "color": "brown",
+    "size": "s",
+    "images": [
+      "/uploads/product_image/image/5/image.jpeg",
+      "/uploads/product_image/image/6/image.jpeg"
+    ],
+    "order_date": "2017-03-16",
+    "description": "brown laces shoes"
+  }
+}
+
+```
+
+
+
+This end point return detail history for order.
+
+
+### HTTP Request
+
+`GET /order?order_id=<order-id>`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+order_id | yes | id of order from history
+
 # Search
 
 ## Get search results
