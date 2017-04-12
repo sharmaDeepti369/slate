@@ -1536,7 +1536,7 @@ This end point creates a product for user.
 
 ### HTTP Request
 
-`GET /product`
+`GET /products`
 
 ### URL Parameters
 
