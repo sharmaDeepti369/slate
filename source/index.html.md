@@ -1531,7 +1531,7 @@ This end point return all products sort on name.
 ```
 
 
-This end point creates a product for user.
+This end point gets a product for user.
 
 
 ### HTTP Request
