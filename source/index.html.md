@@ -468,6 +468,60 @@ provider| yes |facebook
 profile_pic | no |facebook profile pic url of user 
 role | yes | role by which user want to sign in
 
+# Countries
+
+
+## Get countries
+
+> Sample Request:
+
+```json
+
+
+```
+
+
+> Sample Response :
+
+```json
+{
+  "status": true,
+  "countries": [
+    {
+      "id": 1,
+      "name": "Afghanistan"
+    },
+    {
+      "id": 2,
+      "name": "Albania"
+    },
+    {
+      "id": 3,
+      "name": "Algeria"
+    },
+    {
+      "id": 4,
+      "name": "Andorra"
+    },
+    {
+      "id": 5,
+      "name": "Angola"
+    }
+  ],
+  "total_pages": 42
+}
+
+```
+
+
+
+This end point returns the list of cuntries
+
+
+### HTTP Request
+
+`GET /countries`
+
 
 # Profile
 
@@ -584,7 +638,7 @@ No parameters required for this api.
     "state": "UP",
     "city": "noida",
     "zipcode": 201301,
-    "country": "india",
+    "country_id": 1,
     "about": "test desc",
      "vat": "6876876",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
@@ -1809,7 +1863,7 @@ This end point delete a product for user.
 
 ### HTTP Request
 
-`DELETE /product`
+`DELETE /product_image`
 
 ### URL Parameters
 
@@ -2333,7 +2387,7 @@ This end point delete a order for user.
 
 ### HTTP Request
 
-`DELETE /product`
+`DELETE /order`
 
 ### URL Parameters
 
