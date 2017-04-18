@@ -588,7 +588,7 @@ No parameters required for this api.
     "state": "UP",
     "city": "noida",
     "zipcode": 201301,
-    "country": "india",
+    "country_id": 1,
     "about": "test desc",
     "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater",
     "vat": "6876876",
@@ -638,7 +638,7 @@ No parameters required for this api.
     "state": "UP",
     "city": "noida",
     "zipcode": 201301,
-    "country_id": 1,
+    "country": "India",
     "about": "test desc",
      "vat": "6876876",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
@@ -675,6 +675,7 @@ about | no | user's description
 social_accounts| yes | user's social accounts
 address | no |user,s address
 vat | no | vat number for supplier profile
+country_id | yes | id for country of the user
 
 
 ## Update password
@@ -887,7 +888,7 @@ card_type | yes | credit card type
 ```json
 {
   "status": false,
-  "message": "Card with this number does not exists"
+  "message": "Card with this id does not exists"
 }
 
 ```
@@ -979,36 +980,24 @@ card_id | yes | credit card id
 > Sample Response:
 
 ```json
-  {
+{
   "status": true,
-  "shipping_addresses": [
-    {
-      "id": 1,
-      "address": "sector 60",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    },
-    {
-      "id": 2,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    }
-  ],
-  "billing_addresses": [
-    {
-      "id": 1,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    }
-  ],
+  "shipping_address": {
+    "id": 3,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "M.P.",
+    "zipcode": "12345",
+    "country": "Albania"
+  },
+  "billing_address": {
+    "id": 3,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "M.P.",
+    "zipcode": "12345",
+    "country": "Albania"
+  },
   "cards": [
     {
       "id": 1,
@@ -1018,12 +1007,7 @@ card_id | yes | credit card id
     {
       "id": 2,
       "card_number": "6876",
-      "card_type": "visa"
-    },
-    {
-      "id": 3,
-      "card_number": "2876",
-      "card_type": "visaa"
+      "card_type": "mestro"
     }
   ]
 }
@@ -1041,113 +1025,11 @@ This end point returns all cards with all address.
 
 # Addresses
 
-
-## Get all shipping addresses
-
-> Sample Request:
-
-```json
-
-  {
-  }
-
-```
-
-
-> Sample Response:
-
-```json
-  {
-  "status": true,
-  "shipping_addresses": [
-    {
-      "id": 1,
-      "address": "sector 60",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    },
-    {
-      "id": 2,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    }
-  ]
-}
-
-```
-
-
-This end point returns all shipping addresses for user.
-
-
-### HTTP Request
-
-`GET /get_shipping_addresses`
-
-
-## Get all billing addresses
+## Get shipping address
 
 > Sample Request:
 
 ```json
-
-  {
-  }
-
-```
-
-
-> Sample Response:
-
-```json
- {
-  "status": true,
-  "billing_addresses": [
-    {
-      "id": 1,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    },
-    {
-      "id": 2,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    }
-  ]
-}
-
-```
-
-
-This end point returns all billing addresses for user.
-
-
-### HTTP Request
-
-`GET /get_billing_addresses`
-
-
-## Get single shipping address
-
-> Sample Request:
-
-```json
-
-  {
-    "address_id": 1
-  }
-
 ```
 
 
@@ -1177,15 +1059,12 @@ This end point returns a shipping address for user.
 `GET /get_shipping_address`
 
 
-## Get single billing address
+## Get billing address
 
 > Sample Request:
 
 ```json
 
-  {
-    "address_id": 1
-  }
 
 ```
 
@@ -1222,16 +1101,17 @@ This end point returns a billing address for user.
 > Sample Request:
 
 ```json
-   
+ 
   {
     "address": {
       "city": "delhi",
       "address": "sector 60",
       "state": "U.P.",
-      "country": "india",
+      "country_id": 2,
       "zipcode": "12345"
     }
   }
+
 
 ```
 
@@ -1240,19 +1120,24 @@ This end point returns a billing address for user.
 
 ```json
   {
-    "status": true,
-    "message": "address addedd successfully"
+  "status": true,
+  "shipping_address": {
+    "id": 1,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "U.P.",
+    "zipcode": "12345",
+    "country": "Albania"
   }
-
+}
 ```
-
 
 This end point adds a shipping address for user.
 
 
 ### HTTP Request
 
-`POST /add_shipping_address`
+`POST /shipping_address`
 
 
 ### URL Parameters
@@ -1262,7 +1147,7 @@ Parameter| Mandatory | Description
 city | yes | city of the user
 address | yes | address of the user
 state | yes | state of the user
-country | yes | country of the user
+country_id | yes | id for country of the user
 zipcode | yes | zipcode of the user
 
 
@@ -1271,16 +1156,17 @@ zipcode | yes | zipcode of the user
 > Sample Request:
 
 ```json
-   
+ 
   {
     "address": {
       "city": "delhi",
       "address": "sector 60",
       "state": "U.P.",
-      "country": "india",
+      "country_id": 2,
       "zipcode": "12345"
     }
   }
+
 
 ```
 
@@ -1289,10 +1175,16 @@ zipcode | yes | zipcode of the user
 
 ```json
   {
-    "status": true,
-    "message": "address addedd successfully"
+  "status": true,
+  "billing_address": {
+    "id": 1,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "U.P.",
+    "zipcode": "12345",
+    "country": "Albania"
   }
-
+}
 ```
 
 
@@ -1301,7 +1193,7 @@ This end point adds a billing address for user.
 
 ### HTTP Request
 
-`POST /add_billing_address`
+`POST /billing_address`
 
 
 ### URL Parameters
@@ -1311,7 +1203,7 @@ Parameter| Mandatory | Description
 city | yes | city of the user
 address | yes | address of the user
 state | yes | state of the user
-country | yes | country of the user
+country_id | yes | id for country of the user
 zipcode | yes | zipcode of the user
 
 ## update shipping address
@@ -1326,7 +1218,7 @@ zipcode | yes | zipcode of the user
       "city": "delhi",
       "address": "sector 60",
       "state": "U.P.",
-      "country": "india",
+      "country_id": 4,
       "zipcode": "12345"
     }
   }
@@ -1338,9 +1230,16 @@ zipcode | yes | zipcode of the user
 
 ```json
   {
-    "status": true,
-    "message": "address updated successfully"
+  "status": true,
+  "shipping_address": {
+    "id": 3,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "M.P.",
+    "zipcode": "12345",
+    "country": "Albania"
   }
+}
 
 ```
 
@@ -1350,7 +1249,7 @@ This end point updates a shipping address for user.
 
 ### HTTP Request
 
-`PUT /update_shipping_address`
+`PUT /shipping_address`
 
 
 ### URL Parameters
@@ -1361,7 +1260,7 @@ id | yes | id of address
 city | no | city of the user
 address | no | address of the user
 state | no | state of the user
-country | no | country of the user
+country_id | yes | id for country of the user
 zipcode | no | zipcode of the user
 
 ## update billing address
@@ -1376,7 +1275,7 @@ zipcode | no | zipcode of the user
       "city": "delhi",
       "address": "sector 60",
       "state": "U.P.",
-      "country": "india",
+      "country_id": 4,
       "zipcode": "12345"
     }
   }
@@ -1387,11 +1286,17 @@ zipcode | no | zipcode of the user
 > Sample Response:
 
 ```json
-  {
-    "status": true,
-    "message": "address updated successfully"
+ {
+  "status": true,
+  "billing_address": {
+    "id": 3,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "M.P.",
+    "zipcode": "12345",
+    "country": "Albania"
   }
-
+}
 ```
 
 
@@ -1400,7 +1305,7 @@ This end point updates a billing address for user.
 
 ### HTTP Request
 
-`PUT /update_billing_address`
+`PUT /billing_address`
 
 
 ### URL Parameters
@@ -1411,7 +1316,7 @@ id | yes | id of address
 city | no | city of the user
 address | no | address of the user
 state | no | state of the user
-country | no | country of the user
+country_id | yes | id for country of the user
 zipcode | no | zipcode of the user
 
 ## get all addresses
