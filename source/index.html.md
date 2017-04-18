@@ -1056,7 +1056,7 @@ This end point returns a shipping address for user.
 
 ### HTTP Request
 
-`GET /get_shipping_address`
+`GET /shipping_address`
 
 
 ## Get billing address
@@ -1092,7 +1092,7 @@ This end point returns a billing address for user.
 
 ### HTTP Request
 
-`GET /get_billing_address`
+`GET /billing_address`
 
 
 
