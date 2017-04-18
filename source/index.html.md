@@ -1336,42 +1336,22 @@ zipcode | no | zipcode of the user
 ```json
   {
   "status": true,
-  "shipping_addresses": [
-    {
-      "id": 1,
-      "address": "sector 60",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    },
-    {
-      "id": 2,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    },
-    {
-      "id": 3,
-      "address": "sector 60",
-      "city": "delhi",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    }
-  ],
-  "billing_addresses": [
-    {
-      "id": 1,
-      "address": "sector 63",
-      "city": "mumbai",
-      "state": "U.P.",
-      "zipcode": "12345",
-      "country": "india"
-    }
-  ]
+  "shipping_address": {
+    "id": 3,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "M.P.",
+    "zipcode": "12345",
+    "country": "Albania"
+  },
+  "billing_address": {
+    "id": 3,
+    "address": "sector 60",
+    "city": "delhi",
+    "state": "M.P.",
+    "zipcode": "12345",
+    "country": "Albania"
+  }
 }
 
 ```
