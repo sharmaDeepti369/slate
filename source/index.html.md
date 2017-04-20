@@ -2764,36 +2764,55 @@ In case of supplier min_price & discount_price will not be in response
 
 ```
 
-> Sample Response if orders found successfully:
+> Sample Response :
 
 ```json
   {
-    "status": true,
-    "orders": [
-      {
-        "id": 23,
-        "name": "Trousers",
-        "max_price": 20.02,
-        "discount_price": 16.016,
-        "image_url": "/uploads/product_image/image/37/image.jpeg",
-        "orders": null,
-        "time_left": "-34:29:15",
-        "days_left": 0,
-        "color": "black",
-        "size": "xxl"
-      }
-    ]
-  }
+  "status": true,
+  "products": [
+    {
+      "id": 5,
+      "name": "Blackberry watch s brown",
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "regular_orders": {
+        "quantity": 1,
+        "price": 976
+      },
+      "name_price_orders": {
+        "quantity": 0,
+        "price": 0
+      },
+      "total_countries": 3,
+      "total_price": 976
+    },
+    {
+      "id": 6,
+      "name": "Blackberry watch s brown",
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "regular_orders": {
+        "quantity": 1,
+        "price": 976
+      },
+      "name_price_orders": {
+        "quantity": 0,
+        "price": 0
+      },
+      "total_countries": 3,
+      "total_price": 976
+    }
+  ],
+  "total_pages": 1
+}
 ```
 
 
 
-This end point returns orders of the previous auction for supplier.
+This end point returns orders base on prefrences for supplier.
 
 
 ### HTTP Request
 
-`GET /orders`
+`GET /supplier/orders`
 
 ## Current bids
 
@@ -3632,4 +3651,39 @@ This end point set the preference brands and return top 5 products based on pref
 Parameter| Mandatory | Description
 --------- |--------- |-----------
 brand_ids | yes | id of brands to set in preferences
+
+## Set countries for prefrences
+
+> Sample Request:
+
+```json
+{
+ "country_ids": [1,2,3]
+}
+
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "message": "preferences saved successfully"
+}
+```
+
+
+
+This end point set the preference countries.
+
+### HTTP Request
+
+`POST /preferences/countries`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+country_ids | yes | id of countries to set in preferences
 
