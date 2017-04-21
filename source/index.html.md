@@ -785,23 +785,59 @@ This end point get credit cards for user.
 
 ## Add card
 
-> Sample Request:
+> Sample Request if billing and shipping address are different:
 
 ```json
 
   {
     "card": {
       "holder_name": "me",
-      "card_number": "24228333126876",
+      "card_number": "565332565",
       "expiry_date":"09/21",
       "cvv": 754,
       "card_type": "visaa"
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": false
+    },
+    "shipping_address": {
+      "city": "noida",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country_id": 2,
+      "zipcode": "12345"
     }
   }
 
+```
+> Sample Request if billing and shipping address are same:
+
+```json
+
+  {
+    "card": {
+      "holder_name": "me",
+      "card_number": "565332565",
+      "expiry_date":"09/21",
+      "cvv": 754,
+      "card_type": "visaa"
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": true
+    }
+  }
 
 ```
-
 
 > Sample Response if card added successfully:
 
@@ -983,20 +1019,21 @@ card_id | yes | credit card id
 {
   "status": true,
   "shipping_address": {
-    "id": 3,
+    "id": 25,
     "address": "sector 60",
-    "city": "delhi",
-    "state": "M.P.",
+    "city": "noida",
+    "state": "U.P.",
     "zipcode": "12345",
     "country": "Albania"
   },
   "billing_address": {
-    "id": 3,
+    "id": 2,
     "address": "sector 60",
     "city": "delhi",
-    "state": "M.P.",
-    "zipcode": "12345",
-    "country": "Albania"
+    "state": "Delhi.",
+    "zipcode": "15789",
+    "country": "Algeria",
+    "is_shipping_address": false
   },
   "cards": [
     {
@@ -1007,11 +1044,10 @@ card_id | yes | credit card id
     {
       "id": 2,
       "card_number": "6876",
-      "card_type": "mestro"
+      "card_type": "visaa"
     }
   ]
 }
-
 ```
 
 
