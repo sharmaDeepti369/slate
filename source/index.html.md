@@ -2789,7 +2789,7 @@ In case of supplier min_price & discount_price will not be in response
 
 # Supplier
 
-## Supplier's orders
+## Orders list
 
 > Sample Request:
 
@@ -2849,6 +2849,159 @@ This end point returns orders base on prefrences for supplier.
 ### HTTP Request
 
 `GET /supplier/orders`
+
+
+## Orders search by keyword
+
+> Sample Request:
+
+```json
+  {
+
+  }
+
+```
+
+> Sample Response :
+
+```json
+
+  {
+  "status": true,
+  "products": [
+    {
+      "id": 5,
+      "name": "Blackberry watch s brown",
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "regular_orders": {
+        "quantity": 1,
+        "price": 976
+      },
+      "name_price_orders": {
+        "quantity": 0,
+        "price": 0
+      },
+      "total_countries": 3,
+      "total_price": 976
+    },
+    {
+      "id": 6,
+      "name": "Blackberry watch s brown",
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "regular_orders": {
+        "quantity": 1,
+        "price": 976
+      },
+      "name_price_orders": {
+        "quantity": 0,
+        "price": 0
+      },
+      "total_countries": 3,
+      "total_price": 976
+    }
+  ],
+  "total_pages": 1
+}
+
+```
+
+
+
+This end point returns orders base on query search.
+
+
+### HTTP Request
+
+`GET /orders/search?query=<query_string>`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+query_string | yes | string user searching for
+
+
+## Orders search by categories
+
+> Sample Request:
+
+```json
+  {
+    "category_ids": [1,3],
+    "sub_category_ids": [3,4],
+    "child_category_ids": [12,15],
+    "brand_ids": [8,9],
+    "country_ids": [3,4,5],
+    "sort_by": "popular/name",
+    "page": 2
+  }
+
+
+```
+
+> Sample Response :
+
+```json
+
+  {
+  "status": true,
+  "products": [
+    {
+      "id": 5,
+      "name": "Blackberry watch s brown",
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "regular_orders": {
+        "quantity": 1,
+        "price": 976
+      },
+      "name_price_orders": {
+        "quantity": 0,
+        "price": 0
+      },
+      "total_countries": 3,
+      "total_price": 976
+    },
+    {
+      "id": 6,
+      "name": "Blackberry watch s brown",
+      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "regular_orders": {
+        "quantity": 1,
+        "price": 976
+      },
+      "name_price_orders": {
+        "quantity": 0,
+        "price": 0
+      },
+      "total_countries": 3,
+      "total_price": 976
+    }
+  ],
+  "total_pages": 1
+}
+
+```
+
+
+
+This end point returns orders base on categories search.
+
+
+### HTTP Request
+
+`POST /orders/search`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+category_ids | no | category selected by user
+sub_category_ids | no | sub category selected by user
+child_category_ids | no | child category selected by user
+brand_ids | no |brand selected by user
+country_ids | no |countries selected by user
+page | yes | page number for response (by default 1)
+sort_by | yes | sort on popularity or name
 
 ## Current bids
 
