@@ -790,6 +790,7 @@ This end point get credit cards for user.
 ```json
 
   {
+    "order_id": 2,
     "card": {
       "holder_name": "me",
       "card_number": "565332565",
@@ -815,11 +816,41 @@ This end point get credit cards for user.
   }
 
 ```
+
+
+> Sample Request if card selected from list:
+
+```json
+
+{
+    "order_id": 2,
+    "card": {
+      "id": 2
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": true
+    },
+    "shipping_address": {
+      "city": "noida",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country_id": 2,
+      "zipcode": "12345"
+    }
+  }
+
+```
 > Sample Request if billing and shipping address are same:
 
 ```json
 
   {
+    "order_id": 2,
     "card": {
       "holder_name": "me",
       "card_number": "565332565",
