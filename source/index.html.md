@@ -790,7 +790,6 @@ This end point get credit cards for user.
 ```json
 
   {
-    "order_id": 2,
     "card": {
       "holder_name": "me",
       "card_number": "565332565",
@@ -823,7 +822,6 @@ This end point get credit cards for user.
 ```json
 
 {
-    "order_id": 2,
     "card": {
       "id": 2
     },
@@ -850,7 +848,6 @@ This end point get credit cards for user.
 ```json
 
   {
-    "order_id": 2,
     "card": {
       "holder_name": "me",
       "card_number": "565332565",
@@ -2205,7 +2202,7 @@ page | yes | page number for orders
 
 ## Ordering a single product
 
-> Sample Request:
+> Sample Request if card selected from list:
 
 ```json
 
@@ -2216,6 +2213,62 @@ page | yes | page number for orders
       "price": 20.04, 
       "type": "name_price" ,
       "order_confirm": true
+    },
+     "card": {
+      "id": 4
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": false
+    },
+    "shipping_address": {
+      "city": "noida",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country_id": 2,
+      "zipcode": "12345"
+    }
+  }
+
+```
+
+> Sample Request if card is new:
+
+```json
+
+  {
+    "order": {
+      "product_id": 1,
+      "quantity": 4,
+      "price": 20.04, 
+      "type": "name_price" ,
+      "order_confirm": true
+    },
+     "card": {
+      "holder_name": "me",
+      "card_number": "565332565",
+      "expiry_date":"09/21",
+      "cvv": 754,
+      "card_type": "visaa"
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": false
+    },
+    "shipping_address": {
+      "city": "noida",
+      "address": "sector 60",
+      "state": "U.P.",
+      "country_id": 2,
+      "zipcode": "12345"
     }
   }
 
@@ -2251,7 +2304,7 @@ order_confirm | yes | true
 
 ## Placing order form cart
 
-> Sample Request:
+> Sample Request if card select from list:
 
 ```json
 
@@ -2268,7 +2321,70 @@ order_confirm | yes | true
       "quantity": 5,
       "order_confirm": true
     }
-  ]
+  ],
+  "card": {
+    "holder_name": "me",
+    "card_number": "565332565",
+    "expiry_date":"09/21",
+    "cvv": 754,
+    "card_type": "visaa"
+  },
+  "billing_address": {
+    "city": "delhi",
+    "address": "sector 60",
+    "state": "Delhi.",
+    "country_id": 3,
+    "zipcode": "15789",
+    "is_shipping_address": false
+  },
+  "shipping_address": {
+    "city": "noida",
+    "address": "sector 60",
+    "state": "U.P.",
+    "country_id": 2,
+    "zipcode": "12345"
+  }
+}
+
+
+```
+
+> Sample Request if card is new:
+
+```json
+
+
+{
+  "orders":[ 
+    {
+        "id": 3,
+        "quantity": 5,
+        "order_confirm": true
+    },
+    {
+      "id": 2,
+      "quantity": 5,
+      "order_confirm": true
+    }
+  ],
+  "card": {
+      "id":5
+  },
+  "billing_address": {
+    "city": "delhi",
+    "address": "sector 60",
+    "state": "Delhi.",
+    "country_id": 3,
+    "zipcode": "15789",
+    "is_shipping_address": false
+  },
+  "shipping_address": {
+    "city": "noida",
+    "address": "sector 60",
+    "state": "U.P.",
+    "country_id": 2,
+    "zipcode": "12345"
+  }
 }
 
 
