@@ -1089,6 +1089,50 @@ This end point returns all cards with all address.
 
 # Addresses
 
+## Get all shipping address
+
+> Sample Request:
+
+```json
+```
+
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "shipping_addresses": [
+    {
+      "id": 1,
+      "address": "sector 60",
+      "city": "noida",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "Albania"
+    },
+    {
+      "id": 2,
+      "address": "sector 61",
+      "city": "noida",
+      "state": "U.P.",
+      "zipcode": "12345",
+      "country": "Albania"
+    }
+  ]
+}
+
+```
+
+
+This end point returns all shipping address for user.
+
+
+### HTTP Request
+
+`GET /shipping_addresses`
+
+
 ## Get shipping address
 
 > Sample Request:
@@ -1120,7 +1164,14 @@ This end point returns a shipping address for user.
 
 ### HTTP Request
 
-`GET /shipping_address`
+`GET /shipping_address/<id>`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | shipping address id
 
 
 ## Get billing address
@@ -2274,7 +2325,72 @@ page | yes | page number for orders
 
 ```
 
-> Sample Response :
+> Sample Request if shipping address select from list:
+
+```json
+
+  {
+    "order": {
+      "product_id": 1,
+      "quantity": 4,
+      "price": 20.04, 
+      "type": "name_price" ,
+      "order_confirm": true
+    },
+     "card": {
+      "holder_name": "me",
+      "card_number": "565332565",
+      "expiry_date":"09/21",
+      "cvv": 754,
+      "card_type": "visaa"
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": false
+    },
+    "shipping_address": {
+      "id": 1
+    }
+  }
+
+```
+
+> Sample Request if billing and shipping address are same:
+
+```json
+
+  {
+    "order": {
+      "product_id": 1,
+      "quantity": 4,
+      "price": 20.04, 
+      "type": "name_price" ,
+      "order_confirm": true
+    },
+     "card": {
+      "holder_name": "me",
+      "card_number": "565332565",
+      "expiry_date":"09/21",
+      "cvv": 754,
+      "card_type": "visaa"
+    },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": true
+    }
+  }
+
+```
+
+> Sample Response if order successful:
 
 ```json
   {
@@ -2284,6 +2400,15 @@ page | yes | page number for orders
 
 ```
 
+> Sample Response shipping address sent already exists:
+
+```json
+  {
+    "status": false,
+    "message": "Shipping address already exists"
+  }
+
+```
 
 This end point add a product to cart.
 
@@ -2385,6 +2510,75 @@ order_confirm | yes | true
     "country_id": 2,
     "zipcode": "12345"
   }
+}
+
+
+```
+> Sample Request if shipping address selected from list:
+
+```json
+
+
+{
+  "orders":[ 
+    {
+        "id": 3,
+        "quantity": 5,
+        "order_confirm": true
+    },
+    {
+      "id": 2,
+      "quantity": 5,
+      "order_confirm": true
+    }
+  ],
+  "card": {
+      "id":5
+  },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": false
+    },
+    "shipping_address": {
+      "id": 1
+    }
+}
+
+
+```
+> Sample Request if shipping address and billing address are same:
+
+```json
+
+
+{
+  "orders":[ 
+    {
+        "id": 3,
+        "quantity": 5,
+        "order_confirm": true
+    },
+    {
+      "id": 2,
+      "quantity": 5,
+      "order_confirm": true
+    }
+  ],
+  "card": {
+      "id":5
+  },
+    "billing_address": {
+      "city": "delhi",
+      "address": "sector 60",
+      "state": "Delhi.",
+      "country_id": 3,
+      "zipcode": "15789",
+      "is_shipping_address": true
+    }
 }
 
 
