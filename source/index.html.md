@@ -3149,33 +3149,33 @@ In case of supplier min_price & discount_price will not be in response
   "products": [
     {
       "id": 5,
-      "name": "Blackberry watch s brown",
+      "name": "Rolex Shirt l red",
       "image_url": "/uploads/product_image/image/9/image.jpeg",
       "regular_orders": {
-        "quantity": 1,
-        "price": 976
+        "quantity": 3,
+        "price": 338.1
       },
       "name_price_orders": {
-        "quantity": 0,
+        "quantity": 2,
         "price": 0
       },
-      "total_countries": 3,
-      "total_price": 976
+      "total_price": 1014.30,
+      "total_countries": 1
     },
     {
-      "id": 6,
-      "name": "Blackberry watch s brown",
-      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "id": 7,
+      "name": "SanDisk Pendrive 8 GB Black",
+      "image_url": "/uploads/product_image/image/13/image.png",
       "regular_orders": {
-        "quantity": 1,
-        "price": 976
+        "quantity": 0,
+        "price": 102.9
       },
       "name_price_orders": {
-        "quantity": 0,
+        "quantity": 7,
         "price": 0
       },
-      "total_countries": 3,
-      "total_price": 976
+      "total_price": 0,
+      "total_countries": 1
     }
   ],
   "total_pages": 1
@@ -3206,44 +3206,42 @@ This end point returns orders base on prefrences for supplier.
 > Sample Response :
 
 ```json
-
-  {
+{
   "status": true,
   "products": [
     {
       "id": 5,
-      "name": "Blackberry watch s brown",
+      "name": "Rolex Shirt l red",
       "image_url": "/uploads/product_image/image/9/image.jpeg",
       "regular_orders": {
-        "quantity": 1,
-        "price": 976
+        "quantity": 3,
+        "price": 338.1
       },
       "name_price_orders": {
-        "quantity": 0,
+        "quantity": 2,
         "price": 0
       },
-      "total_countries": 3,
-      "total_price": 976
+      "total_price": 1014.30,
+      "total_countries": 1
     },
     {
-      "id": 6,
-      "name": "Blackberry watch s brown",
-      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "id": 7,
+      "name": "SanDisk Pendrive 8 GB Black",
+      "image_url": "/uploads/product_image/image/13/image.png",
       "regular_orders": {
-        "quantity": 1,
-        "price": 976
+        "quantity": 0,
+        "price": 102.9
       },
       "name_price_orders": {
-        "quantity": 0,
+        "quantity": 7,
         "price": 0
       },
-      "total_countries": 3,
-      "total_price": 976
+      "total_price": 0,
+      "total_countries": 1
     }
   ],
   "total_pages": 1
 }
-
 ```
 
 
@@ -3289,33 +3287,33 @@ query_string | yes | string user searching for
   "products": [
     {
       "id": 5,
-      "name": "Blackberry watch s brown",
+      "name": "Rolex Shirt l red",
       "image_url": "/uploads/product_image/image/9/image.jpeg",
       "regular_orders": {
-        "quantity": 1,
-        "price": 976
+        "quantity": 3,
+        "price": 338.1
       },
       "name_price_orders": {
-        "quantity": 0,
+        "quantity": 2,
         "price": 0
       },
-      "total_countries": 3,
-      "total_price": 976
+      "total_price": 1014.30,
+      "total_countries": 1
     },
     {
-      "id": 6,
-      "name": "Blackberry watch s brown",
-      "image_url": "/uploads/product_image/image/9/image.jpeg",
+      "id": 7,
+      "name": "SanDisk Pendrive 8 GB Black",
+      "image_url": "/uploads/product_image/image/13/image.png",
       "regular_orders": {
-        "quantity": 1,
-        "price": 976
+        "quantity": 0,
+        "price": 102.9
       },
       "name_price_orders": {
-        "quantity": 0,
+        "quantity": 7,
         "price": 0
       },
-      "total_countries": 3,
-      "total_price": 976
+      "total_price": 0,
+      "total_countries": 1
     }
   ],
   "total_pages": 1
@@ -3344,205 +3342,288 @@ country_ids | no |countries selected by user
 page | yes | page number for response (by default 1)
 sort_by | yes | sort on popularity or name
 
-## Current bids
 
-> Sample Request:
-
-```json
-  {
-
-  }
-
-```
-
-> Sample Response if orders found successfully:
-
-```json
-  {
-    "status": true,
-    "orders": [
-      {
-        "id": 23,
-        "name": "Trousers",
-        "max_price": 20.02,
-        "discount_price": 16.016,
-        "image_url": "/uploads/product_image/image/37/image.jpeg",
-        "orders": null,
-        "time_left": "-34:29:15",
-        "days_left": 0,
-        "color": "black",
-        "size": "xxl"
-      }
-    ]
-  }
-```
-
-
-
-This end point returns all the current bids for supplier.
-
-
-### HTTP Request
-
-`GET /bids`
-
-## No. of orders
-
-> Sample Request:
-
-```json
-  {
-    "product_id": 22,
-    "min_price": 10.00,
-    "max_price": 20.02
-  }
-
-```
-
-> Sample Response if orders found successfully:
-
-```json
-  {
-    "status": true,
-    "orders_count": 1
-  }
-```
-
-
-
-This end point returns no of orders in a price range.
-
-
-### HTTP Request
-
-`GET /get_bids`
-
-
-
-### URL Parameters
-
-Parameter| Mandatory | Description
---------- |--------- |-----------
-product_id | yes | id of product
-min_price | yes | price range minnimum price
-max_price | yes | price range maximum price
-
-## Save orders
-
-> Sample Request:
-
-```json
-  {
-   "order" : {
-      "product_id": 22,
-      "min_price": 0,
-      "max_price": 22
-     
-    }
-  }
-
-```
-
-> Sample Response if order saved successfully:
-
-```json
-  {
-    "status": true,
-    "message": "order saved successfully"
-  }
-```
-
-
-
-This end point saves a order for supplier.
-
-
-### HTTP Request
-
-`GET /supplier_orders`
-
-
-
-### URL Parameters
-
-Parameter| Mandatory | Description
---------- |--------- |-----------
-product_id | yes | id of product
-min_price | yes | price range minnimum price
-max_price | yes | price range maximum price
-
-## Get Saved Orders
+## Get countries list
 
 > Sample Request:
 
 ```json
   {
   }
+
 
 ```
 
 > Sample Response :
 
 ```json
- {
-    "status": true,
-    "orders": [
-      {
-        "id": 3,
-        "orders_count": 0,
-        "image": "/uploads/product_image/image/36/image.jpeg",
-        "product": {
-          "id": 22,
-          "name": "Jeans",
-          "color": "ice blue",
-          "size": "30 S",
-          "description": "hello",
-          "max_price": 20.02,
-          "min_price": null,
-          "orders": 0,
-          "product_images": [
-            {
-              "id": 36,
-              "url": "/uploads/product_image/image/36/image.jpeg"
-            }
-          ]
+{
+  "status": true,
+  "countries": [
+    {
+      "id": 1,
+      "name": "Afghanistan",
+      "selected": true,
+      "shipping_cost": 0
+    },
+    {
+      "id": 2,
+      "name": "Albania",
+      "selected": false,
+      "shipping_cost": 4
+    },
+    {
+      "id": 3,
+      "name": "Algeria",
+      "selected": false,
+      "shipping_cost": 0
+    },
+    {
+      "id": 4,
+      "name": "Andorra",
+      "selected": false,
+      "shipping_cost": 3
+    },
+    {
+      "id": 5,
+      "name": "Angola",
+      "selected": false,
+      "shipping_cost": 0
+    }
+  ],
+  "total_pages": 42
+}
+
+```
+
+
+
+This end point returns list of countries with shipping cost and selected for supplier.
+
+
+### HTTP Request
+
+`GET /supplier/countries`
+
+
+## Set Shipping costs
+
+> Sample Request:
+
+```json
+  {
+  "shipping_costs": [
+    {
+    "country_id": 1,
+    "cost": 3
+    },
+    {
+    "country_id": 2,
+    "cost": 2
+    },
+    {
+    "country_id": 4,
+    "cost": 4
+    }
+  ]
+  
+}
+
+```
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "countries": [
+    {
+      "id": 1,
+      "name": "Afghanistan",
+      "selected": true,
+      "shipping_cost": 3
+    },
+    {
+      "id": 2,
+      "name": "Albania",
+      "selected": false,
+      "shipping_cost": 2
+    },
+    {
+      "id": 3,
+      "name": "Algeria",
+      "selected": false,
+      "shipping_cost": 0
+    },
+    {
+      "id": 4,
+      "name": "Andorra",
+      "selected": false,
+      "shipping_cost": 4
+    },
+    {
+      "id": 5,
+      "name": "Angola",
+      "selected": false,
+      "shipping_cost": 0
+    }
+  ],
+  "total_pages": 42
+}
+```
+
+
+
+This end point will set shipping costs for countries.
+
+
+### HTTP Request
+
+`POST /set_shipping_cost`
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+country_id | yes | id of country selected
+cost | yes | shipping cost for that country ser wants to set
+
+## Get order details
+
+> Sample Request:
+
+```json
+  
+```
+
+> Sample Response:
+
+```json
+  {
+  "status": true,
+  "product": {
+    "id": 5,
+    "name": "Rolex Shirt l red",
+    "image_url": "/uploads/product_image/image/9/image.jpeg",
+    "description": "shirts",
+    "category": "Health, Fitness, Beauty",
+    "sub_category": "Health & Fitness",
+    "regular_orders": {
+      "quantity": 3,
+      "guarnteed_price": 338.1,
+      "regular_total": 1014.30
+    },
+    "name_price_orders": {
+      "orders": [
+        {
+          "id": 20,
+          "quantity": 2,
+          "price": 0
         }
+      ],
+      "quantity": 2
+    },
+    "shipping_cost": 0,
+    "countries": [
+      {
+        "id": 88,
+        "name": "India",
+        "shipping_cost": 0,
+        "orders": 3
+      }
+    ],
+    "purchase_price": 0
+  }
+}
+```
+
+
+
+This end point returns details of order.
+
+
+### HTTP Request
+
+`GET /orders/<product_id>`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product for details
+
+
+## Create Bids
+
+> Sample Request:
+
+```json
+  {
+    "bid" : {
+    "product_id": 5,
+    "regular_quantity": 33,
+    "regular_price": 4,
+    "regular_total": 56,
+    "np_quantity": 89,
+    "np_price": 75,
+    "np_total": 356,
+    "purchase_price": 12,
+    "my_profit": 11,
+    "shipping_cost": [
+      {
+      "country_id": 1,
+      "cost": 3
       },
       {
-        "id": 2,
-        "orders_count": 0,
-        "image": "/uploads/product_image/image/36/image.jpeg",
-        "product": {
-          "id": 22,
-          "name": "Jeans",
-          "color": "ice blue",
-          "size": "30 S",
-          "description": "hello",
-          "max_price": 20.02,
-          "min_price": null,
-          "orders": 0,
-          "product_images": [
-            {
-              "id": 36,
-              "url": "/uploads/product_image/image/36/image.jpeg"
-            }
-          ]
-        }
+      "country_id": 2,
+      "cost": 3
+      },
+      {
+      "country_id": 4,
+      "cost": 4
       }
     ]
   }
 ```
 
+> Sample Response :
+
+```json
+  {
+    "status": true,
+    "message": "Order moved to bid successfully"
+  }
+```
 
 
-This end point return saved orders for supplier.
+
+This end point create a bid for orders.
 
 
 ### HTTP Request
 
-`GET /supplier_orders`
+`POST /bids`
 
 
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+product_id | yes | id of product
+regular_quantity | yes | quantity of regular orders user wants to fulfill
+regular_price | yes | price per piece for regular orders
+regular_total | yes | total price for regular orders
+np_quantity | yes | quantity of name price orders user wants to fulfill
+np_price | yes | price per piece for name price orders
+np_total | yes | total price for name price orders
+purchase_price | yes | purchase price of the product filled by user
+my_profit | yes | my profit calculated for user
+country_id | yes | id of country selected
+cost | yes | shipping cost for that country ser wants to set
 
 
 # Categories
