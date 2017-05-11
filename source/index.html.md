@@ -3585,7 +3585,9 @@ product_id | yes | id of product for details
       "country_id": 4,
       "cost": 4
       }
-    ]
+    ],
+    "is_deleted": false,
+    "is_confirmed": false
   }
 ```
 
@@ -3624,6 +3626,193 @@ purchase_price | yes | purchase price of the product filled by user
 my_profit | yes | my profit calculated for user
 country_id | yes | id of country selected
 cost | yes | shipping cost for that country ser wants to set
+
+
+## Update Bids
+
+> Sample Request:
+
+```json
+  {
+    "bid" : {
+    "id": 1,
+    "product_id": 5,
+    "regular_quantity": 33,
+    "regular_price": 4,
+    "regular_total": 56,
+    "np_quantity": 89,
+    "np_price": 75,
+    "np_total": 356,
+    "purchase_price": 12,
+    "my_profit": 11,
+    "shipping_cost": [
+      {
+      "country_id": 1,
+      "cost": 3
+      },
+      {
+      "country_id": 2,
+      "cost": 3
+      },
+      {
+      "country_id": 4,
+      "cost": 4
+      }
+    ],
+    "is_deleted": false,
+    "is_confirmed": false
+  }
+```
+
+> Sample Response :
+
+```json
+  {
+    "status": true,
+    "message": "Order moved to bid successfully"
+  }
+```
+
+
+
+This end point updates a bid for orders.
+
+
+### HTTP Request
+
+`PUT /bids`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | id of bid
+product_id | yes | id of product
+regular_quantity | yes | quantity of regular orders user wants to fulfill
+regular_price | yes | price per piece for regular orders
+regular_total | yes | total price for regular orders
+np_quantity | yes | quantity of name price orders user wants to fulfill
+np_price | yes | price per piece for name price orders
+np_total | yes | total price for name price orders
+purchase_price | yes | purchase price of the product filled by user
+my_profit | yes | my profit calculated for user
+country_id | yes | id of country selected
+cost | yes | shipping cost for that country ser wants to set
+
+
+## Get Bids
+
+> Sample Request:
+
+```json
+  
+```
+
+> Sample Response :
+
+```json
+ {
+  "status": true,
+  "bids": [
+    {
+      "id": 7,
+      "name": "Apple iphone 7 plus 12 grey",
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "regular_orders": {
+        "quantity": 33,
+        "price": 4
+      },
+      "name_price_orders": {
+        "quantity": 89,
+        "price": 75
+      },
+      "total_price": 428,
+      "total_countries": 3
+    }
+  ],
+  "total_pages": null
+}
+```
+
+
+
+This end point returns list of bids for orders.
+
+
+### HTTP Request
+
+`GET /bids`
+
+## Get Single Bid
+
+> Sample Request:
+
+```json
+  
+```
+
+> Sample Response :
+
+```json
+ {
+  "status": true,
+  "bid": {
+    "id": 7,
+    "product_id": 3,
+    "name": "Apple iphone 7 plus 12 grey",
+    "image_url": "/uploads/product_image/image/5/image.jpeg",
+    "description": "iphone 6 grey",
+    "category": "Appliances",
+    "sub_category": "Floor Care, Seasonal & Parts",
+    "regular_orders": {
+      "quantity": 33,
+      "guarnteed_price": 4,
+      "regular_total": 56
+    },
+    "name_price_orders": {
+      "orders": [
+        {
+          "id": 16,
+          "quantity": 4,
+          "price": 20.04
+        }
+      ],
+      "quantity": 89,
+      "np_total": 356,
+      "np_price": 75
+    },
+    "shipping_cost": 16,
+    "countries": [
+      {
+        "id": 4,
+        "name": "Andorra",
+        "shipping_cost": 4,
+        "orders": 1
+      }
+    ],
+    "purchase_price": 12,
+    "my_profit": 11
+  }
+}
+```
+
+
+
+This end point returns a bid for orders.
+
+
+### HTTP Request
+
+`GET /bids/<id>`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+id | yes | id of bid
+
 
 
 # Categories
