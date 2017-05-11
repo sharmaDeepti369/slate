@@ -3732,7 +3732,7 @@ cost | yes | shipping cost for that country ser wants to set
       "total_countries": 3
     }
   ],
-  "total_pages": null
+  "total_pages": 1
 }
 ```
 
