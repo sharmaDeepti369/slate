@@ -3499,43 +3499,98 @@ cost | yes | shipping cost for that country ser wants to set
 
 > Sample Response:
 
-```json
-  {
+``{
   "status": true,
   "product": {
-    "id": 5,
-    "name": "Rolex Shirt l red",
-    "image_url": "/uploads/product_image/image/9/image.jpeg",
-    "description": "shirts",
-    "category": "Health, Fitness, Beauty",
-    "sub_category": "Health & Fitness",
+    "id": 2,
+    "name": "Apple iphone 7 plus 12 grey",
+    "image_url": "/uploads/product_image/image/3/image.jpeg",
+    "description": "iphone 6 grey",
+    "category": "Appliances",
+    "sub_category": "Floor Care, Seasonal & Parts",
     "regular_orders": {
-      "quantity": 3,
-      "guarnteed_price": 338.1,
-      "regular_total": 1014.30
+      "orders": [
+        {
+          "id": 19,
+          "quantity": 4,
+          "price": 0,
+          "country_id": 4
+        }
+      ],
+      "quantity": 4,
+      "guarnteed_price": 956.48,
+      "regular_total": 3825.92
     },
     "name_price_orders": {
       "orders": [
         {
-          "id": 20,
-          "quantity": 2,
-          "price": 0
+          "id": 17,
+          "quantity": 4,
+          "price": 20.04,
+          "country_id": 2
+        },
+        {
+          "id": 18,
+          "quantity": 4,
+          "price": 20.04,
+          "country_id": 88
         }
       ],
-      "quantity": 2
+      "quantity": 8
     },
-    "shipping_cost": 0,
+    "shipping_cost": 28,
     "countries": [
+      {
+        "id": 2,
+        "name": "Albania",
+        "shipping_cost": 3,
+        "orders": 1
+      },
+      {
+        "id": 4,
+        "name": "Andorra",
+        "shipping_cost": 4,
+        "orders": 1
+      },
       {
         "id": 88,
         "name": "India",
         "shipping_cost": 0,
-        "orders": 3
+        "orders": 1
       }
     ],
     "purchase_price": 0
   }
 }
+```
+> Sample Response if one of the orders not present:
+
+```
+{
+  "status": true,
+  "product": {
+    "id": 3,
+    "name": "Apple iphone 7 plus 12 grey",
+    "image_url": "/uploads/product_image/image/5/image.jpeg",
+    "description": "iphone 6 grey",
+    "category": "Appliances",
+    "sub_category": "Floor Care, Seasonal & Parts",
+    "regular_orders": {
+      "orders": 0,
+      "quantity": 0,
+      "guarnteed_price": 0,
+      "regular_total": 0
+    },
+    "name_price_orders": {
+      "orders": 0,
+      "quantity": 0
+    },
+    "shipping_cost": 0,
+    "countries": [],
+    "purchase_price": 12
+  }
+}
+
 ```
 
 
