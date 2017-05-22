@@ -3499,7 +3499,8 @@ cost | yes | shipping cost for that country ser wants to set
 
 > Sample Response:
 
-``{
+```
+{
   "status": true,
   "product": {
     "id": 2,
