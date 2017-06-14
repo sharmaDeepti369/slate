@@ -4543,3 +4543,159 @@ Parameter| Mandatory | Description
 --------- |--------- |-----------
 country_ids | yes | id of countries to set in preferences
 
+# App Asset
+
+## Get Auction Date
+
+> Sample Request:
+
+```json
+{
+}
+
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "date": '12-16-2017'
+}
+```
+
+
+
+This end point returns the date for auction day.
+
+### HTTP Request
+
+`GET /aution_day`
+
+
+## Get App Logo
+
+> Sample Request:
+
+```json
+{
+}
+
+
+```
+
+> Sample Response:
+
+```json
+{
+    "status": true,
+    "logo": "/uploads/app_asset/logo/1/thumb_logo.png"
+}
+```
+
+
+
+This end point returns the logo of app.
+
+### HTTP Request
+
+`GET /app_logo`
+
+## Set last used
+
+> Sample Request:
+
+```json
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "message": "Last used updated successfully"
+}
+```
+
+
+
+This end point set the last used date of app for an user.
+
+### HTTP Request
+
+`POST /last_used`
+
+
+# Offers
+
+## Confirm Bids
+
+> Sample Request if type is my profit:
+
+```json
+{
+  "bid_ids": [1,2],
+  "offer_type": "my_profit",
+  "my_profit": {
+    "max_profit": 2344,
+    "min_profit": 5644.3,
+    "max_dicount": 9873.3,
+    "min_discount": 834.4,
+    "offer_steps_attributes":[
+      {"profit": 838, "discount": 47.33},
+      {"profit": 33, "discount": 22.3},
+      {"profit": 2434, "discount": 2.3}
+    ]
+    
+  }
+}
+
+```
+
+> Sample Request if type is one offer:
+
+```json
+{
+  "bid_ids": [1,2],
+  "offer_type": "one_offer",
+  "one_offer": {
+    "offer":7474,
+    "discount": 83.33
+  }
+}
+
+```
+
+> Sample Response:
+
+```json
+{
+    "status": true,
+    "message": "Bids saved successfully. Please check your bid history."
+}
+```
+
+
+
+This end point final the bids for auction method.
+
+### HTTP Request
+
+`POST /offers`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+bid_ids | yes | id of bids to be confirmed
+offer_type | yes | type of offer selected by user
+max_profit | yes | max  profit in conitinuous discount
+min_profit | yes | min  profit in conitinuous discount
+max_discount | yes | max profit discount in conitinuous discount
+min_discount | yes | min profit discount in conitinuous discount
+profit | yes | profit in steps discount
+discount | yes | dicount in steps discount
+offer | yes | your offer in one offer
+dicount | yes | discount in one offer
