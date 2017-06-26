@@ -469,6 +469,8 @@ uid | yes | user's uid from facebook
 provider| yes |facebook
 profile_pic | no |facebook profile pic url of user 
 role | yes | role by which user want to sign in
+device_id | yes | device_id of user
+device_type | yes | device type by which user login
 
 # Countries
 
