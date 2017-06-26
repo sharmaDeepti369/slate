@@ -431,7 +431,9 @@ email | yes | user's email
     "uid": "7868374658734",
     "email": "sharma.deepti369@gmail.com",
     "profile_pic": "https://www.facebook.com/photo.php?fbid=1704207913224014&set=a.1391569554487853.1073741826.100009044661363&type=3&theater",
-    "role": "buyer"
+    "role": "buyer",
+    "device_id": "hwqe8973498723471237",
+    "device_type": "android/ios"
  }
 }
 
