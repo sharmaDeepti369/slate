@@ -618,6 +618,7 @@ No parameters required for this api.
     "address": "sector 61, noida",
     "about": "test desc",
      "vat": "6876876",
+     "stripe_id": "acc_76372823732",
     "profile_pic": "data:image/jpeg;base64, /9j/4AAQSkZJRgABAQEAYABgAAD/4QEMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAFgABkoYABwAAAOA............................",
     "social_accounts": {
       "twitter": false,
@@ -645,6 +646,7 @@ No parameters required for this api.
     "country": "India",
     "about": "test desc",
      "vat": "6876876",
+     "stripe_id": "acc_76372823732",
     "profile_pic": "https://radiant-island-87705.herokuapp.com/uploads/user/profile_pic/2/file.jpeg",
     "social_accounts": {
       "id": 1,
@@ -4703,3 +4705,55 @@ profit | yes | profit in steps discount
 discount | yes | dicount in steps discount
 offer | yes | your offer in one offer
 dicount | yes | discount in one offer
+
+# Bid History
+
+## Get bid history
+
+> Sample Request
+
+```json
+
+```
+
+> Sample Response:
+
+```json
+{
+  "status": true,
+  "bids": [
+    {
+      "id": 7,
+      "name": "Apple iphone 7 plus 12 grey",
+      "image_url": "/uploads/product_image/image/5/image.jpeg",
+      "regular_orders": {
+        "quantity": 33,
+        "price": 4
+      },
+      "name_price_orders": {
+        "quantity": 89,
+        "price": 75
+      },
+      "total_price": 428,
+      "total_countries": 3,
+      "remaining_time": 10
+    }
+  ],
+  "total_pages": 1
+}
+
+```
+
+
+
+This end point will return history of bids.
+
+### HTTP Request
+
+`POST /history/bids?status=<bid_status>`
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+bid_status | yes | status of bid ('pending', 'won', 'lost')
