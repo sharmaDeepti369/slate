@@ -3763,6 +3763,43 @@ my_profit | yes | my profit calculated for user
 country_id | yes | id of country selected
 cost | yes | shipping cost for that country ser wants to set
 
+## Clear bids
+
+> Sample Request:
+
+```json
+{
+  "bid_ids": [1,2,3,4]
+}
+
+```
+
+> Sample Response :
+
+```json
+{
+  "status": true,
+  "message": "All bids cleared successfully"
+}
+```
+
+
+
+This end point updates all bid is_deleted as true.
+
+
+### HTTP Request
+
+`PUT /clear_bids`
+
+
+
+### URL Parameters
+
+Parameter| Mandatory | Description
+--------- |--------- |-----------
+bis_ids | yes | ids of bid
+
 
 ## Get Bids
 
