@@ -4787,7 +4787,7 @@ This end point will return history of bids.
 
 ### HTTP Request
 
-`POST /history/bids?status=<bid_status>`
+`GET /history/bids?status=<bid_status>`
 
 ### URL Parameters
 
