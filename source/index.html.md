@@ -545,6 +545,7 @@ This end point returns the list of cuntries
   "profile_data": {
     "name": "deepti sharma",
     "email": "someoneanonymousiam@gmail.com",
+    "is_email_confirmed": true,
     "phone_number": "12353737978",
     "address": "sector 61, noida",
     "state": "UP",
@@ -586,6 +587,7 @@ No parameters required for this api.
 ```json
 {
  "users" : {
+    "email": "deepti@elgroupinternational.com",
     "name": "deepti sharma",
     "phone_number": "12353737978",
     "address": "sector 61, noida",
@@ -613,6 +615,7 @@ No parameters required for this api.
 ```json
 {
  "users" : {
+    "email": "deepti@elgroupinternational.com",
     "name": "deepti sharma",
     "phone_number": "12353737978",
     "address": "sector 61, noida",
@@ -637,7 +640,8 @@ No parameters required for this api.
 {
   "profile_data": {
     "name": "deepti sharma",
-    "email": "someoneanonymousiam@gmail.com",
+    "email": "deepti@elgroupinternational.com",
+    "is_email_confirmed": false,
     "phone_number": "12353737978",
     "address": "sector 61, noida",
     "state": "UP",
